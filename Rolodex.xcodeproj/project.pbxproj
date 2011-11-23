@@ -119,9 +119,12 @@
 		2869885C1475CEEC00B40860 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 286988051475CEEC00B40860 /* SVProgressHUD.m */; };
 		2869885D1475CEEC00B40860 /* TTTAttributedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 286988081475CEEC00B40860 /* TTTAttributedLabel.m */; };
 		286988621475CF3500B40860 /* InitialDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 286988611475CF3500B40860 /* InitialDefaults.plist */; };
-		286988651475D19700B40860 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286988641475D19700B40860 /* TimelineViewController.m */; };
-		286988681475D23500B40860 /* ChannelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286988671475D23400B40860 /* ChannelViewController.m */; };
-		2869886B1475EA3300B40860 /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2869886A1475EA3300B40860 /* PSDrawerController.m */; };
+		28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855D8147C7645004F84EA /* PSDrawerController.m */; };
+		28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DC147CDCE6004F84EA /* ProfileViewController.m */; };
+		28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DF147CDDE8004F84EA /* MenuViewController.m */; };
+		28B855E9147CE137004F84EA /* IconMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855E7147CE137004F84EA /* IconMenu.png */; };
+		28B855EA147CE137004F84EA /* IconMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855E8147CE137004F84EA /* IconMenu@2x.png */; };
+		28B855ED147CE1A3004F84EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855EC147CE1A3004F84EA /* LoginViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,10 +132,10 @@
 		283818C214723F1D007E4827 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		283818C414723F1D007E4827 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		283818C614723F1D007E4827 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		283818CA14723F1D007E4827 /* Rolodex-Info.plist */ = {isa = PBXFileReference; path = "Rolodex-Info.plist"; sourceTree = "<group>"; };
+		283818CA14723F1D007E4827 /* Rolodex-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rolodex-Info.plist"; sourceTree = "<group>"; };
 		283818CC14723F1D007E4827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		283818CE14723F1D007E4827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		283818D014723F1D007E4827 /* Rolodex-Prefix.pch */ = {isa = PBXFileReference; path = "Rolodex-Prefix.pch"; sourceTree = "<group>"; };
+		283818D014723F1D007E4827 /* Rolodex-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rolodex-Prefix.pch"; sourceTree = "<group>"; };
 		283818D114723F1D007E4827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		283818D214723F1D007E4827 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		28381A7E1472ED1C007E4827 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -327,12 +330,16 @@
 		286988071475CEEC00B40860 /* TTTAttributedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTAttributedLabel.h; sourceTree = "<group>"; };
 		286988081475CEEC00B40860 /* TTTAttributedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTAttributedLabel.m; sourceTree = "<group>"; };
 		286988611475CF3500B40860 /* InitialDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InitialDefaults.plist; sourceTree = "<group>"; };
-		286988631475D19700B40860 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
-		286988641475D19700B40860 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
-		286988661475D23400B40860 /* ChannelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelViewController.h; sourceTree = "<group>"; };
-		286988671475D23400B40860 /* ChannelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelViewController.m; sourceTree = "<group>"; };
-		286988691475EA3200B40860 /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
-		2869886A1475EA3300B40860 /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
+		28B855D7147C7645004F84EA /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
+		28B855D8147C7645004F84EA /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
+		28B855DB147CDCE6004F84EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		28B855DC147CDCE6004F84EA /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		28B855DE147CDDE8004F84EA /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
+		28B855DF147CDDE8004F84EA /* MenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewController.m; sourceTree = "<group>"; };
+		28B855E7147CE137004F84EA /* IconMenu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconMenu.png; sourceTree = "<group>"; };
+		28B855E8147CE137004F84EA /* IconMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconMenu@2x.png"; sourceTree = "<group>"; };
+		28B855EB147CE1A3004F84EA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		28B855EC147CE1A3004F84EA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -395,14 +402,9 @@
 		283818C814723F1D007E4827 /* Rolodex */ = {
 			isa = PBXGroup;
 			children = (
+				28B855DA147CDCC4004F84EA /* Controllers */,
 				283818D114723F1D007E4827 /* AppDelegate.h */,
 				283818D214723F1D007E4827 /* AppDelegate.m */,
-				286988691475EA3200B40860 /* PSDrawerController.h */,
-				2869886A1475EA3300B40860 /* PSDrawerController.m */,
-				286988661475D23400B40860 /* ChannelViewController.h */,
-				286988671475D23400B40860 /* ChannelViewController.m */,
-				286988631475D19700B40860 /* TimelineViewController.h */,
-				286988641475D19700B40860 /* TimelineViewController.m */,
 				283818C914723F1D007E4827 /* Supporting Files */,
 			);
 			path = Rolodex;
@@ -425,6 +427,8 @@
 		28698713147312EC00B40860 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28B855E7147CE137004F84EA /* IconMenu.png */,
+				28B855E8147CE137004F84EA /* IconMenu@2x.png */,
 				28698732147394F500B40860 /* BackgroundDarkWood.jpg */,
 				28698733147394F500B40860 /* BackgroundDarkWood@2x.jpg */,
 				28698734147394F600B40860 /* BackgroundDarkWood~ipad.jpg */,
@@ -444,6 +448,7 @@
 		2869873D1475CECD00B40860 /* PSKit */ = {
 			isa = PBXGroup;
 			children = (
+				28B855D6147C7638004F84EA /* PSDrawerController */,
 				2869873E1475CEEC00B40860 /* Categories */,
 				2869875D1475CEEC00B40860 /* Centers */,
 				286987801475CEEC00B40860 /* Config */,
@@ -883,6 +888,28 @@
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
+		28B855D6147C7638004F84EA /* PSDrawerController */ = {
+			isa = PBXGroup;
+			children = (
+				28B855D7147C7645004F84EA /* PSDrawerController.h */,
+				28B855D8147C7645004F84EA /* PSDrawerController.m */,
+			);
+			path = PSDrawerController;
+			sourceTree = "<group>";
+		};
+		28B855DA147CDCC4004F84EA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				28B855DB147CDCE6004F84EA /* ProfileViewController.h */,
+				28B855DC147CDCE6004F84EA /* ProfileViewController.m */,
+				28B855DE147CDDE8004F84EA /* MenuViewController.h */,
+				28B855DF147CDDE8004F84EA /* MenuViewController.m */,
+				28B855EB147CE1A3004F84EA /* LoginViewController.h */,
+				28B855EC147CE1A3004F84EA /* LoginViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -957,6 +984,8 @@
 				286988591475CEEC00B40860 /* PullToRefresh.bundle in Resources */,
 				2869885B1475CEEC00B40860 /* SVProgressHUD.bundle in Resources */,
 				286988621475CF3500B40860 /* InitialDefaults.plist in Resources */,
+				28B855E9147CE137004F84EA /* IconMenu.png in Resources */,
+				28B855EA147CE137004F84EA /* IconMenu@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1045,9 +1074,10 @@
 				2869885A1475CEEC00B40860 /* Reachability.m in Sources */,
 				2869885C1475CEEC00B40860 /* SVProgressHUD.m in Sources */,
 				2869885D1475CEEC00B40860 /* TTTAttributedLabel.m in Sources */,
-				286988651475D19700B40860 /* TimelineViewController.m in Sources */,
-				286988681475D23500B40860 /* ChannelViewController.m in Sources */,
-				2869886B1475EA3300B40860 /* PSDrawerController.m in Sources */,
+				28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */,
+				28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */,
+				28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */,
+				28B855ED147CE1A3004F84EA /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

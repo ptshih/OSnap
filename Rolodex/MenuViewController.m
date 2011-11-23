@@ -1,14 +1,14 @@
 //
-//  TimelineViewController.m
+//  MenuViewController.m
 //  Rolodex
 //
-//  Created by Peter Shih on 11/17/11.
+//  Created by Peter Shih on 11/22/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "TimelineViewController.h"
+#import "MenuViewController.h"
 
-@implementation TimelineViewController
+@implementation MenuViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "PSReachabilityCenter.h"
+#import "PSDrawerController.h"
+
+#import "MenuViewController.h"
+#import "ProfileViewController.h"
 
 @interface AppDelegate (Private)
 
@@ -53,7 +57,26 @@
   self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
   self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   [self.window makeKeyAndVisible];
+  
+  // View Controllers
+  MenuViewController *mvc = [[MenuViewController alloc] initWithNibName:nil bundle:nil];
+  ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
+  
+  UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
+  [pvc release];
+  
+  PSDrawerController *dc = [[PSDrawerController alloc] initWithNibName:nil bundle:nil];
+  [dc setViewControllers:[NSArray arrayWithObjects:mvc, nc, nil]];
+  [mvc release];
+  [nc release];
+  
+  [self.window addSubview:dc.view];
+  
   return YES;
+}
+
+- (void)slide {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
