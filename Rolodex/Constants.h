@@ -1,7 +1,7 @@
 #import "PSConstants.h"
 
 // SQLite DB filename
-#define SQLITE_DB_NAME @"CosmoTube_v1"
+#define SQLITE_DB_NAME @"Rolodex_v1"
 #define SQLITE_DB_SCHEMA_VERSION @"1"
 
 // Youtube GData API Developer Key
