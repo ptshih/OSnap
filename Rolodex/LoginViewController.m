@@ -49,7 +49,10 @@
 - (void)viewDidAppear:(BOOL)animated {
   [super viewDidAppear:animated];
   
-  [self loginDidSucceed];
+  // Add this to main runloop queue
+  [[NSOperationQueue mainQueue] addOperationWithBlock:^{
+    [self loginDidSucceed];
+  }];
 }
 
 #pragma mark - Login

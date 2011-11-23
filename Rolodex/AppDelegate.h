@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@class PSDrawerController;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate> {
+  PSDrawerController *_drawerController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (nonatomic, retain, readonly) PSDrawerController *drawerController;
 
 - (void)slide;
 - (void)hide;
