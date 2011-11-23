@@ -36,7 +36,7 @@
 
 #pragma mark - View Config
 - (UIView *)backgroundView {
-  UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundBlueprint.jpg"]] autorelease];
+  UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]] autorelease];
   return bgView;
 }
 

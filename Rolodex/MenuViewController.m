@@ -51,7 +51,7 @@
   CGFloat searchWidth = searchView.width - 20;
   _searchField = [[PSSearchField alloc] initWithFrame:CGRectMake(10, 7, searchWidth, 30) style:PSSearchFieldStyleBlack];
   _searchField.delegate = self;
-  _searchField.placeholder = @"Search People";
+  _searchField.placeholder = @"Search";
 //  [_searchField addTarget:self action:@selector(searchTermChanged:) forControlEvents:UIControlEventEditingChanged];
   [searchView addSubview:_searchField];
   
