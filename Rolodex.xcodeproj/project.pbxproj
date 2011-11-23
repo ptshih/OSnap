@@ -125,6 +125,9 @@
 		28B855E9147CE137004F84EA /* IconMenu.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855E7147CE137004F84EA /* IconMenu.png */; };
 		28B855EA147CE137004F84EA /* IconMenu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855E8147CE137004F84EA /* IconMenu@2x.png */; };
 		28B855ED147CE1A3004F84EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855EC147CE1A3004F84EA /* LoginViewController.m */; };
+		28B855F5147CE5AA004F84EA /* BackgroundNavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */; };
+		28B855F6147CE5AA004F84EA /* BackgroundNavigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */; };
+		28B855F7147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -340,6 +343,9 @@
 		28B855E8147CE137004F84EA /* IconMenu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconMenu@2x.png"; sourceTree = "<group>"; };
 		28B855EB147CE1A3004F84EA /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		28B855EC147CE1A3004F84EA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundNavigationBar.png; sourceTree = "<group>"; };
+		28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundNavigationBar@2x.png"; sourceTree = "<group>"; };
+		28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundNavigationBar~ipad.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -429,6 +435,9 @@
 			children = (
 				28B855E7147CE137004F84EA /* IconMenu.png */,
 				28B855E8147CE137004F84EA /* IconMenu@2x.png */,
+				28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */,
+				28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */,
+				28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */,
 				28698732147394F500B40860 /* BackgroundDarkWood.jpg */,
 				28698733147394F500B40860 /* BackgroundDarkWood@2x.jpg */,
 				28698734147394F600B40860 /* BackgroundDarkWood~ipad.jpg */,
@@ -986,6 +995,9 @@
 				286988621475CF3500B40860 /* InitialDefaults.plist in Resources */,
 				28B855E9147CE137004F84EA /* IconMenu.png in Resources */,
 				28B855EA147CE137004F84EA /* IconMenu@2x.png in Resources */,
+				28B855F5147CE5AA004F84EA /* BackgroundNavigationBar.png in Resources */,
+				28B855F6147CE5AA004F84EA /* BackgroundNavigationBar@2x.png in Resources */,
+				28B855F7147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

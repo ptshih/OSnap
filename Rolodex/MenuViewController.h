@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PSTableViewController.h"
 
-@interface MenuViewController : UIViewController
+@interface MenuViewController : PSTableViewController <UITextFieldDelegate> {
+  PSSearchField *_searchField;
+}
 
 @end
