@@ -12,6 +12,7 @@
 
 #import "MenuViewController.h"
 #import "ProfileViewController.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate (Private)
 
@@ -55,14 +56,17 @@
   [PSReachabilityCenter defaultCenter];
   
   self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-  self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   [self.window makeKeyAndVisible];
+  
+  self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   
   // View Controllers
   MenuViewController *mvc = [[MenuViewController alloc] initWithNibName:nil bundle:nil];
   ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
   
-  UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:pvc];
+  // PS Navigation Controller
+  UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
+  nc.viewControllers = [NSArray arrayWithObject:pvc];
   [pvc release];
   
   PSDrawerController *dc = [[PSDrawerController alloc] initWithNibName:nil bundle:nil];
@@ -72,11 +76,20 @@
   
   [self.window addSubview:dc.view];
   
+  // Login
+  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+  [dc presentModalViewController:lvc animated:NO];
+  [lvc release];
+  
   return YES;
 }
 
 - (void)slide {
   [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
+}
+
+- (void)hide {
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerHide object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

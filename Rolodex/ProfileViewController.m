@@ -37,9 +37,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"IconMenu.png"] style:UIBarButtonItemStyleBordered target:[[UIApplication sharedApplication] delegate] action:@selector(slide)];
+  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE action:@selector(slide) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
   
-//  self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"LOL" style:UIBarButtonItemStyleBordered target:[[UIApplication sharedApplication] delegate] action:@selector(slide)];
 }
 
 @end

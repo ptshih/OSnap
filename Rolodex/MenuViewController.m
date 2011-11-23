@@ -56,6 +56,9 @@
   [searchView addSubview:_searchField];
   
   [self.view addSubview:searchView];
+  
+  // Add a TableView
+  [self setupTableViewWithFrame:CGRectMake(0, searchView.bottom, self.view.width, self.view.height - searchView.height) style:UITableViewStylePlain separatorStyle:UITableViewCellSeparatorStyleNone separatorColor:nil];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -67,6 +70,66 @@
   if ([_searchField isFirstResponder]) {
     [_searchField resignFirstResponder];
   }
+}
+
+#pragma mark - State Machine
+- (void)loadDataSource {
+  [super loadDataSource];
+  
+  // Prepare Data
+  
+  [self dataSourceShouldLoadObjects:nil shouldAnimate:NO];
+}
+
+- (void)dataSourceDidLoad {
+  [super dataSourceDidLoad];
+}
+
+#pragma mark - TableView
+- (void)tableView:(UITableView *)tableView configureCell:(id)cell atIndexPath:(NSIndexPath *)indexPath {
+  NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+  [cell fillCellWithObject:object];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  PSCell *cell = nil;
+  NSString *reuseIdentifier = [PSCell reuseIdentifier];
+  
+  cell = (PSCell *)[tableView dequeueReusableCellWithIdentifier:reuseIdentifier];
+  if(cell == nil) { 
+    cell = [[[PSCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:reuseIdentifier] autorelease];
+    [_cellCache addObject:cell];
+  }
+  
+  [self tableView:tableView configureCell:cell atIndexPath:indexPath];
+  
+  return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:YES];
+  
+  NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+
+}
+
+#pragma mark - UITextFieldDelegate
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+  [APP_DELEGATE hide];
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+  [APP_DELEGATE hide];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+  [textField resignFirstResponder];
+  if (![textField isEditing]) {
+    [textField becomeFirstResponder];
+  }
+  [textField resignFirstResponder];
+  
+  return YES;
 }
 
 @end
