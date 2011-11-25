@@ -1,17 +1,17 @@
 //
-//  MenuCell.m
+//  MenuProfileCell.m
 //  Rolodex
 //
-//  Created by Peter Shih on 11/23/11.
+//  Created by Peter Shih on 11/24/11.
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "MenuCell.h"
+#import "MenuProfileCell.h"
 
-@implementation MenuCell
+@implementation MenuProfileCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  self = [super initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:reuseIdentifier];
+  self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier];
   if (self) {
     [PSStyleSheet applyStyle:@"menuCellTitle" forLabel:self.textLabel];
     self.textLabel.backgroundColor = [UIColor clearColor];
@@ -19,7 +19,8 @@
     [PSStyleSheet applyStyle:@"menuCellSubtitle" forLabel:self.detailTextLabel];
     self.detailTextLabel.backgroundColor = [UIColor clearColor];
     
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    self.imageView.backgroundColor = self.backgroundColor;
+    self.imageView.contentMode = UIViewContentModeScaleAspectFit;
   }
   return self;
 }
@@ -30,7 +31,6 @@
   self.imageView.frame = CGRectMake(10, 10, 30, 30);
   self.textLabel.left = self.imageView.right + 10;
   self.detailTextLabel.left = self.textLabel.left;
-
 }
 
 - (void)prepareForReuse {
@@ -42,20 +42,22 @@
 - (void)fillCellWithObject:(id)object
 {
   NSDictionary *obj = (NSDictionary *)object;
-  NSString *title = [obj objectForKey:@"title"];
-  NSString *subtitle = [obj objectForKey:@"subtitle"];
-  NSString *imageSource = [obj objectForKey:@"imageSource"];
+  NSString *firstName = [obj objectForKey:@"firstName"];
+  NSString *lastName = [obj objectForKey:@"lastName"];
+  NSString *headline = [obj objectForKey:@"headline"];
+  NSString *pictureUrl = [obj objectForKey:@"pictureUrl"];
   
-  self.textLabel.text = title;
-  self.detailTextLabel.text = subtitle;
+  self.textLabel.text = [NSString stringWithFormat:@"%@ %@", firstName, lastName];
+  self.detailTextLabel.text = headline;
+  [self.imageView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:nil];
 }
 
 + (CGFloat)rowHeight {
-  return 50;
+  return 60.0;
 }
 
 + (CGFloat)rowHeightForObject:(id)object forInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  return 50;
+  return 60.0;
 }
 
 @end

@@ -8,7 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "PSViewController.h"
+#import "PSCollectionView.h"
 
-@interface RolodexViewController : PSViewController
+@class CardView;
+
+@interface RolodexViewController : PSViewController <PSCollectionViewDelegate, PSCollectionViewDataSource> {
+  NSMutableArray *_cardData;
+  
+  // Views
+  PSCollectionView *_collectionView;
+}
+
+- (id)initWithConfig:(NSDictionary *)config;
+
 
 @end

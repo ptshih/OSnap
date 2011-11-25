@@ -11,10 +11,18 @@
 @implementation RolodexViewController
 
 #pragma mark - Init
+- (id)initWithConfig:(NSDictionary *)config {
+  self = [self initWithNibName:nil bundle:nil];
+  if (self) {
+    // Configure rolodex parameters
+  }
+  return self;
+}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    
+    _cardData = [[NSMutableArray alloc] initWithCapacity:1];
   }
   return self;
 }
@@ -24,6 +32,8 @@
 }
 
 - (void)dealloc {
+  RELEASE_SAFELY(_cardData);
+  
   [super dealloc];
 }
 
@@ -37,8 +47,69 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  // Rolodex View
+  _collectionView = [[PSCollectionView alloc] initWithFrame:self.view.bounds];
+  _collectionView.autoresizingMask = ~UIViewAutoresizingNone;
+  _collectionView.collectionViewDelegate = self;
+  _collectionView.collectionViewDataSource = self;
+  _collectionView.rowHeight = 120;
+  [self.view addSubview:_collectionView];
+  
   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE action:@selector(slide) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
   
+  // TEST
+  // Setup some sample cards
+  [_cardData addObject:@"test card 1"];
+  [_cardData addObject:@"test card 2"];
+  [_cardData addObject:@"test card 3"];
+  [_cardData addObject:@"test card 4"];
+  [_cardData addObject:@"test card 5"];
+  [_cardData addObject:@"test card 6"];
+  [_cardData addObject:@"test card 7"];
+  
+  [_collectionView reloadCards];
+}
+
+#pragma mark - PSCollectionViewDelegate
+#pragma mark - PSCollectionViewDataSource
+- (NSInteger)numberOfCardsInCollectionView:(PSCollectionView *)collectionView {
+  return [_cardData count];
+}
+
+- (CardView *)collectionView:(PSCollectionView *)collectionView cardAtIndex:(NSInteger)index {
+  CardView *cardView = nil;
+  cardView = [collectionView dequeueReusableCardView];
+  if (cardView == nil) {
+    cardView = [[[CardView alloc] initWithFrame:CGRectMake(0, 0, _collectionView.width, _collectionView.rowHeight)] autorelease];
+  }
+  
+  // Configure Card View
+  switch (index) {
+    case 0:
+      cardView.backgroundColor = [UIColor redColor];
+      break;
+    case 1:
+      cardView.backgroundColor = [UIColor greenColor];
+      break;
+    case 2:
+      cardView.backgroundColor = [UIColor blueColor];
+      break;
+    case 3:
+      cardView.backgroundColor = [UIColor purpleColor];
+      break;
+    case 4:
+      cardView.backgroundColor = [UIColor yellowColor];
+      break;
+    case 5:
+      cardView.backgroundColor = [UIColor orangeColor];
+      break;
+    default:
+      cardView.backgroundColor = [UIColor grayColor];
+      break;
+  }
+  
+  
+  return cardView;
 }
 
 @end
