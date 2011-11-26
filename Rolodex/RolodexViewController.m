@@ -71,6 +71,10 @@
 }
 
 #pragma mark - PSCollectionViewDelegate
+- (void)collectionView:(PSCollectionView *)collectionView didSelectCardAtIndex:(NSInteger)index {
+  
+}
+
 #pragma mark - PSCollectionViewDataSource
 - (NSInteger)numberOfCardsInCollectionView:(PSCollectionView *)collectionView {
   return [_cardData count];
@@ -79,9 +83,6 @@
 - (CardView *)collectionView:(PSCollectionView *)collectionView cardAtIndex:(NSInteger)index {
   CardView *cardView = nil;
   cardView = [collectionView dequeueReusableCardView];
-  if (cardView == nil) {
-    cardView = [[[CardView alloc] initWithFrame:CGRectMake(0, 0, _collectionView.width, _collectionView.rowHeight)] autorelease];
-  }
   
   // Configure Card View
   switch (index) {

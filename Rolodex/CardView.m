@@ -8,12 +8,17 @@
 
 #import "CardView.h"
 
+#define CARD_WIDTH 300
+#define CARD_HEIGHT 100
+
 @implementation CardView
 
 - (id)initWithFrame:(CGRect)frame {
-  self = [super initWithFrame:frame];
+  self = [super initWithFrame:CGRectMake(0, 0, CARD_WIDTH, CARD_HEIGHT)];
   if (self) {
-    self.backgroundColor = [UIColor darkGrayColor];
+    self.layer.cornerRadius = 20;
+    self.layer.masksToBounds = YES;
+//    self.backgroundColor = [UIColor whiteColor];
   }
   return self;
 }
@@ -25,6 +30,10 @@
 #pragma mark - View
 - (void)layoutSubviews {
   [super layoutSubviews];
+}
+
+- (void)fillCardWithObject:(id)object {
+  
 }
 
 @end

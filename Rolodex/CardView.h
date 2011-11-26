@@ -10,4 +10,6 @@
 
 @interface CardView : PSView
 
+- (void)fillCardWithObject:(id)object;
+
 @end
