@@ -8,7 +8,17 @@
 
 #import "PSView.h"
 
-@interface CardView : PSView
+@interface CardView : PSView {
+  UIImageView *_frameView;
+  UIImageView *_pictureView;
+  UILabel *_nameLabel;
+  UILabel *_headlineLabel;
+  UILabel *_locationLabel;
+  UILabel *_industryLabel;
+}
+
++ (CGFloat)cardWidth;
++ (CGFloat)cardHeight;
 
 - (void)fillCardWithObject:(id)object;
 

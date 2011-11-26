@@ -76,6 +76,8 @@
   // Add a TableView
   [self setupTableViewWithFrame:CGRectMake(0, searchView.bottom, self.view.width, self.view.height - searchView.height) style:UITableViewStylePlain separatorStyle:UITableViewCellSeparatorStyleNone separatorColor:nil];
   
+  self.tableView.scrollsToTop = NO;
+  
   [self loadDataSource];
 }
 

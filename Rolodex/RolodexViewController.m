@@ -8,6 +8,7 @@
 
 #import "RolodexViewController.h"
 
+
 @implementation RolodexViewController
 
 #pragma mark - Init
@@ -52,20 +53,26 @@
   _collectionView.autoresizingMask = ~UIViewAutoresizingNone;
   _collectionView.collectionViewDelegate = self;
   _collectionView.collectionViewDataSource = self;
-  _collectionView.rowHeight = 120;
+  _collectionView.rowHeight = [CardView cardHeight];
   [self.view addSubview:_collectionView];
   
   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE action:@selector(slide) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
   
   // TEST
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"connections" ofType:@"json"];
+  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
+  NSDictionary *connections = [fixtureData objectFromJSONData];
+  
+  [_cardData addObjectsFromArray:[connections objectForKey:@"values"]];
+  
   // Setup some sample cards
-  [_cardData addObject:@"test card 1"];
-  [_cardData addObject:@"test card 2"];
-  [_cardData addObject:@"test card 3"];
-  [_cardData addObject:@"test card 4"];
-  [_cardData addObject:@"test card 5"];
-  [_cardData addObject:@"test card 6"];
-  [_cardData addObject:@"test card 7"];
+//  [_cardData addObject:@"test card 1"];
+//  [_cardData addObject:@"test card 2"];
+//  [_cardData addObject:@"test card 3"];
+//  [_cardData addObject:@"test card 4"];
+//  [_cardData addObject:@"test card 5"];
+//  [_cardData addObject:@"test card 6"];
+//  [_cardData addObject:@"test card 7"];
   
   [_collectionView reloadCards];
 }
@@ -85,30 +92,33 @@
   cardView = [collectionView dequeueReusableCardView];
   
   // Configure Card View
-  switch (index) {
-    case 0:
-      cardView.backgroundColor = [UIColor redColor];
-      break;
-    case 1:
-      cardView.backgroundColor = [UIColor greenColor];
-      break;
-    case 2:
-      cardView.backgroundColor = [UIColor blueColor];
-      break;
-    case 3:
-      cardView.backgroundColor = [UIColor purpleColor];
-      break;
-    case 4:
-      cardView.backgroundColor = [UIColor yellowColor];
-      break;
-    case 5:
-      cardView.backgroundColor = [UIColor orangeColor];
-      break;
-    default:
-      cardView.backgroundColor = [UIColor grayColor];
-      break;
-  }
+  NSDictionary *cardDict = [_cardData objectAtIndex:index];
   
+//  switch (index) {
+//    case 0:
+//      cardView.backgroundColor = [UIColor redColor];
+//      break;
+//    case 1:
+//      cardView.backgroundColor = [UIColor greenColor];
+//      break;
+//    case 2:
+//      cardView.backgroundColor = [UIColor blueColor];
+//      break;
+//    case 3:
+//      cardView.backgroundColor = [UIColor purpleColor];
+//      break;
+//    case 4:
+//      cardView.backgroundColor = [UIColor yellowColor];
+//      break;
+//    case 5:
+//      cardView.backgroundColor = [UIColor orangeColor];
+//      break;
+//    default:
+//      cardView.backgroundColor = [UIColor whiteColor];
+//      break;
+//  }
+  
+  [cardView fillCardWithObject:cardDict];
   
   return cardView;
 }

@@ -1,6 +1,7 @@
 #import "PSConstants.h"
 
 // Vendor imports
+#import "JSONKit.h"
 #import "UIImageView+AFNetworking.h"
 
 // SQLite DB filename
@@ -20,3 +21,7 @@
 // Custom Colors
 #define CELL_BACKGROUND_COLOR CELL_BLACK_COLOR
 #define CELL_SELECTED_COLOR CELL_BLUE_COLOR
+
+/**
+ http://api.linkedin.com/v1/people/~/connections:(id,first-name,last-name,headline,location:(name),industry,picture-url)?format=json
+*/
