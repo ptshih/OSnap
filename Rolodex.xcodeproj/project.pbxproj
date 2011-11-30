@@ -431,8 +431,7 @@
 				281A488A1486323300F5E19E /* PSSlideView.h */,
 				281A488B1486323300F5E19E /* PSSlideView.m */,
 			);
-			name = PSFilmView;
-			path = PSSlideView;
+			path = PSFilmView;
 			sourceTree = "<group>";
 		};
 		283818B314723F1C007E4827 = {
