@@ -80,7 +80,7 @@
 		<key>fontName</key>
 		<string>HelveticaNeue-Bold</string>
 		<key>fontSize</key>
-		<integer>18</integer>
+		<integer>16</integer>
 		<key>textColor</key>
 		<string>0x000000</string>
 		<key>highlightedTextColor</key>
@@ -95,9 +95,9 @@
 	<key>cardHeadline</key>
 	<dict>
 		<key>fontName</key>
-		<string>HelveticaNeue</string>
+		<string>HelveticaNeue-Bold</string>
 		<key>fontSize</key>
-		<integer>14</integer>
+		<integer>12</integer>
 		<key>textColor</key>
 		<string>0x444444</string>
 		<key>highlightedTextColor</key>
@@ -114,7 +114,7 @@
 		<key>fontName</key>
 		<string>HelveticaNeue</string>
 		<key>fontSize</key>
-		<integer>14</integer>
+		<integer>12</integer>
 		<key>textColor</key>
 		<string>0x666666</string>
 		<key>highlightedTextColor</key>
@@ -131,9 +131,9 @@
 		<key>fontName</key>
 		<string>HelveticaNeue</string>
 		<key>fontSize</key>
-		<integer>14</integer>
+		<integer>12</integer>
 		<key>textColor</key>
-		<string>0x999999</string>
+		<string>0x888888</string>
 		<key>highlightedTextColor</key>
 		<string>0xefefef</string>
 		<key>textAlignment</key>
