@@ -80,7 +80,7 @@
 
 #pragma mark - PSFilmViewDataSource
 - (NSInteger)numberOfSlidesInFilmView:(PSFilmView *)filmView {
-  return 0;
+  return 100;
 }
 
 - (PSSlideView *)filmView:(PSFilmView *)filmView slideAtIndex:(NSInteger)index {
@@ -93,6 +93,9 @@
     slideView.backgroundColor = [UIColor clearColor];
   }
   // Configure Slide View
+  if (index % 2 != 0) {
+    slideView.slideContentView.backgroundColor = [UIColor blueColor];
+  }
   
   return slideView;
 }
