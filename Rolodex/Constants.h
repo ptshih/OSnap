@@ -4,6 +4,8 @@
 #import "JSONKit.h"
 #import "UIImageView+AFNetworking.h"
 
+#import "PSDrawerController.h"
+
 // SQLite DB filename
 #define SQLITE_DB_NAME @"Rolodex_v1"
 #define SQLITE_DB_SCHEMA_VERSION @"1"

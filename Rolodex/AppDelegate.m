@@ -8,7 +8,6 @@
 
 #import "AppDelegate.h"
 #import "PSReachabilityCenter.h"
-#import "PSDrawerController.h"
 
 #import "MenuViewController.h"
 #import "ProfileViewController.h"
