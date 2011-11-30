@@ -11,9 +11,9 @@
 #import "MenuCell.h"
 #import "MenuProfileCell.h"
 
-#import "PSDrawerController.h"
 #import "ProfileViewController.h"
 #import "RolodexViewController.h"
+#import "FilmViewController.h"
 
 @implementation MenuViewController
 
@@ -39,12 +39,12 @@
 }
 
 #pragma mark - View Config
-- (UIView *)backgroundView {
+- (UIView *)baseBackgroundView {
   UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]] autorelease];
   return bgView;
 }
 
-- (UIView *)tableView:(UITableView *)tableView rowBackgroundViewForIndexPath:(NSIndexPath *)indexPath selected:(BOOL)selected {
+- (UIView *)rowBackgroundViewForIndexPath:(NSIndexPath *)indexPath selected:(BOOL)selected {
   UIImageView *backgroundView = nil;
   if (!selected) {
     backgroundView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundCellLeather.png"]] autorelease];
@@ -106,7 +106,7 @@
   
   NSString *numConnections = [NSString stringWithFormat:@"%@", [currentUser objectForKey:@"numConnections"]];
   
-  // First section
+  // Items
   NSMutableArray *items = [NSMutableArray array];
   
   // First section - Profile
@@ -124,6 +124,12 @@
   // Third section
   NSMutableArray *thirdSection = [NSMutableArray array];
   [items addObject:thirdSection];
+  
+  // Fourth section
+  NSMutableArray *fourthSection = [NSMutableArray array];
+  NSDictionary *film = [NSDictionary dictionaryWithObjectsAndKeys:@"Film", @"title", @"", @"subtitle", nil];
+  [fourthSection addObject:film];
+  [items addObject:fourthSection];
   
   [self dataSourceShouldLoadObjects:items shouldAnimate:NO];
 }
@@ -208,7 +214,19 @@
     
     [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
     [nc release];
+  } else if (section == 3) {
+    // Film
+    FilmViewController *fvc = [[FilmViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
+    nc.viewControllers = [NSArray arrayWithObject:fvc];
+    [fvc release];
+    
+    [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
+    [nc release];
   }
+  
+  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
+   
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -229,6 +247,9 @@
       break;
     case 2:
       headerLabel.text = @"Rolodex";
+      break;
+    case 3:
+      headerLabel.text = @"Film";
       break;
     default:
       break;
