@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		281A487A148614B400F5E19E /* PSFilmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A4879148614B400F5E19E /* PSFilmView.m */; };
+		281A487D148626A400F5E19E /* FilmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A487C148626A400F5E19E /* FilmViewController.m */; };
+		281A48881486291400F5E19E /* BackgroundWeave.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281A48861486291400F5E19E /* BackgroundWeave.jpg */; };
+		281A48891486291400F5E19E /* BackgroundWeave@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281A48871486291400F5E19E /* BackgroundWeave@2x.jpg */; };
+		281A488C1486323300F5E19E /* PSSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A488B1486323300F5E19E /* PSSlideView.m */; };
+		281A488F14863E8F00F5E19E /* ArticleSlideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A488E14863E8F00F5E19E /* ArticleSlideView.m */; };
 		283818C314723F1D007E4827 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283818C214723F1D007E4827 /* UIKit.framework */; };
 		283818C514723F1D007E4827 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283818C414723F1D007E4827 /* Foundation.framework */; };
 		283818C714723F1D007E4827 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 283818C614723F1D007E4827 /* CoreGraphics.framework */; };
@@ -132,6 +138,7 @@
 		288F5722148087D5000EEC90 /* connections.json in Resources */ = {isa = PBXBuildFile; fileRef = 288F5721148087D5000EEC90 /* connections.json */; };
 		288F572514808856000EEC90 /* CardPicturePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 288F572314808856000EEC90 /* CardPicturePlaceholder.png */; };
 		288F572614808856000EEC90 /* CardPicturePlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */; };
+		288F57291480B301000EEC90 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F57281480B301000EEC90 /* ProfileCell.m */; };
 		28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855D8147C7645004F84EA /* PSDrawerController.m */; };
 		28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DC147CDCE6004F84EA /* ProfileViewController.m */; };
 		28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DF147CDDE8004F84EA /* MenuViewController.m */; };
@@ -146,6 +153,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		281A4878148614B400F5E19E /* PSFilmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFilmView.h; sourceTree = "<group>"; };
+		281A4879148614B400F5E19E /* PSFilmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFilmView.m; sourceTree = "<group>"; };
+		281A487B148626A400F5E19E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmViewController.h; sourceTree = "<group>"; };
+		281A487C148626A400F5E19E /* FilmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilmViewController.m; sourceTree = "<group>"; };
+		281A48861486291400F5E19E /* BackgroundWeave.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundWeave.jpg; sourceTree = "<group>"; };
+		281A48871486291400F5E19E /* BackgroundWeave@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundWeave@2x.jpg"; sourceTree = "<group>"; };
+		281A488A1486323300F5E19E /* PSSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSSlideView.h; sourceTree = "<group>"; };
+		281A488B1486323300F5E19E /* PSSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSSlideView.m; sourceTree = "<group>"; };
+		281A488D14863E8F00F5E19E /* ArticleSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSlideView.h; sourceTree = "<group>"; };
+		281A488E14863E8F00F5E19E /* ArticleSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSlideView.m; sourceTree = "<group>"; };
 		283818BE14723F1D007E4827 /* Rolodex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rolodex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283818C214723F1D007E4827 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		283818C414723F1D007E4827 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -364,6 +381,8 @@
 		288F5721148087D5000EEC90 /* connections.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = connections.json; sourceTree = "<group>"; };
 		288F572314808856000EEC90 /* CardPicturePlaceholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CardPicturePlaceholder.png; sourceTree = "<group>"; };
 		288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CardPicturePlaceholder@2x.png"; sourceTree = "<group>"; };
+		288F57271480B300000EEC90 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
+		288F57281480B301000EEC90 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		28B855D7147C7645004F84EA /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
 		28B855D8147C7645004F84EA /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
 		28B855DB147CDCE6004F84EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -404,6 +423,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		281A48761486147200F5E19E /* PSFilmView */ = {
+			isa = PBXGroup;
+			children = (
+				281A4878148614B400F5E19E /* PSFilmView.h */,
+				281A4879148614B400F5E19E /* PSFilmView.m */,
+				281A488A1486323300F5E19E /* PSSlideView.h */,
+				281A488B1486323300F5E19E /* PSSlideView.m */,
+			);
+			name = PSFilmView;
+			path = PSSlideView;
+			sourceTree = "<group>";
+		};
 		283818B314723F1C007E4827 = {
 			isa = PBXGroup;
 			children = (
@@ -501,6 +532,8 @@
 				2869871F1473139E00B40860 /* BackgroundLeather.jpg */,
 				286987201473139E00B40860 /* BackgroundLeather@2x.jpg */,
 				286987211473139E00B40860 /* BackgroundLeather~ipad.jpg */,
+				281A48861486291400F5E19E /* BackgroundWeave.jpg */,
+				281A48871486291400F5E19E /* BackgroundWeave@2x.jpg */,
 				286987221473139E00B40860 /* Default.jpg */,
 				286987231473139E00B40860 /* Default@2x.jpg */,
 				286987241473139E00B40860 /* Default~ipad.jpg */,
@@ -511,6 +544,7 @@
 		2869873D1475CECD00B40860 /* PSKit */ = {
 			isa = PBXGroup;
 			children = (
+				281A48761486147200F5E19E /* PSFilmView */,
 				288F5719147F0F91000EEC90 /* PSCollectionView */,
 				28B855D6147C7638004F84EA /* PSDrawerController */,
 				2869873E1475CEEC00B40860 /* Categories */,
@@ -977,6 +1011,8 @@
 				28B855DC147CDCE6004F84EA /* ProfileViewController.m */,
 				28E94A7C147D9F72002E8343 /* RolodexViewController.h */,
 				28E94A7D147D9F72002E8343 /* RolodexViewController.m */,
+				281A487B148626A400F5E19E /* FilmViewController.h */,
+				281A487C148626A400F5E19E /* FilmViewController.m */,
 				28B855DE147CDDE8004F84EA /* MenuViewController.h */,
 				28B855DF147CDDE8004F84EA /* MenuViewController.m */,
 				28B855EB147CE1A3004F84EA /* LoginViewController.h */,
@@ -994,6 +1030,10 @@
 				28E94A82147DA1A9002E8343 /* MenuCell.m */,
 				288F5700147F01C6000EEC90 /* MenuProfileCell.h */,
 				288F5701147F01C6000EEC90 /* MenuProfileCell.m */,
+				288F57271480B300000EEC90 /* ProfileCell.h */,
+				288F57281480B301000EEC90 /* ProfileCell.m */,
+				281A488D14863E8F00F5E19E /* ArticleSlideView.h */,
+				281A488E14863E8F00F5E19E /* ArticleSlideView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1087,6 +1127,8 @@
 				288F5722148087D5000EEC90 /* connections.json in Resources */,
 				288F572514808856000EEC90 /* CardPicturePlaceholder.png in Resources */,
 				288F572614808856000EEC90 /* CardPicturePlaceholder@2x.png in Resources */,
+				281A48881486291400F5E19E /* BackgroundWeave.jpg in Resources */,
+				281A48891486291400F5E19E /* BackgroundWeave@2x.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1184,6 +1226,11 @@
 				288F5702147F01C7000EEC90 /* MenuProfileCell.m in Sources */,
 				288F5718147F0852000EEC90 /* CardView.m in Sources */,
 				288F571C147F0FA4000EEC90 /* PSCollectionView.m in Sources */,
+				288F57291480B301000EEC90 /* ProfileCell.m in Sources */,
+				281A487A148614B400F5E19E /* PSFilmView.m in Sources */,
+				281A487D148626A400F5E19E /* FilmViewController.m in Sources */,
+				281A488C1486323300F5E19E /* PSSlideView.m in Sources */,
+				281A488F14863E8F00F5E19E /* ArticleSlideView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1222,6 +1269,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -1240,6 +1288,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1252,6 +1301,7 @@
 				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = Rolodex;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1264,6 +1314,7 @@
 				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				PRODUCT_NAME = Rolodex;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
