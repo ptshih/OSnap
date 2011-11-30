@@ -70,7 +70,7 @@
 }
 
 + (CGFloat)cardHeight {
-  return 120.0;
+  return 100.0;
 }
 
 #pragma mark - View
@@ -84,8 +84,8 @@
   CGFloat textWidth = 0.0;
   
   // Picture
-  _frameView.frame = CGRectMake(MARGIN, MARGIN, 100, 100);
-  _pictureView.frame = CGRectMake(MARGIN * 2, MARGIN * 2, 80, 80);
+  _frameView.frame = CGRectMake(MARGIN, MARGIN, 80, 80);
+  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, 70, 70);
   
   left = _frameView.right + MARGIN;
   top = _frameView.top;

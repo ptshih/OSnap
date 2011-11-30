@@ -39,7 +39,7 @@
 }
 
 #pragma mark - View Config
-- (UIView *)backgroundView {
+- (UIView *)baseBackgroundView {
   UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundDarkWood.jpg"]] autorelease];
   return bgView;
 }

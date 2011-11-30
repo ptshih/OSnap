@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PSViewController.h"
+#import "PSTableViewController.h"
 
-@interface ProfileViewController : PSViewController
+@interface ProfileViewController : PSTableViewController {
+  NSDictionary *_profileDict;
+}
+
+- (id)initWithDictionary:(NSDictionary *)dictionary;
 
 @end
