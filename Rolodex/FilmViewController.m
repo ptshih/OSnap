@@ -92,6 +92,10 @@
     slideView.slideContentView.backgroundColor = [UIColor greenColor];
   }
   
+  NSDictionary *slideDict = [NSDictionary dictionaryWithObject:@"http://bit.ly/vA2sIL" forKey:@"pictureUrl"];
+  
+  [slideView fillSlideWithObject:slideDict];
+  
   return slideView;
 }
 

@@ -8,6 +8,11 @@
 
 #import "PSSlideView.h"
 
-@interface ArticleSlideView : PSSlideView
+@interface ArticleSlideView : PSSlideView {
+  UIImageView *_frameView;
+  UIImageView *_pictureView;
+}
+
+- (void)fillSlideWithObject:(id)object;
 
 @end
