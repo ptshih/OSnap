@@ -26,6 +26,9 @@
 		28381A981472F8C8007E4827 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28381A971472F8C8007E4827 /* CoreText.framework */; };
 		28381A9A1472F8EF007E4827 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28381A991472F8EF007E4827 /* CoreLocation.framework */; };
 		28381A9C1472F914007E4827 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28381A9B1472F914007E4827 /* MessageUI.framework */; };
+		284BB04714878B1E0046ABEF /* PSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB04414878B1E0046ABEF /* PSCoreDataStack.m */; };
+		284BB04814878B1E0046ABEF /* PSCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB04614878B1E0046ABEF /* PSCoreDataTableViewController.m */; };
+		284BB04B14878B920046ABEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BB04A14878B920046ABEF /* CoreData.framework */; };
 		284EA207147CF5B600C4F3CE /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 284EA206147CF5B600C4F3CE /* me.json */; };
 		286987251473139E00B40860 /* BackgroundBlueprint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */; };
 		286987261473139E00B40860 /* BackgroundBlueprint@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871D1473139E00B40860 /* BackgroundBlueprint@2x.jpg */; };
@@ -181,6 +184,11 @@
 		28381A971472F8C8007E4827 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		28381A991472F8EF007E4827 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		28381A9B1472F914007E4827 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		284BB04314878B1E0046ABEF /* PSCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCoreDataStack.h; sourceTree = "<group>"; };
+		284BB04414878B1E0046ABEF /* PSCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCoreDataStack.m; sourceTree = "<group>"; };
+		284BB04514878B1E0046ABEF /* PSCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCoreDataTableViewController.h; sourceTree = "<group>"; };
+		284BB04614878B1E0046ABEF /* PSCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCoreDataTableViewController.m; sourceTree = "<group>"; };
+		284BB04A14878B920046ABEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		284EA206147CF5B600C4F3CE /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
 		2869870814730F7200B40860 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundBlueprint.jpg; sourceTree = "<group>"; };
@@ -419,6 +427,7 @@
 				283818C314723F1D007E4827 /* UIKit.framework in Frameworks */,
 				283818C514723F1D007E4827 /* Foundation.framework in Frameworks */,
 				283818C714723F1D007E4827 /* CoreGraphics.framework in Frameworks */,
+				284BB04B14878B920046ABEF /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -466,6 +475,7 @@
 				28381A931472F899007E4827 /* SystemConfiguration.framework */,
 				283818C414723F1D007E4827 /* Foundation.framework */,
 				28381A951472F8B7007E4827 /* MobileCoreServices.framework */,
+				284BB04A14878B920046ABEF /* CoreData.framework */,
 				28381A991472F8EF007E4827 /* CoreLocation.framework */,
 				28381A971472F8C8007E4827 /* CoreText.framework */,
 				283818C614723F1D007E4827 /* CoreGraphics.framework */,
@@ -497,6 +507,17 @@
 				28698730147387C200B40860 /* PSStyleSheet.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		284BB04214878B1E0046ABEF /* PSCoreDataStack */ = {
+			isa = PBXGroup;
+			children = (
+				284BB04314878B1E0046ABEF /* PSCoreDataStack.h */,
+				284BB04414878B1E0046ABEF /* PSCoreDataStack.m */,
+				284BB04514878B1E0046ABEF /* PSCoreDataTableViewController.h */,
+				284BB04614878B1E0046ABEF /* PSCoreDataTableViewController.m */,
+			);
+			path = PSCoreDataStack;
 			sourceTree = "<group>";
 		};
 		284EA205147CF5A600C4F3CE /* Fixtures */ = {
@@ -546,6 +567,7 @@
 		2869873D1475CECD00B40860 /* PSKit */ = {
 			isa = PBXGroup;
 			children = (
+				284BB04214878B1E0046ABEF /* PSCoreDataStack */,
 				281A48761486147200F5E19E /* PSFilmView */,
 				288F5719147F0F91000EEC90 /* PSCollectionView */,
 				28B855D6147C7638004F84EA /* PSDrawerController */,
@@ -1234,6 +1256,8 @@
 				281A487D148626A400F5E19E /* FilmViewController.m in Sources */,
 				281A488C1486323300F5E19E /* PSSlideView.m in Sources */,
 				281A488F14863E8F00F5E19E /* ArticleSlideView.m in Sources */,
+				284BB04714878B1E0046ABEF /* PSCoreDataStack.m in Sources */,
+				284BB04814878B1E0046ABEF /* PSCoreDataTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
