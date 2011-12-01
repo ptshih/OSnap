@@ -271,7 +271,6 @@
 		2869878B1475CEEC00B40860 /* PSImageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageCell.m; sourceTree = "<group>"; };
 		2869878C1475CEEC00B40860 /* PSImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageView.h; sourceTree = "<group>"; };
 		2869878D1475CEEC00B40860 /* PSImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageView.m; sourceTree = "<group>"; };
-		2869878E1475CEEC00B40860 /* PSImageViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageViewDelegate.h; sourceTree = "<group>"; };
 		2869878F1475CEEC00B40860 /* PSNullView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSNullView.h; sourceTree = "<group>"; };
 		286987901475CEEC00B40860 /* PSNullView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSNullView.m; sourceTree = "<group>"; };
 		286987911475CEEC00B40860 /* PSObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSObject.h; sourceTree = "<group>"; };
@@ -754,7 +753,6 @@
 				2869878B1475CEEC00B40860 /* PSImageCell.m */,
 				2869878C1475CEEC00B40860 /* PSImageView.h */,
 				2869878D1475CEEC00B40860 /* PSImageView.m */,
-				2869878E1475CEEC00B40860 /* PSImageViewDelegate.h */,
 				2869878F1475CEEC00B40860 /* PSNullView.h */,
 				286987901475CEEC00B40860 /* PSNullView.m */,
 				286987911475CEEC00B40860 /* PSObject.h */,
