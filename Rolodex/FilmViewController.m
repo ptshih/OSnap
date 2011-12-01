@@ -66,15 +66,6 @@
   
 //  [_cardData addObjectsFromArray:[connections objectForKey:@"values"]];
   
-  // Setup some sample cards
-  //  [_cardData addObject:@"test card 1"];
-  //  [_cardData addObject:@"test card 2"];
-  //  [_cardData addObject:@"test card 3"];
-  //  [_cardData addObject:@"test card 4"];
-  //  [_cardData addObject:@"test card 5"];
-  //  [_cardData addObject:@"test card 6"];
-  //  [_cardData addObject:@"test card 7"];
-  
   [_filmView reloadSlides];
 }
 
@@ -93,8 +84,12 @@
     slideView.backgroundColor = [UIColor clearColor];
   }
   // Configure Slide View
-  if (index % 2 != 0) {
+  if (index % 3 == 0) {
+    slideView.slideContentView.backgroundColor = [UIColor redColor];
+  } else if (index % 3 == 1) {
     slideView.slideContentView.backgroundColor = [UIColor blueColor];
+  } else if (index % 3 == 2) {
+    slideView.slideContentView.backgroundColor = [UIColor greenColor];
   }
   
   return slideView;
