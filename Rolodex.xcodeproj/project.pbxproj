@@ -139,6 +139,7 @@
 		288F572514808856000EEC90 /* CardPicturePlaceholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 288F572314808856000EEC90 /* CardPicturePlaceholder.png */; };
 		288F572614808856000EEC90 /* CardPicturePlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */; };
 		288F57291480B301000EEC90 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F57281480B301000EEC90 /* ProfileCell.m */; };
+		28983B3914871C42005BD4C5 /* DosEquisMan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28983B3814871C42005BD4C5 /* DosEquisMan.jpg */; };
 		28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855D8147C7645004F84EA /* PSDrawerController.m */; };
 		28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DC147CDCE6004F84EA /* ProfileViewController.m */; };
 		28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DF147CDDE8004F84EA /* MenuViewController.m */; };
@@ -383,6 +384,7 @@
 		288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "CardPicturePlaceholder@2x.png"; sourceTree = "<group>"; };
 		288F57271480B300000EEC90 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		288F57281480B301000EEC90 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
+		28983B3814871C42005BD4C5 /* DosEquisMan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DosEquisMan.jpg; sourceTree = "<group>"; };
 		28B855D7147C7645004F84EA /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
 		28B855D8147C7645004F84EA /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
 		28B855DB147CDCE6004F84EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -509,6 +511,7 @@
 		28698713147312EC00B40860 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28983B3814871C42005BD4C5 /* DosEquisMan.jpg */,
 				288F572314808856000EEC90 /* CardPicturePlaceholder.png */,
 				288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */,
 				288F571D14808609000EEC90 /* PhotoFrame.png */,
@@ -1128,6 +1131,7 @@
 				288F572614808856000EEC90 /* CardPicturePlaceholder@2x.png in Resources */,
 				281A48881486291400F5E19E /* BackgroundWeave.jpg in Resources */,
 				281A48891486291400F5E19E /* BackgroundWeave@2x.jpg in Resources */,
+				28983B3914871C42005BD4C5 /* DosEquisMan.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

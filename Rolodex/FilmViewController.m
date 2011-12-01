@@ -60,18 +60,18 @@
   // TEST
   
   
-//  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"connections" ofType:@"json"];
-//  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
-//  NSDictionary *connections = [fixtureData objectFromJSONData];
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"connections" ofType:@"json"];
+  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
+  NSDictionary *connections = [fixtureData objectFromJSONData];
   
-//  [_cardData addObjectsFromArray:[connections objectForKey:@"values"]];
+  [_filmData addObjectsFromArray:[connections objectForKey:@"values"]];
   
   [_filmView reloadSlides];
 }
 
 #pragma mark - PSFilmViewDataSource
 - (NSInteger)numberOfSlidesInFilmView:(PSFilmView *)filmView {
-  return 100;
+  return [_filmData count];
 }
 
 - (PSSlideView *)filmView:(PSFilmView *)filmView slideAtIndex:(NSInteger)index {
@@ -92,9 +92,11 @@
     slideView.slideContentView.backgroundColor = [UIColor greenColor];
   }
   
-  NSDictionary *slideDict = [NSDictionary dictionaryWithObject:@"http://bit.ly/vA2sIL" forKey:@"pictureUrl"];
+  NSDictionary *filmDict = [_filmData objectAtIndex:index];
   
-  [slideView fillSlideWithObject:slideDict];
+//  NSDictionary *filmDict = [NSDictionary dictionaryWithObject:@"http://bit.ly/vA2sIL" forKey:@"pictureUrl"];
+  
+  [slideView fillSlideWithObject:filmDict];
   
   return slideView;
 }

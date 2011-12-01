@@ -46,17 +46,20 @@
   CGFloat textWidth = 0.0;
   
   // Picture
-  _frameView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, 374);
-  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, self.slideContentView.width - MARGIN * 3, 364);
+  _frameView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.width - MARGIN * 2);
+  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, self.slideContentView.width - MARGIN * 3, self.slideContentView.width - MARGIN * 3);
+  
+//  _frameView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, 374);
+//  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, self.slideContentView.width - MARGIN * 3, 364);
 }
 
 - (void)fillSlideWithObject:(id)object {
   NSDictionary *dict = (NSDictionary *)object;
   NSString *pictureUrl = [dict objectForKey:@"pictureUrl"];
   if (pictureUrl) {
-    [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:[UIImage imageNamed:@"CardPicturePlaceholder.png"]];
+    [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:[UIImage imageNamed:@"DosEquisMan.jpg"]];
   } else {
-    [_pictureView setImage:[UIImage imageNamed:@"CardPicturePlaceholder.png"]];
+    [_pictureView setImage:[UIImage imageNamed:@"DosEquisMan.jpg"]];
   }
 }
 
