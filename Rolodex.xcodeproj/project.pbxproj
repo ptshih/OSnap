@@ -29,6 +29,8 @@
 		284BB04714878B1E0046ABEF /* PSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB04414878B1E0046ABEF /* PSCoreDataStack.m */; };
 		284BB04814878B1E0046ABEF /* PSCoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB04614878B1E0046ABEF /* PSCoreDataTableViewController.m */; };
 		284BB04B14878B920046ABEF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 284BB04A14878B920046ABEF /* CoreData.framework */; };
+		284BB0551487904B0046ABEF /* PSCachedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB0521487904B0046ABEF /* PSCachedImageView.m */; };
+		284BB0561487904B0046ABEF /* PSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB0541487904B0046ABEF /* PSImageCache.m */; };
 		284EA207147CF5B600C4F3CE /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 284EA206147CF5B600C4F3CE /* me.json */; };
 		286987251473139E00B40860 /* BackgroundBlueprint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */; };
 		286987261473139E00B40860 /* BackgroundBlueprint@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871D1473139E00B40860 /* BackgroundBlueprint@2x.jpg */; };
@@ -61,7 +63,6 @@
 		286988181475CEEC00B40860 /* PSDatabaseCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987601475CEEC00B40860 /* PSDatabaseCenter.m */; };
 		286988191475CEEC00B40860 /* PSDataCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987631475CEEC00B40860 /* PSDataCenter.m */; };
 		2869881A1475CEEC00B40860 /* PSFacebookCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987671475CEEC00B40860 /* PSFacebookCenter.m */; };
-		2869881B1475CEEC00B40860 /* PSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 2869876A1475CEEC00B40860 /* PSImageCache.m */; };
 		2869881C1475CEEC00B40860 /* PSLocationCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2869876E1475CEEC00B40860 /* PSLocationCenter.m */; };
 		2869881D1475CEEC00B40860 /* PSMailCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987711475CEEC00B40860 /* PSMailCenter.m */; };
 		2869881E1475CEEC00B40860 /* PSReachabilityCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987741475CEEC00B40860 /* PSReachabilityCenter.m */; };
@@ -86,7 +87,6 @@
 		286988311475CEEC00B40860 /* PSTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987A11475CEEC00B40860 /* PSTextField.m */; };
 		286988321475CEEC00B40860 /* PSTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987A31475CEEC00B40860 /* PSTextView.m */; };
 		286988331475CEEC00B40860 /* PSTutorialView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987A51475CEEC00B40860 /* PSTutorialView.m */; };
-		286988341475CEEC00B40860 /* PSURLCacheImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987A71475CEEC00B40860 /* PSURLCacheImageView.m */; };
 		286988351475CEEC00B40860 /* PSView.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987A91475CEEC00B40860 /* PSView.m */; };
 		286988361475CEEC00B40860 /* PSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 286987AB1475CEEC00B40860 /* PSViewController.m */; };
 		286988371475CEEC00B40860 /* PSKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 286987AC1475CEEC00B40860 /* PSKit.bundle */; };
@@ -189,6 +189,10 @@
 		284BB04514878B1E0046ABEF /* PSCoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCoreDataTableViewController.h; sourceTree = "<group>"; };
 		284BB04614878B1E0046ABEF /* PSCoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCoreDataTableViewController.m; sourceTree = "<group>"; };
 		284BB04A14878B920046ABEF /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		284BB0511487904B0046ABEF /* PSCachedImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSCachedImageView.h; sourceTree = "<group>"; };
+		284BB0521487904B0046ABEF /* PSCachedImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSCachedImageView.m; sourceTree = "<group>"; };
+		284BB0531487904B0046ABEF /* PSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageCache.h; sourceTree = "<group>"; };
+		284BB0541487904B0046ABEF /* PSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageCache.m; sourceTree = "<group>"; };
 		284EA206147CF5B600C4F3CE /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
 		2869870814730F7200B40860 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundBlueprint.jpg; sourceTree = "<group>"; };
@@ -241,9 +245,6 @@
 		286987641475CEEC00B40860 /* PSDataCenterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDataCenterDelegate.h; sourceTree = "<group>"; };
 		286987661475CEEC00B40860 /* PSFacebookCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFacebookCenter.h; sourceTree = "<group>"; };
 		286987671475CEEC00B40860 /* PSFacebookCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFacebookCenter.m; sourceTree = "<group>"; };
-		286987691475CEEC00B40860 /* PSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageCache.h; sourceTree = "<group>"; };
-		2869876A1475CEEC00B40860 /* PSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageCache.m; sourceTree = "<group>"; };
-		2869876B1475CEEC00B40860 /* PSImageCacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageCacheDelegate.h; sourceTree = "<group>"; };
 		2869876D1475CEEC00B40860 /* PSLocationCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSLocationCenter.h; sourceTree = "<group>"; };
 		2869876E1475CEEC00B40860 /* PSLocationCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSLocationCenter.m; sourceTree = "<group>"; };
 		286987701475CEEC00B40860 /* PSMailCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSMailCenter.h; sourceTree = "<group>"; };
@@ -294,8 +295,6 @@
 		286987A31475CEEC00B40860 /* PSTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTextView.m; sourceTree = "<group>"; };
 		286987A41475CEEC00B40860 /* PSTutorialView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSTutorialView.h; sourceTree = "<group>"; };
 		286987A51475CEEC00B40860 /* PSTutorialView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSTutorialView.m; sourceTree = "<group>"; };
-		286987A61475CEEC00B40860 /* PSURLCacheImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSURLCacheImageView.h; sourceTree = "<group>"; };
-		286987A71475CEEC00B40860 /* PSURLCacheImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSURLCacheImageView.m; sourceTree = "<group>"; };
 		286987A81475CEEC00B40860 /* PSView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSView.h; sourceTree = "<group>"; };
 		286987A91475CEEC00B40860 /* PSView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSView.m; sourceTree = "<group>"; };
 		286987AA1475CEEC00B40860 /* PSViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSViewController.h; sourceTree = "<group>"; };
@@ -520,6 +519,17 @@
 			path = PSCoreDataStack;
 			sourceTree = "<group>";
 		};
+		284BB0501487904B0046ABEF /* PSImageCache */ = {
+			isa = PBXGroup;
+			children = (
+				284BB0511487904B0046ABEF /* PSCachedImageView.h */,
+				284BB0521487904B0046ABEF /* PSCachedImageView.m */,
+				284BB0531487904B0046ABEF /* PSImageCache.h */,
+				284BB0541487904B0046ABEF /* PSImageCache.m */,
+			);
+			path = PSImageCache;
+			sourceTree = "<group>";
+		};
 		284EA205147CF5A600C4F3CE /* Fixtures */ = {
 			isa = PBXGroup;
 			children = (
@@ -567,6 +577,7 @@
 		2869873D1475CECD00B40860 /* PSKit */ = {
 			isa = PBXGroup;
 			children = (
+				284BB0501487904B0046ABEF /* PSImageCache */,
 				284BB04214878B1E0046ABEF /* PSCoreDataStack */,
 				281A48761486147200F5E19E /* PSFilmView */,
 				288F5719147F0F91000EEC90 /* PSCollectionView */,
@@ -627,7 +638,6 @@
 				2869875E1475CEEC00B40860 /* PSDatabaseCenter */,
 				286987611475CEEC00B40860 /* PSDataCenter */,
 				286987651475CEEC00B40860 /* PSFacebookCenter */,
-				286987681475CEEC00B40860 /* PSImageCache */,
 				2869876C1475CEEC00B40860 /* PSLocationCenter */,
 				2869876F1475CEEC00B40860 /* PSMailCenter */,
 				286987721475CEEC00B40860 /* PSReachabilityCenter */,
@@ -664,16 +674,6 @@
 				286987671475CEEC00B40860 /* PSFacebookCenter.m */,
 			);
 			path = PSFacebookCenter;
-			sourceTree = "<group>";
-		};
-		286987681475CEEC00B40860 /* PSImageCache */ = {
-			isa = PBXGroup;
-			children = (
-				286987691475CEEC00B40860 /* PSImageCache.h */,
-				2869876A1475CEEC00B40860 /* PSImageCache.m */,
-				2869876B1475CEEC00B40860 /* PSImageCacheDelegate.h */,
-			);
-			path = PSImageCache;
 			sourceTree = "<group>";
 		};
 		2869876C1475CEEC00B40860 /* PSLocationCenter */ = {
@@ -778,8 +778,6 @@
 				286987A31475CEEC00B40860 /* PSTextView.m */,
 				286987A41475CEEC00B40860 /* PSTutorialView.h */,
 				286987A51475CEEC00B40860 /* PSTutorialView.m */,
-				286987A61475CEEC00B40860 /* PSURLCacheImageView.h */,
-				286987A71475CEEC00B40860 /* PSURLCacheImageView.m */,
 				286987A81475CEEC00B40860 /* PSView.h */,
 				286987A91475CEEC00B40860 /* PSView.m */,
 				286987AA1475CEEC00B40860 /* PSViewController.h */,
@@ -1184,7 +1182,6 @@
 				286988181475CEEC00B40860 /* PSDatabaseCenter.m in Sources */,
 				286988191475CEEC00B40860 /* PSDataCenter.m in Sources */,
 				2869881A1475CEEC00B40860 /* PSFacebookCenter.m in Sources */,
-				2869881B1475CEEC00B40860 /* PSImageCache.m in Sources */,
 				2869881C1475CEEC00B40860 /* PSLocationCenter.m in Sources */,
 				2869881D1475CEEC00B40860 /* PSMailCenter.m in Sources */,
 				2869881E1475CEEC00B40860 /* PSReachabilityCenter.m in Sources */,
@@ -1207,7 +1204,6 @@
 				286988311475CEEC00B40860 /* PSTextField.m in Sources */,
 				286988321475CEEC00B40860 /* PSTextView.m in Sources */,
 				286988331475CEEC00B40860 /* PSTutorialView.m in Sources */,
-				286988341475CEEC00B40860 /* PSURLCacheImageView.m in Sources */,
 				286988351475CEEC00B40860 /* PSView.m in Sources */,
 				286988361475CEEC00B40860 /* PSViewController.m in Sources */,
 				286988391475CEEC00B40860 /* PSNavigationBar.m in Sources */,
@@ -1258,6 +1254,8 @@
 				281A488F14863E8F00F5E19E /* ArticleSlideView.m in Sources */,
 				284BB04714878B1E0046ABEF /* PSCoreDataStack.m in Sources */,
 				284BB04814878B1E0046ABEF /* PSCoreDataTableViewController.m in Sources */,
+				284BB0551487904B0046ABEF /* PSCachedImageView.m in Sources */,
+				284BB0561487904B0046ABEF /* PSImageCache.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
