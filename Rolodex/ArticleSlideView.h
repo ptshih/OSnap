@@ -9,8 +9,11 @@
 #import "PSSlideView.h"
 
 @interface ArticleSlideView : PSSlideView {
-  UIImageView *_frameView;
+  NSDictionary *_dictionary;
+  
+  UIView *_backgroundView;
   UIImageView *_pictureView;
+  UIView *_captionView;
 }
 
 - (void)fillSlideWithObject:(id)object;

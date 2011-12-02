@@ -60,11 +60,15 @@
   // TEST
   
   
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"connections" ofType:@"json"];
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"imgur_gallery" ofType:@"json"];
   NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
   NSDictionary *connections = [fixtureData objectFromJSONData];
   
-  [_filmData addObjectsFromArray:[connections objectForKey:@"values"]];
+  [_filmData addObjectsFromArray:[connections objectForKey:@"gallery"]];
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
   
   [_filmView reloadSlides];
 }
@@ -74,23 +78,29 @@
   return [_filmData count];
 }
 
+- (CGFloat)filmView:(PSFilmView *)filmView heightForSlideAtIndex:(NSInteger)index {
+  NSDictionary *filmDict = [_filmData objectAtIndex:index];
+  return [ArticleSlideView heightForObject:filmDict];
+}
+
 - (PSSlideView *)filmView:(PSFilmView *)filmView slideAtIndex:(NSInteger)index {
   ArticleSlideView *slideView = nil;
   slideView = [filmView dequeueReusableSlideView];
   if (!slideView) {
     slideView = [[[ArticleSlideView alloc] initWithFrame:filmView.bounds] autorelease];
     slideView.delegate = filmView;
+    slideView.autoresizingMask = ~UIViewAutoresizingNone;
     slideView.scrollsToTop = NO;
     slideView.backgroundColor = [UIColor clearColor];
   }
   // Configure Slide View
-  if (index % 3 == 0) {
-    slideView.slideContentView.backgroundColor = [UIColor redColor];
-  } else if (index % 3 == 1) {
-    slideView.slideContentView.backgroundColor = [UIColor blueColor];
-  } else if (index % 3 == 2) {
-    slideView.slideContentView.backgroundColor = [UIColor greenColor];
-  }
+//  if (index % 3 == 0) {
+//    slideView.slideContentView.backgroundColor = [UIColor redColor];
+//  } else if (index % 3 == 1) {
+//    slideView.slideContentView.backgroundColor = [UIColor blueColor];
+//  } else if (index % 3 == 2) {
+//    slideView.slideContentView.backgroundColor = [UIColor greenColor];
+//  }
   
   NSDictionary *filmDict = [_filmData objectAtIndex:index];
   

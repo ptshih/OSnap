@@ -16,51 +16,125 @@
   self = [super initWithFrame:frame];
   if (self) {
     // Config
-    self.slideContentView.backgroundColor = [UIColor greenColor];
-    self.slideContentView.frame = CGRectMake(0, 0, 320, 640);
+    self.slideContentView.frame = self.bounds;
+    
+    // Dictionary object
+    _dictionary = nil;
     
     // Configure subviews
-    _frameView = [[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"PhotoFrame.png" withLeftCapWidth:21 topCapWidth:6]];
+    _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
+    _backgroundView.layer.cornerRadius = 10;
+    _backgroundView.layer.masksToBounds = YES;
+    _backgroundView.backgroundColor = [UIColor whiteColor];
+    
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
     
+    _captionView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIImageView *clbg = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"BackgroundCaption.png" withLeftCapWidth:0 topCapWidth:22]] autorelease];
+    [_captionView addSubview:clbg];
+    UILabel *cl = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    [PSStyleSheet applyStyle:@"articleCaption" forLabel:cl];
+    [_captionView addSubview:cl];
+    
     // Add subviews to hierarchy
-    [self addSubview:_frameView];
-    [self addSubview:_pictureView];
+    [self.slideContentView addSubview:_backgroundView];
+    [_backgroundView addSubview:_pictureView];
+    [_backgroundView addSubview:_captionView];
   }
   return self;
 }
 
 - (void)dealloc {
-  RELEASE_SAFELY(_frameView);
+  RELEASE_SAFELY(_dictionary);
+  RELEASE_SAFELY(_backgroundView);
   RELEASE_SAFELY(_pictureView);
+  RELEASE_SAFELY(_captionView);
   [super dealloc];
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
   
+  _backgroundView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.height - MARGIN * 2);
+  
   // Configure Subview Frames
+  CGFloat width = _backgroundView.width; // self.slideContentView.width
   CGFloat left = 0.0;
   CGFloat top = 0.0;
   CGSize desiredSize = CGSizeZero;
-  CGFloat textWidth = 0.0;
+  CGFloat textWidth = width - MARGIN * 2;
   
   // Picture
-  _frameView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.width - MARGIN * 2);
-  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, self.slideContentView.width - MARGIN * 3, self.slideContentView.width - MARGIN * 3);
+  CGFloat pictureWidth = [[_dictionary objectForKey:@"width"] floatValue];
+  CGFloat pictureHeight = [[_dictionary objectForKey:@"height"] floatValue];
+  _pictureView.frame = CGRectMake(0, 0, width, floorf(pictureHeight / (pictureWidth / width)));
   
-//  _frameView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, 374);
-//  _pictureView.frame = CGRectMake(MARGIN * 1.5, MARGIN * 1.5, self.slideContentView.width - MARGIN * 3, 364);
+  top = _pictureView.bottom;
+  
+  // Caption
+  UILabel *captionLabel = [_captionView.subviews lastObject];
+  
+  desiredSize = [UILabel sizeForText:captionLabel.text width:textWidth font:captionLabel.font numberOfLines:captionLabel.numberOfLines lineBreakMode:captionLabel.lineBreakMode];
+  captionLabel.width = desiredSize.width;
+  captionLabel.height = desiredSize.height;
+  captionLabel.left = MARGIN;
+  captionLabel.top = MARGIN / 2;
+  
+  _captionView.top = top;
+  _captionView.left = left;
+  _captionView.width = self.slideContentView.width;
+  _captionView.height = captionLabel.height + MARGIN;
+  
+  UIImageView *captionBackgroundView =[_captionView.subviews firstObject];
+  captionBackgroundView.frame = _captionView.bounds;
+  
+  top = _captionView.bottom;
+
+}
+
+- (void)prepareForReuse {
+  [super prepareForReuse];
+  RELEASE_SAFELY(_dictionary);
 }
 
 - (void)fillSlideWithObject:(id)object {
-  NSDictionary *dict = (NSDictionary *)object;
-  NSString *pictureUrl = [dict objectForKey:@"pictureUrl"];
-  if (pictureUrl) {
-    [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:[UIImage imageNamed:@"DosEquisMan.jpg"]];
-  } else {
-    [_pictureView setImage:[UIImage imageNamed:@"DosEquisMan.jpg"]];
-  }
+  _dictionary = (NSDictionary *)[object copy];
+  
+  // Picture
+  NSString *pictureUrl = [NSString stringWithFormat:@"http://i.imgur.com/%@%@", [_dictionary objectForKey:@"hash"], [_dictionary objectForKey:@"ext"]];
+  [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:nil];
+  
+  // Caption
+  NSString *caption = [_dictionary objectForKey:@"title"];
+  UILabel *captionLabel = [_captionView.subviews lastObject];
+  captionLabel.text = caption;
+}
+
++ (CGFloat)heightForObject:(id)object {
+  NSDictionary *dictionary = (NSDictionary *)object;
+  
+  CGFloat width = 320.0 - MARGIN * 2;
+  
+  // Calculate height of dynamic labels;
+  CGFloat desiredHeight = 0.0;
+  
+  // Add top margin
+  desiredHeight += MARGIN;
+  
+  // Add Picture
+  CGFloat pictureWidth = [[dictionary objectForKey:@"width"] floatValue];
+  CGFloat pictureHeight = [[dictionary objectForKey:@"height"] floatValue];
+  desiredHeight += floorf(pictureHeight / (pictureWidth / width));
+  
+  // Add caption
+  NSString *caption = [dictionary objectForKey:@"title"];
+  CGSize desiredSize = [UILabel sizeForText:caption width:(width - MARGIN * 2) font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
+  desiredHeight += desiredSize.height + MARGIN;
+  
+  // Add bottom margin
+  desiredHeight += MARGIN;
+  
+  return desiredHeight;
 }
 
 @end
