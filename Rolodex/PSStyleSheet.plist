@@ -148,7 +148,7 @@
 		<key>fontName</key>
 		<string>HelveticaNeue LT 57 Cn</string>
 		<key>fontSize</key>
-		<integer>14</integer>
+		<integer>16</integer>
 		<key>textColor</key>
 		<string>0x000000</string>
 		<key>highlightedTextColor</key>
@@ -156,11 +156,11 @@
 		<key>textAlignment</key>
 		<string>left</string>
 		<key>shadowColor</key>
-		<string>0x000000</string>
+		<string>0x999999</string>
 		<key>shadowOffset</key>
-		<string>{0, 0}</string>
+		<string>{0, 1}</string>
 		<key>numberOfLines</key>
-		<integer>4</integer>
+		<integer>5</integer>
 	</dict>
 </dict>
 </plist>

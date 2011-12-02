@@ -129,7 +129,7 @@
 }
 
 - (NSString *)filmView:(PSFilmView *)filmView titleForFooterAtIndex:(NSInteger)index forState:(PSSlideViewState)state {
-  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Down" : @"Release";
+  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Up" : @"Release";
   NSString *action = nil;
   if (index == [_filmData count] - 1) {
     action = @"Load More";
