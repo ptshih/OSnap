@@ -77,12 +77,12 @@
   [self setupTableViewWithFrame:CGRectMake(0, searchView.bottom, self.view.width, self.view.height - searchView.height) style:UITableViewStylePlain separatorStyle:UITableViewCellSeparatorStyleNone separatorColor:nil];
   
   self.tableView.scrollsToTop = NO;
-  
-  [self loadDataSource];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
+  
+  [self loadDataSource];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -98,38 +98,38 @@
   
   // Prepare Data
   NSDictionary *currentUser = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentUser"];
+//  
+//  if (!currentUser) {
+//    // User has not logged in yet
+//    return;
+//  }
   
-  if (!currentUser) {
-    // User has not logged in yet
-    return;
-  }
-  
-  NSString *numConnections = [NSString stringWithFormat:@"%@", [currentUser objectForKey:@"numConnections"]];
+//  NSString *numConnections = [NSString stringWithFormat:@"%@", [currentUser objectForKey:@"numConnections"]];
   
   // Items
   NSMutableArray *items = [NSMutableArray array];
+  [_sectionTitles removeAllObjects];
   
   // First section - Profile
-  NSMutableArray *firstSection = [NSMutableArray array];
-  NSDictionary *profile = currentUser;
-  [firstSection addObject:profile];
-  [items addObject:firstSection];
+  NSMutableArray *first = [NSMutableArray array];
+  NSDictionary *home = [NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"title", @"", @"subtitle", nil];
+  [first addObject:home];
+  [items addObject:first];
+  [_sectionTitles addObject:@"Home"];
   
   // Second section
-  NSMutableArray *secondSection = [NSMutableArray array];
-  NSDictionary *connections = [NSDictionary dictionaryWithObjectsAndKeys:@"Connections", @"title", numConnections, @"subtitle", nil];
-  [secondSection addObject:connections];
-  [items addObject:secondSection];
+  NSMutableArray *second = [NSMutableArray array];
+  NSDictionary *connections = [NSDictionary dictionaryWithObjectsAndKeys:@"Connections", @"title", @"", @"subtitle", nil];
+  [second addObject:connections];
+  [items addObject:second];
+  [_sectionTitles addObject:@"PSCollectionView"];
   
   // Third section
-  NSMutableArray *thirdSection = [NSMutableArray array];
-  [items addObject:thirdSection];
-  
-  // Fourth section
-  NSMutableArray *fourthSection = [NSMutableArray array];
-  NSDictionary *film = [NSDictionary dictionaryWithObjectsAndKeys:@"Film", @"title", @"", @"subtitle", nil];
-  [fourthSection addObject:film];
-  [items addObject:fourthSection];
+  NSMutableArray *third = [NSMutableArray array];
+  NSDictionary *filmview = [NSDictionary dictionaryWithObjectsAndKeys:@"Film", @"title", @"", @"subtitle", nil];
+  [third addObject:filmview];
+  [items addObject:third];
+  [_sectionTitles addObject:@"PSFilmView"];
   
   [self dataSourceShouldLoadObjects:items shouldAnimate:NO];
 }
@@ -142,7 +142,7 @@
 - (Class)cellClassAtIndexPath:(NSIndexPath *)indexPath {
   switch (indexPath.section) {
     case 0:
-      return [MenuProfileCell class];
+      return [MenuCell class];
       break;
     case 1:
       return [MenuCell class];
@@ -187,46 +187,48 @@
   
   NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
-  if (section == 0 && row == 0) {
-    // Current User Profile
-    ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-    nc.viewControllers = [NSArray arrayWithObject:pvc];
-    [pvc release];
-    
-    [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
-    [nc release];
-  } else if (section == 1 && row == 0) {
-    // Network - Connections
-    RolodexViewController *rvc = [[RolodexViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-    nc.viewControllers = [NSArray arrayWithObject:rvc];
-    [rvc release];
-    
-    [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
-    [nc release];
-  } else if (section == 2) {
-    // Rolodex
-    RolodexViewController *rvc = [[RolodexViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-    nc.viewControllers = [NSArray arrayWithObject:rvc];
-    [rvc release];
-    
-    [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
-    [nc release];
-  } else if (section == 3) {
-    // Film
-    FilmViewController *fvc = [[FilmViewController alloc] initWithNibName:nil bundle:nil];
-    UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-    nc.viewControllers = [NSArray arrayWithObject:fvc];
-    [fvc release];
-    
-    [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
-    [nc release];
+  // Menu
+  UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
+  
+  switch (section) {
+    case 0:
+    {
+      // Home - Profile
+      ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
+      nc.viewControllers = [NSArray arrayWithObject:pvc];
+      [pvc release];
+      break;
+    }
+    case 1:
+    {
+      // PSCollectionView - Connections
+      RolodexViewController *rvc = [[RolodexViewController alloc] initWithNibName:nil bundle:nil];
+      nc.viewControllers = [NSArray arrayWithObject:rvc];
+      [rvc release];
+      break;
+    }
+    case 2:
+    {
+      // PSFilmView - ImgUr Gallery
+      FilmViewController *fvc = [[FilmViewController alloc] initWithNibName:nil bundle:nil];
+      nc.viewControllers = [NSArray arrayWithObject:fvc];
+      [fvc release];
+      break;
+    }
+    default:
+    {
+      // Home - Profile
+      ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
+      nc.viewControllers = [NSArray arrayWithObject:pvc];
+      [pvc release];
+      break;
+    }
   }
   
+  [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
+  [nc release];
+  
   [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
-   
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -241,19 +243,7 @@
   headerLabel.backgroundColor = [UIColor clearColor];
   [headerView addSubview:headerLabel];
   
-  switch (section) {
-    case 1:
-      headerLabel.text = @"Your Network";
-      break;
-    case 2:
-      headerLabel.text = @"Rolodex";
-      break;
-    case 3:
-      headerLabel.text = @"Film";
-      break;
-    default:
-      break;
-  }
+  headerLabel.text = [_sectionTitles objectAtIndex:section];
   
   return headerView;
 }

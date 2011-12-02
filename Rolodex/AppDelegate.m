@@ -79,9 +79,9 @@
   [self.window addSubview:_drawerController.view];
   
   // Login
-  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
-  [_drawerController presentModalViewController:lvc animated:NO];
-  [lvc release];
+//  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
+//  [_drawerController presentModalViewController:lvc animated:NO];
+//  [lvc release];
   
   return YES;
 }

@@ -162,6 +162,8 @@
 		28CDD8CD14887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C414887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf */; };
 		28CDD8CE14887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C514887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf */; };
 		28CDD8CF14887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C614887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf */; };
+		28CDD8D2148883B600306FF2 /* BackgroundDrawer.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8D0148883B600306FF2 /* BackgroundDrawer.png */; };
+		28CDD8D3148883B600306FF2 /* BackgroundDrawer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8D1148883B600306FF2 /* BackgroundDrawer@2x.png */; };
 		28E94A7E147D9F72002E8343 /* RolodexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E94A7D147D9F72002E8343 /* RolodexViewController.m */; };
 		28E94A83147DA1A9002E8343 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E94A82147DA1A9002E8343 /* MenuCell.m */; };
 /* End PBXBuildFile section */
@@ -423,6 +425,8 @@
 		28CDD8C414887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 67 Medium Condensed.ttf"; sourceTree = "<group>"; };
 		28CDD8C514887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 77 Bold Condensed Oblique.otf"; sourceTree = "<group>"; };
 		28CDD8C614887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 77 Bold Condensed.ttf"; sourceTree = "<group>"; };
+		28CDD8D0148883B600306FF2 /* BackgroundDrawer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundDrawer.png; sourceTree = "<group>"; };
+		28CDD8D1148883B600306FF2 /* BackgroundDrawer@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundDrawer@2x.png"; sourceTree = "<group>"; };
 		28E94A7C147D9F72002E8343 /* RolodexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolodexViewController.h; sourceTree = "<group>"; };
 		28E94A7D147D9F72002E8343 /* RolodexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RolodexViewController.m; sourceTree = "<group>"; };
 		28E94A81147DA1A9002E8343 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
@@ -561,6 +565,8 @@
 		28698713147312EC00B40860 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				28CDD8D0148883B600306FF2 /* BackgroundDrawer.png */,
+				28CDD8D1148883B600306FF2 /* BackgroundDrawer@2x.png */,
 				28C6504814884E9000729AE9 /* BackgroundCaption.png */,
 				28983B3814871C42005BD4C5 /* DosEquisMan.jpg */,
 				288F572314808856000EEC90 /* CardPicturePlaceholder.png */,
@@ -1198,6 +1204,8 @@
 				28CDD8CD14887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf in Resources */,
 				28CDD8CE14887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf in Resources */,
 				28CDD8CF14887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf in Resources */,
+				28CDD8D2148883B600306FF2 /* BackgroundDrawer.png in Resources */,
+				28CDD8D3148883B600306FF2 /* BackgroundDrawer@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

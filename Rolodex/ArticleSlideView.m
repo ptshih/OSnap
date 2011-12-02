@@ -30,16 +30,21 @@
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
     
     _captionView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIImageView *clbg = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"BackgroundCaption.png" withLeftCapWidth:0 topCapWidth:22]] autorelease];
-    [_captionView addSubview:clbg];
+    UIImageView *cbg = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"BackgroundCaption.png" withLeftCapWidth:0 topCapWidth:22]] autorelease];
+    [_captionView addSubview:cbg];
     UILabel *cl = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     [PSStyleSheet applyStyle:@"articleCaption" forLabel:cl];
     [_captionView addSubview:cl];
+    
+    _actionView = [[UIView alloc] initWithFrame:CGRectZero];
+    UIImageView *abg = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundCellLeather.png"]] autorelease];
+    [_actionView addSubview:abg];
     
     // Add subviews to hierarchy
     [self.slideContentView addSubview:_backgroundView];
     [_backgroundView addSubview:_pictureView];
     [_backgroundView addSubview:_captionView];
+    [_backgroundView addSubview:_actionView];
   }
   return self;
 }
@@ -85,11 +90,14 @@
   _captionView.width = self.slideContentView.width;
   _captionView.height = captionLabel.height + MARGIN;
   
-  UIImageView *captionBackgroundView =[_captionView.subviews firstObject];
+  UIImageView *captionBackgroundView = [_captionView.subviews firstObject];
   captionBackgroundView.frame = _captionView.bounds;
   
   top = _captionView.bottom;
 
+  _actionView.frame = CGRectMake(0, _backgroundView.height - 44, width, 44);
+  UIImageView *actionBackgroundView = [_actionView.subviews firstObject];
+  actionBackgroundView.frame = _actionView.bounds;
 }
 
 - (void)prepareForReuse {
@@ -132,6 +140,9 @@
   if (![caption notNil]) caption = @"No Title";
   CGSize desiredSize = [UILabel sizeForText:caption width:(width - MARGIN * 2) font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
   desiredHeight += desiredSize.height + MARGIN;
+  
+  // Add action View
+  desiredHeight += 44;
   
   // Add bottom margin
   desiredHeight += MARGIN;

@@ -14,6 +14,7 @@
   UIView *_backgroundView;
   UIImageView *_pictureView;
   UIView *_captionView;
+  UIView *_actionView;
 }
 
 - (void)fillSlideWithObject:(id)object;

@@ -8,6 +8,28 @@
 	<true/>
 	<key>lastExitDate</key>
 	<date>1970-01-01T08:00:00Z</date>
+	<key>currentUser</key>
+	<dict>
+		<key>lastName</key>
+		<string>Shih</string>
+		<key>location</key>
+		<dict>
+			<key>name</key>
+			<string>San Francisco Bay Area</string>
+		</dict>
+		<key>distance</key>
+		<integer>0</integer>
+		<key>firstName</key>
+		<string>Peter</string>
+		<key>numConnections</key>
+		<integer>177</integer>
+		<key>industry</key>
+		<string>Computer Software</string>
+		<key>pictureUrl</key>
+		<string>http://media.linkedin.com/mpr/mprx/0_iWKW8paRhZQskJCqTwPV8YyqGgKnQ01qTek98YYXjRkQMUXN7785aOoo2KrWL4-4GEtB7J8b3VYK</string>
+		<key>headline</key>
+		<string>Founder and CEO at Seven Minute Labs, Inc.</string>
+	</dict>
 	<key>facebookExtendedPermissions</key>
 	<array/>
 </dict>
