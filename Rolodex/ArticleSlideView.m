@@ -106,6 +106,7 @@
   
   // Caption
   NSString *caption = [_dictionary objectForKey:@"title"];
+  if (![caption notNil]) caption = @"No Title";
   UILabel *captionLabel = [_captionView.subviews lastObject];
   captionLabel.text = caption;
 }
@@ -128,6 +129,7 @@
   
   // Add caption
   NSString *caption = [dictionary objectForKey:@"title"];
+  if (![caption notNil]) caption = @"No Title";
   CGSize desiredSize = [UILabel sizeForText:caption width:(width - MARGIN * 2) font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
   desiredHeight += desiredSize.height + MARGIN;
   

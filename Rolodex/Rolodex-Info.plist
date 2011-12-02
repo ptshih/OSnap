@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>Helvetica</string>
 	<key>CFBundleDisplayName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundleExecutable</key>
@@ -26,6 +26,18 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Helvetica LT 37 Thin Condensed Oblique.otf</string>
+		<string>Helvetica LT 37 Thin Condensed.ttf</string>
+		<string>Helvetica LT 47 Light Condensed.ttf</string>
+		<string>Helvetica LT 57 Condensed Oblique.otf</string>
+		<string>Helvetica LT 57 Condensed.ttf</string>
+		<string>Helvetica LT 67 Medium Condensed Oblique.otf</string>
+		<string>Helvetica LT 67 Medium Condensed.ttf</string>
+		<string>Helvetica LT 77 Bold Condensed Oblique.otf</string>
+		<string>Helvetica LT 77 Bold Condensed.ttf</string>
+	</array>
 	<key>UILaunchImageFile</key>
 	<string>Default.jpg</string>
 	<key>UIRequiredDeviceCapabilities</key>

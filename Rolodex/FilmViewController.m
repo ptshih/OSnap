@@ -111,4 +111,38 @@
   return slideView;
 }
 
+- (NSString *)filmView:(PSFilmView *)filmView titleForHeaderAtIndex:(NSInteger)index forState:(PSSlideViewState)state {
+  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Down" : @"Release";
+  NSString *action = nil;
+  if (index == 0) {
+    action = @"Refresh";
+  } else {
+    NSInteger prevIndex = index - 1;
+    NSString *prevTitle = [[_filmData objectAtIndex:prevIndex] objectForKey:@"title"];
+    if ([prevTitle notNil]) {
+      action = [NSString stringWithFormat:@"View...\r%@", prevTitle];
+    } else {
+      action = @"View Previous";
+    }
+  }
+  return [NSString stringWithFormat:@"%@ to %@", gesture, action];
+}
+
+- (NSString *)filmView:(PSFilmView *)filmView titleForFooterAtIndex:(NSInteger)index forState:(PSSlideViewState)state {
+  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Down" : @"Release";
+  NSString *action = nil;
+  if (index == [_filmData count] - 1) {
+    action = @"Load More";
+  } else {
+    NSInteger nextIndex = index + 1;
+    NSString *nextTitle = [[_filmData objectAtIndex:nextIndex] objectForKey:@"title"];
+    if ([nextTitle notNil]) {
+      action = [NSString stringWithFormat:@"View...\r%@", nextTitle];
+    } else {
+      action = @"View Next";
+    }
+  }
+  return [NSString stringWithFormat:@"%@ to %@", gesture, action];
+}
+
 @end

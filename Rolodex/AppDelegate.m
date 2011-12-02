@@ -49,6 +49,8 @@
 #pragma mark - Application Lifecycle
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+  NSLog(@"Fonts: %@", [UIFont familyNames]);
+  
   // Set application stylesheet
   [PSStyleSheet setStyleSheet:@"PSStyleSheet"];
   

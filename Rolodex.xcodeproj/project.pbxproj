@@ -153,6 +153,15 @@
 		28B855F7147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */; };
 		28C6504214883B5000729AE9 /* imgur_gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C6504114883B5000729AE9 /* imgur_gallery.json */; };
 		28C6504914884E9000729AE9 /* BackgroundCaption.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C6504814884E9000729AE9 /* BackgroundCaption.png */; };
+		28CDD8C714887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8BE14887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf */; };
+		28CDD8C814887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8BF14887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf */; };
+		28CDD8C914887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C014887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf */; };
+		28CDD8CA14887A3400306FF2 /* Helvetica LT 57 Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C114887A3400306FF2 /* Helvetica LT 57 Condensed Oblique.otf */; };
+		28CDD8CB14887A3400306FF2 /* Helvetica LT 57 Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C214887A3400306FF2 /* Helvetica LT 57 Condensed.ttf */; };
+		28CDD8CC14887A3400306FF2 /* Helvetica LT 67 Medium Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C314887A3400306FF2 /* Helvetica LT 67 Medium Condensed Oblique.otf */; };
+		28CDD8CD14887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C414887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf */; };
+		28CDD8CE14887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C514887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf */; };
+		28CDD8CF14887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C614887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf */; };
 		28E94A7E147D9F72002E8343 /* RolodexViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E94A7D147D9F72002E8343 /* RolodexViewController.m */; };
 		28E94A83147DA1A9002E8343 /* MenuCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28E94A82147DA1A9002E8343 /* MenuCell.m */; };
 /* End PBXBuildFile section */
@@ -405,6 +414,15 @@
 		28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundNavigationBar~ipad.png"; sourceTree = "<group>"; };
 		28C6504114883B5000729AE9 /* imgur_gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imgur_gallery.json; sourceTree = "<group>"; };
 		28C6504814884E9000729AE9 /* BackgroundCaption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundCaption.png; sourceTree = "<group>"; };
+		28CDD8BE14887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 37 Thin Condensed Oblique.otf"; sourceTree = "<group>"; };
+		28CDD8BF14887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 37 Thin Condensed.ttf"; sourceTree = "<group>"; };
+		28CDD8C014887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 47 Light Condensed.ttf"; sourceTree = "<group>"; };
+		28CDD8C114887A3400306FF2 /* Helvetica LT 57 Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 57 Condensed Oblique.otf"; sourceTree = "<group>"; };
+		28CDD8C214887A3400306FF2 /* Helvetica LT 57 Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 57 Condensed.ttf"; sourceTree = "<group>"; };
+		28CDD8C314887A3400306FF2 /* Helvetica LT 67 Medium Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 67 Medium Condensed Oblique.otf"; sourceTree = "<group>"; };
+		28CDD8C414887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 67 Medium Condensed.ttf"; sourceTree = "<group>"; };
+		28CDD8C514887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 77 Bold Condensed Oblique.otf"; sourceTree = "<group>"; };
+		28CDD8C614887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 77 Bold Condensed.ttf"; sourceTree = "<group>"; };
 		28E94A7C147D9F72002E8343 /* RolodexViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RolodexViewController.h; sourceTree = "<group>"; };
 		28E94A7D147D9F72002E8343 /* RolodexViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RolodexViewController.m; sourceTree = "<group>"; };
 		28E94A81147DA1A9002E8343 /* MenuCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuCell.h; sourceTree = "<group>"; };
@@ -590,6 +608,7 @@
 				286987AC1475CEEC00B40860 /* PSKit.bundle */,
 				2869873E1475CEEC00B40860 /* Categories */,
 				2869875D1475CEEC00B40860 /* Centers */,
+				28CDD8BD14887A3400306FF2 /* Fonts */,
 				286987801475CEEC00B40860 /* Config */,
 				286987B61475CEEC00B40860 /* Vendor */,
 			);
@@ -1042,6 +1061,23 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
+		28CDD8BD14887A3400306FF2 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				28CDD8BE14887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf */,
+				28CDD8BF14887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf */,
+				28CDD8C014887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf */,
+				28CDD8C114887A3400306FF2 /* Helvetica LT 57 Condensed Oblique.otf */,
+				28CDD8C214887A3400306FF2 /* Helvetica LT 57 Condensed.ttf */,
+				28CDD8C314887A3400306FF2 /* Helvetica LT 67 Medium Condensed Oblique.otf */,
+				28CDD8C414887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf */,
+				28CDD8C514887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf */,
+				28CDD8C614887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf */,
+			);
+			name = Fonts;
+			path = PSKit/src/Fonts;
+			sourceTree = SOURCE_ROOT;
+		};
 		28E94A80147DA19C002E8343 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1189,15 @@
 				28983B3914871C42005BD4C5 /* DosEquisMan.jpg in Resources */,
 				28C6504214883B5000729AE9 /* imgur_gallery.json in Resources */,
 				28C6504914884E9000729AE9 /* BackgroundCaption.png in Resources */,
+				28CDD8C714887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf in Resources */,
+				28CDD8C814887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf in Resources */,
+				28CDD8C914887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf in Resources */,
+				28CDD8CA14887A3400306FF2 /* Helvetica LT 57 Condensed Oblique.otf in Resources */,
+				28CDD8CB14887A3400306FF2 /* Helvetica LT 57 Condensed.ttf in Resources */,
+				28CDD8CC14887A3400306FF2 /* Helvetica LT 67 Medium Condensed Oblique.otf in Resources */,
+				28CDD8CD14887A3400306FF2 /* Helvetica LT 67 Medium Condensed.ttf in Resources */,
+				28CDD8CE14887A3400306FF2 /* Helvetica LT 77 Bold Condensed Oblique.otf in Resources */,
+				28CDD8CF14887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
