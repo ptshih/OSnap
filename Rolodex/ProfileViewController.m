@@ -47,12 +47,19 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE action:@selector(slide) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
   
   // Add a TableView
   [self setupTableViewWithFrame:self.view.bounds style:UITableViewStyleGrouped separatorStyle:UITableViewCellSeparatorStyleNone separatorColor:nil];
   
   [self loadDataSource];
+  
+  PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
+  [testObject setObject:@"bar" forKey:@"foo"];
+  [testObject setObject:[NSNumber numberWithInt:1337] forKey:@"leet"];
+  [testObject save];
 }
 
 #pragma mark - State Machine
@@ -128,7 +135,7 @@
   
   NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
   
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
+  [APP_DELEGATE.drawerController slideWithPosition:PSDrawerPositionRight];
   
 }
 

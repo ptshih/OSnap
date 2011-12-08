@@ -21,7 +21,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    
+    _selectedMenuIndexPath = [[NSIndexPath indexPathForRow:0 inSection:0] retain];
   }
   return self;
 }
@@ -33,6 +33,8 @@
 
 - (void)dealloc {
   [super dealloc];
+  
+  RELEASE_SAFELY(_selectedMenuIndexPath);
   
   // Views
   RELEASE_SAFELY(_searchField);
@@ -185,6 +187,11 @@
   NSInteger section = indexPath.section;
   NSInteger row = indexPath.row;
   
+  if (_selectedMenuIndexPath.row == row && _selectedMenuIndexPath.section == section) {
+    [APP_DELEGATE.drawerController slideFromLeft];
+    return;
+  }
+  
   NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
   // Menu
@@ -225,10 +232,12 @@
     }
   }
   
-  [APP_DELEGATE.drawerController setViewControllers:[NSArray arrayWithObjects:self, nc, nil]];
+  [APP_DELEGATE.drawerController setRootViewController:nc];
   [nc release];
+  [APP_DELEGATE.drawerController slideFromLeft];
   
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
+  RELEASE_SAFELY(_selectedMenuIndexPath);
+  _selectedMenuIndexPath = [[NSIndexPath indexPathForRow:row inSection:section] retain];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -255,11 +264,9 @@
 
 #pragma mark - UITextFieldDelegate
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-  [APP_DELEGATE hide];
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-  [APP_DELEGATE hide];
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

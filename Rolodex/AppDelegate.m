@@ -64,16 +64,18 @@
   
   // View Controllers
   MenuViewController *mvc = [[MenuViewController alloc] initWithNibName:nil bundle:nil];
+  ProfileViewController *lvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
   ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
   
   // PS Navigation Controller
   UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-  nc.viewControllers = [NSArray arrayWithObject:pvc];
-  [pvc release];
+  nc.viewControllers = [NSArray arrayWithObject:lvc];
+  [lvc release];
   
-  _drawerController = [[PSDrawerController alloc] initWithNibName:nil bundle:nil];
-  [_drawerController setViewControllers:[NSArray arrayWithObjects:mvc, nc, nil]];
+  _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:mvc rightViewController:pvc];
+  
   [mvc release];
+  [pvc release];
   [nc release];
   
   [self.window addSubview:_drawerController.view];
@@ -84,14 +86,6 @@
 //  [lvc release];
   
   return YES;
-}
-
-- (void)slide {
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerSlide object:nil];
-}
-
-- (void)hide {
-  [[NSNotificationCenter defaultCenter] postNotificationName:kPSDrawerHide object:nil];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

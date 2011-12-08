@@ -10,6 +10,7 @@
 #import "PSTableViewController.h"
 
 @interface MenuViewController : PSTableViewController <UITextFieldDelegate> {
+  NSIndexPath *_selectedMenuIndexPath;
   PSSearchField *_searchField;
 }
 

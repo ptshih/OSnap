@@ -17,7 +17,4 @@
 @property (strong, nonatomic) UIWindow *window;
 @property (nonatomic, retain, readonly) PSDrawerController *drawerController;
 
-- (void)slide;
-- (void)hide;
-
 @end
