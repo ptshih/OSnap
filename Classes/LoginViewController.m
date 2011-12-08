@@ -55,6 +55,36 @@
 }
 
 #pragma mark - Login
+- (void)login {
+// Log In
+//  [PFUser logInWithUsernameInBackground:@"ptshih" password:@"bubbles1" block:^(PFUser *user, NSError *error) {
+//    if (user) {
+//      // do stuff after successful login.
+//    } else {
+//      NSString *errorString = [[error userInfo] objectForKey:@"error"];
+//      [[[[UIAlertView alloc] initWithTitle:@"Log In Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease] show];
+//    }
+//  }];
+}
+
+- (void)signup {
+//  // Sign Up
+//  PFUser *newUser = [PFUser user];
+//  newUser.username = @"ptshih";
+//  newUser.password = @"bubbles";
+//  newUser.email = @"ptshih@sevenminutelabs.com";
+//  [newUser setObject:@"650-380-3990" forKey:@"phone"];
+//  
+//  [newUser signUpInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//    if (!error) {
+//      // Hooray! Let them use the app now.
+//    } else {
+//      NSString *errorString = [[error userInfo] objectForKey:@"error"];
+//      [[[[UIAlertView alloc] initWithTitle:@"Sign Up Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease] show];
+//    }
+//  }];
+}
+
 - (void)loginDidSucceed {
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"me" ofType:@"json"];
   NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];

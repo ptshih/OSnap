@@ -53,13 +53,12 @@
   
   // Add a TableView
   [self setupTableViewWithFrame:self.view.bounds style:UITableViewStyleGrouped separatorStyle:UITableViewCellSeparatorStyleNone separatorColor:nil];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
   
   [self loadDataSource];
-  
-  PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-  [testObject setObject:@"bar" forKey:@"foo"];
-  [testObject setObject:[NSNumber numberWithInt:1337] forKey:@"leet"];
-  [testObject save];
 }
 
 #pragma mark - State Machine

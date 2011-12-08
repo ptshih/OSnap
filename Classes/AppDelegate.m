@@ -10,7 +10,7 @@
 #import "PSReachabilityCenter.h"
 
 #import "MenuViewController.h"
-#import "ProfileViewController.h"
+#import "DashboardViewController.h"
 #import "LoginViewController.h"
 
 @interface AppDelegate (Private)
@@ -63,20 +63,15 @@
   self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   
   // View Controllers
-  MenuViewController *mvc = [[MenuViewController alloc] initWithNibName:nil bundle:nil];
-  ProfileViewController *lvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
-  ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
+  MenuViewController *lvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+  MenuViewController *rvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+  DashboardViewController *dvc = [[[DashboardViewController alloc] initWithNibName:nil bundle:nil] autorelease];
   
   // PS Navigation Controller
-  UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
-  nc.viewControllers = [NSArray arrayWithObject:lvc];
-  [lvc release];
+  UINavigationController *nc = [[[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain] autorelease];
+  nc.viewControllers = [NSArray arrayWithObject:dvc];
   
-  _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:mvc rightViewController:pvc];
-  
-  [mvc release];
-  [pvc release];
-  [nc release];
+  _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:lvc rightViewController:rvc];
   
   [self.window addSubview:_drawerController.view];
   
@@ -84,6 +79,27 @@
 //  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
 //  [_drawerController presentModalViewController:lvc animated:NO];
 //  [lvc release];
+  
+  // TEST SNAP/CAPTION CREATION
+//  PFObject *newSnap = [PFObject objectWithClassName:@"Snap"];
+//  [newSnap setObject:[PFUser currentUser] forKey:@"user"]; // Relationship
+//  [newSnap setObject:@"http://i.imgur.com/5sSRi.jpg" forKey:@"source"];
+//  [newSnap setObject:[NSNumber numberWithInt:728] forKey:@"width"];
+//  [newSnap setObject:[NSNumber numberWithInt:641] forKey:@"height"];
+//  [newSnap setObject:[NSNumber numberWithInt:12315] forKey:@"views"];
+//  [newSnap setObject:[NSNumber numberWithInt:396] forKey:@"ups"];
+//  [newSnap setObject:[NSNumber numberWithInt:46] forKey:@"downs"];
+//  [newSnap setObject:[NSNumber numberWithInt:350] forKey:@"score"]; // Some hash value of {views, ups, downs}
+////  [newSnap saveInBackground];
+//  
+//  PFObject *newCaption = [PFObject objectWithClassName:@"Caption"];
+//  [newCaption setObject:[PFUser currentUser] forKey:@"user"]; // Relationship
+//  [newCaption setObject:@"I pity the foo!" forKey:@"message"];
+//  [newCaption setObject:[NSNumber numberWithInt:4331] forKey:@"ups"];
+//  [newCaption setObject:[NSNumber numberWithInt:311] forKey:@"downs"];
+//  [newCaption setObject:[NSNumber numberWithInt:4020] forKey:@"score"]; // Some hash value of {ups, downs}
+//  [newCaption setObject:newSnap forKey:@"parent"];
+//  [newCaption saveInBackground];
   
   return YES;
 }

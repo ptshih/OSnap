@@ -11,6 +11,7 @@
 #import "MenuCell.h"
 #import "MenuProfileCell.h"
 
+#import "DashboardViewController.h"
 #import "ProfileViewController.h"
 #import "RolodexViewController.h"
 #import "FilmViewController.h"
@@ -56,13 +57,18 @@
 }
 
 #pragma mark - View
+//- (void)loadView {
+//  UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 44.0, 260.0, 416.0)] autorelease];
+//  [self setView:view];
+//}
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   // Search
   UIView *searchView = [[[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44.0)] autorelease];
   searchView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-  UIImageView *searchBgView = [[[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BackgroundNavigationBar.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:1]] autorelease];
+  UIImageView *searchBgView = [[[UIImageView alloc] initWithImage:[[UIImage imageNamed:@"BackgroundSearchBar.png"] stretchableImageWithLeftCapWidth:0 topCapHeight:1]] autorelease];
   searchBgView.autoresizingMask = searchView.autoresizingMask;
   [searchView addSubview:searchBgView];
   
@@ -114,10 +120,10 @@
   
   // First section - Profile
   NSMutableArray *first = [NSMutableArray array];
-  NSDictionary *home = [NSDictionary dictionaryWithObjectsAndKeys:@"Home", @"title", @"", @"subtitle", nil];
+  NSDictionary *home = [NSDictionary dictionaryWithObjectsAndKeys:@"Dashboard", @"title", @"", @"subtitle", nil];
   [first addObject:home];
   [items addObject:first];
-  [_sectionTitles addObject:@"Home"];
+  [_sectionTitles addObject:@"Dashboard"];
   
   // Second section
   NSMutableArray *second = [NSMutableArray array];
@@ -195,45 +201,48 @@
   NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
 
   // Menu
-  UINavigationController *nc = [[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain];
+  id controller = nil;
   
   switch (section) {
     case 0:
     {
-      // Home - Profile
-      ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
-      nc.viewControllers = [NSArray arrayWithObject:pvc];
-      [pvc release];
+      // Home - Dashboard
+      UINavigationController *nc = [[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject];
+      DashboardViewController *vc = [[[DashboardViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+      nc.viewControllers = [NSArray arrayWithObject:vc];
+      controller = nc;
       break;
     }
     case 1:
     {
       // PSCollectionView - Connections
-      RolodexViewController *rvc = [[RolodexViewController alloc] initWithNibName:nil bundle:nil];
-      nc.viewControllers = [NSArray arrayWithObject:rvc];
-      [rvc release];
+      UINavigationController *nc = [[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject];
+      RolodexViewController *vc = [[[RolodexViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+      nc.viewControllers = [NSArray arrayWithObject:vc];
+      controller = nc;
       break;
     }
     case 2:
     {
       // PSFilmView - ImgUr Gallery
-      FilmViewController *fvc = [[FilmViewController alloc] initWithNibName:nil bundle:nil];
-      nc.viewControllers = [NSArray arrayWithObject:fvc];
-      [fvc release];
+      UINavigationController *nc = [[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject];
+      FilmViewController *vc = [[[FilmViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+      nc.viewControllers = [NSArray arrayWithObject:vc];
+      controller = nc;
       break;
     }
     default:
     {
       // Home - Profile
-      ProfileViewController *pvc = [[ProfileViewController alloc] initWithNibName:nil bundle:nil];
-      nc.viewControllers = [NSArray arrayWithObject:pvc];
-      [pvc release];
+      UINavigationController *nc = [[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject];
+      DashboardViewController *vc = [[[DashboardViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+      nc.viewControllers = [NSArray arrayWithObject:vc];
+      controller = nc;
       break;
     }
   }
   
-  [APP_DELEGATE.drawerController setRootViewController:nc];
-  [nc release];
+  [APP_DELEGATE.drawerController setRootViewController:controller];
   [APP_DELEGATE.drawerController slideFromLeft];
   
   RELEASE_SAFELY(_selectedMenuIndexPath);

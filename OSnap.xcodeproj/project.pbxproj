@@ -154,9 +154,11 @@
 		28B855ED147CE1A3004F84EA /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855EC147CE1A3004F84EA /* LoginViewController.m */; };
 		28B855F5147CE5AA004F84EA /* BackgroundNavigationBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */; };
 		28B855F6147CE5AA004F84EA /* BackgroundNavigationBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */; };
-		28B855F7147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */; };
 		28C6504214883B5000729AE9 /* imgur_gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 28C6504114883B5000729AE9 /* imgur_gallery.json */; };
 		28C6504914884E9000729AE9 /* BackgroundCaption.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C6504814884E9000729AE9 /* BackgroundCaption.png */; };
+		28C946981491623B000E4277 /* DashboardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28C946971491623B000E4277 /* DashboardViewController.m */; };
+		28C9469C14918257000E4277 /* BackgroundSearchBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C9469A14918257000E4277 /* BackgroundSearchBar.png */; };
+		28C9469D14918257000E4277 /* BackgroundSearchBar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28C9469B14918257000E4277 /* BackgroundSearchBar@2x.png */; };
 		28CDD8C714887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8BE14887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf */; };
 		28CDD8C814887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8BF14887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf */; };
 		28CDD8C914887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 28CDD8C014887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf */; };
@@ -421,9 +423,12 @@
 		28B855EC147CE1A3004F84EA /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundNavigationBar.png; sourceTree = "<group>"; };
 		28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundNavigationBar@2x.png"; sourceTree = "<group>"; };
-		28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundNavigationBar~ipad.png"; sourceTree = "<group>"; };
 		28C6504114883B5000729AE9 /* imgur_gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = imgur_gallery.json; sourceTree = "<group>"; };
 		28C6504814884E9000729AE9 /* BackgroundCaption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundCaption.png; sourceTree = "<group>"; };
+		28C946961491623B000E4277 /* DashboardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashboardViewController.h; sourceTree = "<group>"; };
+		28C946971491623B000E4277 /* DashboardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashboardViewController.m; sourceTree = "<group>"; };
+		28C9469A14918257000E4277 /* BackgroundSearchBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundSearchBar.png; sourceTree = "<group>"; };
+		28C9469B14918257000E4277 /* BackgroundSearchBar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundSearchBar@2x.png"; sourceTree = "<group>"; };
 		28CDD8BE14887A3400306FF2 /* Helvetica LT 37 Thin Condensed Oblique.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 37 Thin Condensed Oblique.otf"; sourceTree = "<group>"; };
 		28CDD8BF14887A3400306FF2 /* Helvetica LT 37 Thin Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 37 Thin Condensed.ttf"; sourceTree = "<group>"; };
 		28CDD8C014887A3400306FF2 /* Helvetica LT 47 Light Condensed.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Helvetica LT 47 Light Condensed.ttf"; sourceTree = "<group>"; };
@@ -595,9 +600,10 @@
 				288F570D147F04D0000EEC90 /* BackgroundCellLeather@2x.png */,
 				288F5707147F02AF000EEC90 /* BackgroundSectionHeader.png */,
 				288F5708147F02B0000EEC90 /* BackgroundSectionHeader@2x.png */,
+				28C9469A14918257000E4277 /* BackgroundSearchBar.png */,
+				28C9469B14918257000E4277 /* BackgroundSearchBar@2x.png */,
 				28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */,
 				28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */,
-				28B855F4147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png */,
 				28698732147394F500B40860 /* BackgroundDarkWood.jpg */,
 				28698733147394F500B40860 /* BackgroundDarkWood@2x.jpg */,
 				28698734147394F600B40860 /* BackgroundDarkWood~ipad.jpg */,
@@ -1079,6 +1085,8 @@
 				28B855DF147CDDE8004F84EA /* MenuViewController.m */,
 				28B855EB147CE1A3004F84EA /* LoginViewController.h */,
 				28B855EC147CE1A3004F84EA /* LoginViewController.m */,
+				28C946961491623B000E4277 /* DashboardViewController.h */,
+				28C946971491623B000E4277 /* DashboardViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1195,7 +1203,6 @@
 				28B855EA147CE137004F84EA /* IconMenu@2x.png in Resources */,
 				28B855F5147CE5AA004F84EA /* BackgroundNavigationBar.png in Resources */,
 				28B855F6147CE5AA004F84EA /* BackgroundNavigationBar@2x.png in Resources */,
-				28B855F7147CE5AA004F84EA /* BackgroundNavigationBar~ipad.png in Resources */,
 				284EA207147CF5B600C4F3CE /* me.json in Resources */,
 				288F570A147F02B0000EEC90 /* BackgroundSectionHeader.png in Resources */,
 				288F570B147F02B0000EEC90 /* BackgroundSectionHeader@2x.png in Resources */,
@@ -1222,6 +1229,8 @@
 				28CDD8CF14887A3400306FF2 /* Helvetica LT 77 Bold Condensed.ttf in Resources */,
 				28CDD8D2148883B600306FF2 /* BackgroundDrawer.png in Resources */,
 				28CDD8D3148883B600306FF2 /* BackgroundDrawer@2x.png in Resources */,
+				28C9469C14918257000E4277 /* BackgroundSearchBar.png in Resources */,
+				28C9469D14918257000E4277 /* BackgroundSearchBar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1325,6 +1334,7 @@
 				284BB04814878B1E0046ABEF /* PSCoreDataTableViewController.m in Sources */,
 				284BB0551487904B0046ABEF /* PSCachedImageView.m in Sources */,
 				284BB0561487904B0046ABEF /* PSImageCache.m in Sources */,
+				28C946981491623B000E4277 /* DashboardViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
