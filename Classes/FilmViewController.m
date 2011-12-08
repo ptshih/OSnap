@@ -1,6 +1,6 @@
 //
 //  FilmViewController.m
-//  Rolodex
+//  OSnap
 //
 //  Created by Peter Shih on 11/30/11.
 //  Copyright (c) 2011 Peter Shih. All rights reserved.
@@ -15,7 +15,6 @@
 - (id)initWithConfig:(NSDictionary *)config {
   self = [self initWithNibName:nil bundle:nil];
   if (self) {
-    // Configure rolodex parameters
   }
   return self;
 }

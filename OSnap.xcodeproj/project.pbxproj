@@ -183,14 +183,14 @@
 		281A488B1486323300F5E19E /* PSSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSSlideView.m; sourceTree = "<group>"; };
 		281A488D14863E8F00F5E19E /* ArticleSlideView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArticleSlideView.h; sourceTree = "<group>"; };
 		281A488E14863E8F00F5E19E /* ArticleSlideView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArticleSlideView.m; sourceTree = "<group>"; };
-		283818BE14723F1D007E4827 /* Rolodex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Rolodex.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		283818BE14723F1D007E4827 /* OSnap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OSnap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		283818C214723F1D007E4827 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		283818C414723F1D007E4827 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		283818C614723F1D007E4827 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		283818CA14723F1D007E4827 /* Rolodex-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Rolodex-Info.plist"; sourceTree = "<group>"; };
+		283818CA14723F1D007E4827 /* OSnap-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "OSnap-Info.plist"; sourceTree = "<group>"; };
 		283818CC14723F1D007E4827 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		283818CE14723F1D007E4827 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		283818D014723F1D007E4827 /* Rolodex-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Rolodex-Prefix.pch"; sourceTree = "<group>"; };
+		283818D014723F1D007E4827 /* OSnap-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OSnap-Prefix.pch"; sourceTree = "<group>"; };
 		283818D114723F1D007E4827 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		283818D214723F1D007E4827 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		28381A7E1472ED1C007E4827 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -482,7 +482,7 @@
 			isa = PBXGroup;
 			children = (
 				2869873D1475CECD00B40860 /* PSKit */,
-				283818C814723F1D007E4827 /* Rolodex */,
+				283818C814723F1D007E4827 /* Classes */,
 				28698713147312EC00B40860 /* Resources */,
 				284EA205147CF5A600C4F3CE /* Fixtures */,
 				283818C114723F1D007E4827 /* Frameworks */,
@@ -493,7 +493,7 @@
 		283818BF14723F1D007E4827 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				283818BE14723F1D007E4827 /* Rolodex.app */,
+				283818BE14723F1D007E4827 /* OSnap.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -520,7 +520,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		283818C814723F1D007E4827 /* Rolodex */ = {
+		283818C814723F1D007E4827 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				28E94A80147DA19C002E8343 /* Views */,
@@ -529,17 +529,17 @@
 				283818D214723F1D007E4827 /* AppDelegate.m */,
 				283818C914723F1D007E4827 /* Supporting Files */,
 			);
-			path = Rolodex;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		283818C914723F1D007E4827 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				286988611475CF3500B40860 /* InitialDefaults.plist */,
-				283818CA14723F1D007E4827 /* Rolodex-Info.plist */,
+				283818CA14723F1D007E4827 /* OSnap-Info.plist */,
 				283818CB14723F1D007E4827 /* InfoPlist.strings */,
 				283818CE14723F1D007E4827 /* main.m */,
-				283818D014723F1D007E4827 /* Rolodex-Prefix.pch */,
+				283818D014723F1D007E4827 /* OSnap-Prefix.pch */,
 				2869870814730F7200B40860 /* Constants.h */,
 				28698730147387C200B40860 /* PSStyleSheet.plist */,
 			);
@@ -1120,9 +1120,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		283818BD14723F1D007E4827 /* Rolodex */ = {
+		283818BD14723F1D007E4827 /* OSnap */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 283818D614723F1D007E4827 /* Build configuration list for PBXNativeTarget "Rolodex" */;
+			buildConfigurationList = 283818D614723F1D007E4827 /* Build configuration list for PBXNativeTarget "OSnap" */;
 			buildPhases = (
 				283818BA14723F1D007E4827 /* Sources */,
 				283818BB14723F1D007E4827 /* Frameworks */,
@@ -1132,9 +1132,9 @@
 			);
 			dependencies = (
 			);
-			name = Rolodex;
+			name = OSnap;
 			productName = PSKitDemo;
-			productReference = 283818BE14723F1D007E4827 /* Rolodex.app */;
+			productReference = 283818BE14723F1D007E4827 /* OSnap.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1145,7 +1145,7 @@
 			attributes = {
 				LastUpgradeCheck = 0420;
 			};
-			buildConfigurationList = 283818B814723F1C007E4827 /* Build configuration list for PBXProject "Rolodex" */;
+			buildConfigurationList = 283818B814723F1C007E4827 /* Build configuration list for PBXProject "OSnap" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1157,7 +1157,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				283818BD14723F1D007E4827 /* Rolodex */,
+				283818BD14723F1D007E4827 /* OSnap */,
 			);
 		};
 /* End PBXProject section */
@@ -1395,10 +1395,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rolodex/Rolodex-Prefix.pch";
-				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";
+				GCC_PREFIX_HEADER = "OSnap-Prefix.pch";
+				INFOPLIST_FILE = "OSnap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = Rolodex;
+				PRODUCT_NAME = OSnap;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1412,10 +1412,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Rolodex/Rolodex-Prefix.pch";
-				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";
+				GCC_PREFIX_HEADER = "OSnap-Prefix.pch";
+				INFOPLIST_FILE = "OSnap-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PRODUCT_NAME = Rolodex;
+				PRODUCT_NAME = OSnap;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1424,7 +1424,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		283818B814723F1C007E4827 /* Build configuration list for PBXProject "Rolodex" */ = {
+		283818B814723F1C007E4827 /* Build configuration list for PBXProject "OSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				283818D414723F1D007E4827 /* Debug */,
@@ -1433,7 +1433,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		283818D614723F1D007E4827 /* Build configuration list for PBXNativeTarget "Rolodex" */ = {
+		283818D614723F1D007E4827 /* Build configuration list for PBXNativeTarget "OSnap" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				283818D714723F1D007E4827 /* Debug */,
