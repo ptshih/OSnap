@@ -142,6 +142,10 @@
 		288F572614808856000EEC90 /* CardPicturePlaceholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 288F572414808856000EEC90 /* CardPicturePlaceholder@2x.png */; };
 		288F57291480B301000EEC90 /* ProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 288F57281480B301000EEC90 /* ProfileCell.m */; };
 		28983B3914871C42005BD4C5 /* DosEquisMan.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 28983B3814871C42005BD4C5 /* DosEquisMan.jpg */; };
+		289C362A148EC48E00D02BAB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C3629148EC48E00D02BAB /* Parse.framework */; };
+		289C362F148EC53300D02BAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362C148EC53300D02BAB /* AudioToolbox.framework */; };
+		289C3630148EC53300D02BAB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362D148EC53300D02BAB /* CFNetwork.framework */; };
+		289C3631148EC53300D02BAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362E148EC53300D02BAB /* Security.framework */; };
 		28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855D8147C7645004F84EA /* PSDrawerController.m */; };
 		28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DC147CDCE6004F84EA /* ProfileViewController.m */; };
 		28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DF147CDDE8004F84EA /* MenuViewController.m */; };
@@ -401,6 +405,10 @@
 		288F57271480B300000EEC90 /* ProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileCell.h; sourceTree = "<group>"; };
 		288F57281480B301000EEC90 /* ProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileCell.m; sourceTree = "<group>"; };
 		28983B3814871C42005BD4C5 /* DosEquisMan.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DosEquisMan.jpg; sourceTree = "<group>"; };
+		289C3629148EC48E00D02BAB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		289C362C148EC53300D02BAB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		289C362D148EC53300D02BAB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		289C362E148EC53300D02BAB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		28B855D7147C7645004F84EA /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
 		28B855D8147C7645004F84EA /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
 		28B855DB147CDCE6004F84EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -438,6 +446,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				289C362F148EC53300D02BAB /* AudioToolbox.framework in Frameworks */,
+				289C3630148EC53300D02BAB /* CFNetwork.framework in Frameworks */,
+				289C3631148EC53300D02BAB /* Security.framework in Frameworks */,
 				28381A9C1472F914007E4827 /* MessageUI.framework in Frameworks */,
 				28381A9A1472F8EF007E4827 /* CoreLocation.framework in Frameworks */,
 				28381A981472F8C8007E4827 /* CoreText.framework in Frameworks */,
@@ -449,6 +460,7 @@
 				283818C514723F1D007E4827 /* Foundation.framework in Frameworks */,
 				283818C714723F1D007E4827 /* CoreGraphics.framework in Frameworks */,
 				284BB04B14878B920046ABEF /* CoreData.framework in Frameworks */,
+				289C362A148EC48E00D02BAB /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +502,10 @@
 			isa = PBXGroup;
 			children = (
 				28381A911472F88A007E4827 /* libsqlite3.dylib */,
+				289C3629148EC48E00D02BAB /* Parse.framework */,
+				289C362C148EC53300D02BAB /* AudioToolbox.framework */,
+				289C362D148EC53300D02BAB /* CFNetwork.framework */,
+				289C362E148EC53300D02BAB /* Security.framework */,
 				28381A9B1472F914007E4827 /* MessageUI.framework */,
 				28381A7E1472ED1C007E4827 /* QuartzCore.framework */,
 				283818C214723F1D007E4827 /* UIKit.framework */,
@@ -1374,6 +1390,10 @@
 		283818D714723F1D007E4827 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rolodex/Rolodex-Prefix.pch";
 				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";
@@ -1387,6 +1407,10 @@
 		283818D814723F1D007E4827 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Rolodex/Rolodex-Prefix.pch";
 				INFOPLIST_FILE = "Rolodex/Rolodex-Info.plist";

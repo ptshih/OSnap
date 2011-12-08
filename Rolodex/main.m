@@ -12,6 +12,9 @@
 
 int main(int argc, char *argv[])
 {
+  [Parse setApplicationId:@"UXOEPJA0UFVFnupmpmDTrSleGqM1EyTGBFdyq9LT" 
+                clientKey:@"JOTw7A2EkpUOfnFJTfv0pfEPFwZYdwtZzWW0do7P"];
+  
   @autoreleasepool {
     return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
   }

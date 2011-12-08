@@ -1,6 +1,7 @@
 #import "PSConstants.h"
 
 // Vendor imports
+#import "Parse/Parse.h"
 #import "JSONKit.h"
 #import "UIImageView+AFNetworking.h"
 
