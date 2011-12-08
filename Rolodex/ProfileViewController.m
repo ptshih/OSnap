@@ -135,7 +135,7 @@
   
   NSMutableDictionary *object = [[self.items objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
   
-  [APP_DELEGATE.drawerController slideWithPosition:PSDrawerPositionRight];
+  [APP_DELEGATE.drawerController hideFromRight];
   
 }
 
