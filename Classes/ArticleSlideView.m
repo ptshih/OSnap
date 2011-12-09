@@ -22,16 +22,16 @@
     _dictionary = nil;
     
     // Configure subviews
-    _backgroundView = [[UIView alloc] initWithFrame:CGRectZero];
-    _backgroundView.layer.cornerRadius = 10;
-    _backgroundView.layer.masksToBounds = YES;
+    _backgroundView = [[UIImageView alloc] initWithImage:nil];
     _backgroundView.backgroundColor = [UIColor whiteColor];
     
+    _dividerView = [[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"HorizontalLine.png" withLeftCapWidth:5 topCapWidth:0]];
+    
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
+//    _pictureView.layer.borderWidth = 1.0;
+//    _pictureView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
     
     _captionView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIImageView *cbg = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"BackgroundCaption.png" withLeftCapWidth:0 topCapWidth:22]] autorelease];
-    [_captionView addSubview:cbg];
     UILabel *cl = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     [PSStyleSheet applyStyle:@"articleCaption" forLabel:cl];
     [_captionView addSubview:cl];
@@ -44,13 +44,15 @@
     [self.slideContentView addSubview:_backgroundView];
     [_backgroundView addSubview:_pictureView];
     [_backgroundView addSubview:_captionView];
-    [_backgroundView addSubview:_actionView];
+    [_backgroundView addSubview:_dividerView];
+//    [_backgroundView addSubview:_actionView];
   }
   return self;
 }
 
 - (void)dealloc {
   RELEASE_SAFELY(_dictionary);
+  RELEASE_SAFELY(_dividerView);
   RELEASE_SAFELY(_backgroundView);
   RELEASE_SAFELY(_pictureView);
   RELEASE_SAFELY(_captionView);
@@ -60,12 +62,14 @@
 - (void)layoutSubviews {
   [super layoutSubviews];
   
-  _backgroundView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.height - MARGIN * 2);
+  _backgroundView.frame = CGRectMake(0, 0, self.slideContentView.width, self.slideContentView.height);
+  
+//  _dividerView.frame = CGRectMake(0, self.slideContentView.height - 1, self.slideContentView.width, 1);
   
   // Configure Subview Frames
   CGFloat width = _backgroundView.width; // self.slideContentView.width
-  CGFloat left = 0.0;
-  CGFloat top = 0.0;
+  CGFloat left = MARGIN;
+  CGFloat top = MARGIN;
   CGSize desiredSize = CGSizeZero;
   CGFloat textWidth = width - MARGIN * 2;
   
@@ -76,22 +80,21 @@
   
   top = _pictureView.bottom;
   
+  // Divider
+  _dividerView.frame = CGRectMake(0, top, width, 1);
+  top += _dividerView.height;
+  
   // Caption
   UILabel *captionLabel = [_captionView.subviews lastObject];
   
   desiredSize = [UILabel sizeForText:captionLabel.text width:textWidth font:captionLabel.font numberOfLines:captionLabel.numberOfLines lineBreakMode:captionLabel.lineBreakMode];
-  captionLabel.width = desiredSize.width;
-  captionLabel.height = desiredSize.height;
-  captionLabel.left = MARGIN;
-  captionLabel.top = MARGIN / 2;
-  
+
   _captionView.top = top;
   _captionView.left = left;
-  _captionView.width = self.slideContentView.width;
-  _captionView.height = captionLabel.height + MARGIN;
+  _captionView.width = textWidth;
+  _captionView.height = desiredSize.height + MARGIN * 2;
   
-  UIImageView *captionBackgroundView = [_captionView.subviews firstObject];
-  captionBackgroundView.frame = _captionView.bounds;
+  captionLabel.frame = _captionView.bounds;
   
   top = _captionView.bottom;
 
@@ -122,13 +125,14 @@
 + (CGFloat)heightForObject:(id)object {
   NSDictionary *dictionary = (NSDictionary *)object;
   
-  CGFloat width = 320.0 - MARGIN * 2;
+  CGFloat width = 320.0;
+  CGFloat textWidth = 320.0 - MARGIN * 2;
   
   // Calculate height of dynamic labels;
   CGFloat desiredHeight = 0.0;
   
   // Add top margin
-  desiredHeight += MARGIN;
+//  desiredHeight += MARGIN;
   
   // Add Picture
   CGFloat pictureWidth = [[dictionary objectForKey:@"width"] floatValue];
@@ -138,14 +142,14 @@
   // Add caption
   NSString *caption = [dictionary objectForKey:@"title"];
   if (![caption notNil]) caption = @"No Title";
-  CGSize desiredSize = [UILabel sizeForText:caption width:(width - MARGIN * 2) font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
-  desiredHeight += desiredSize.height + MARGIN;
+  CGSize desiredSize = [UILabel sizeForText:caption width:textWidth font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
+  desiredHeight += desiredSize.height + MARGIN * 2;
   
   // Add action View
-  desiredHeight += 44;
+//  desiredHeight += 44;
   
   // Add bottom margin
-  desiredHeight += MARGIN;
+//  desiredHeight += MARGIN;
   
   return desiredHeight;
 }

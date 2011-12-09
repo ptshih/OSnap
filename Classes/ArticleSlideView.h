@@ -11,10 +11,11 @@
 @interface ArticleSlideView : PSSlideView {
   NSDictionary *_dictionary;
   
-  UIView *_backgroundView;
+  UIImageView *_backgroundView;
   UIImageView *_pictureView;
   UIView *_captionView;
   UIView *_actionView;
+  UIImageView *_dividerView;
 }
 
 - (void)fillSlideWithObject:(id)object;

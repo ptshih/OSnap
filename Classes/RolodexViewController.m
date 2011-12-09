@@ -48,6 +48,8 @@
 - (void)viewDidLoad {
   [super viewDidLoad];
   
+  [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
+  
   // Rolodex View
   _collectionView = [[PSCollectionView alloc] initWithFrame:self.view.bounds];
   _collectionView.autoresizingMask = ~UIViewAutoresizingNone;
@@ -56,9 +58,20 @@
   _collectionView.rowHeight = [CardView cardHeight];
   [self.view addSubview:_collectionView];
   
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  [self loadDataSource];
+}
+
+#pragma mark - Data Source
+- (void)loadDataSource {
+  [super loadDataSource];
   
   // TEST
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"connections" ofType:@"json"];
@@ -67,16 +80,16 @@
   
   [_cardData addObjectsFromArray:[connections objectForKey:@"values"]];
   
-  // Setup some sample cards
-//  [_cardData addObject:@"test card 1"];
-//  [_cardData addObject:@"test card 2"];
-//  [_cardData addObject:@"test card 3"];
-//  [_cardData addObject:@"test card 4"];
-//  [_cardData addObject:@"test card 5"];
-//  [_cardData addObject:@"test card 6"];
-//  [_cardData addObject:@"test card 7"];
-  
   [_collectionView reloadCards];
+  [self dataSourceDidLoad];
+}
+
+- (void)dataSourceDidLoad {
+  [super dataSourceDidLoad];
+}
+
+- (BOOL)dataIsAvailable {
+  return ([_cardData count] > 0);
 }
 
 #pragma mark - PSCollectionViewDelegate

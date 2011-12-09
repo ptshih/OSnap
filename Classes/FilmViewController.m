@@ -23,6 +23,7 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     _filmData = [[NSMutableArray alloc] initWithCapacity:1];
+    self.title = @"Trending";
   }
   return self;
 }
@@ -46,6 +47,8 @@
 #pragma mark - View
 - (void)viewDidLoad {
   [super viewDidLoad];
+
+  [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
   
   // Film View
   _filmView = [[PSFilmView alloc] initWithFrame:self.view.bounds];
@@ -54,9 +57,9 @@
   _filmView.filmViewDataSource = self;
   [self.view addSubview:_filmView];
   
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
   // TEST
   

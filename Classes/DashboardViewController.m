@@ -24,6 +24,7 @@
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
     _featuredItems = [[NSMutableArray alloc] initWithCapacity:1];
+    self.title = @"Dashboard";
   }
   return self;
 }
@@ -56,15 +57,16 @@
   UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 416.0)] autorelease];
   [self setView:view];
 }
+
 - (void)viewDidLoad {
   [super viewDidLoad];
   
   [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
   
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
+   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"IconMenu.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:50.0 height:30.0 buttonType:BarButtonTypeNormal];
- 
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+
   // Setup Views
   [self setupSubviews];
   

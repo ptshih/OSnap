@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PSViewController.h"
+#import "PSBaseViewController.h"
 #import "PSFilmView.h"
 
-@interface FilmViewController : PSViewController <PSFilmViewDelegate, PSFilmViewDataSource> {
+@interface FilmViewController : PSBaseViewController <PSFilmViewDelegate, PSFilmViewDataSource> {
   NSMutableArray *_filmData;
   
   // Views
