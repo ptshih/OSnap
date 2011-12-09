@@ -81,7 +81,7 @@
   
   // TEST
   
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"imgur_gallery" ofType:@"json"];
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"short_gallery" ofType:@"json"];
   NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
   NSDictionary *connections = [fixtureData objectFromJSONData];
   
@@ -98,6 +98,17 @@
 
 - (BOOL)dataIsAvailable {
   return ([_filmData count] > 0);
+}
+
+#pragma mark - PSFilmViewDelegate
+- (void)filmViewDidTriggerRefresh:(PSFilmView *)filmView {
+  [filmView performSelector:@selector(filmViewDidRefresh) withObject:nil afterDelay:3.0];
+//  [filmView filmViewDidRefresh];
+}
+
+- (void)filmViewDidTriggerLoadMore:(PSFilmView *)filmView {
+  [filmView performSelector:@selector(filmViewDidLoadMore) withObject:nil afterDelay:3.0];
+//  [filmView filmViewDidLoadMore];
 }
 
 #pragma mark - PSFilmViewDataSource
@@ -138,8 +149,8 @@
   return slideView;
 }
 
-- (NSString *)filmView:(PSFilmView *)filmView titleForHeaderAtIndex:(NSInteger)index forState:(PSSlideViewState)state {
-  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Down" : @"Release";
+- (NSString *)filmView:(PSFilmView *)filmView titleForHeaderAtIndex:(NSInteger)index forState:(PSFilmViewState)state {
+  NSString *gesture = (state == PSFilmViewStateIdle) ? @"Pull Down" : @"Release";
   NSString *action = nil;
   if (index == 0) {
     action = @"Refresh";
@@ -155,8 +166,8 @@
   return [NSString stringWithFormat:@"%@ to %@", gesture, action];
 }
 
-- (NSString *)filmView:(PSFilmView *)filmView titleForFooterAtIndex:(NSInteger)index forState:(PSSlideViewState)state {
-  NSString *gesture = (state == PSSlideViewStateNormal) ? @"Pull Up" : @"Release";
+- (NSString *)filmView:(PSFilmView *)filmView titleForFooterAtIndex:(NSInteger)index forState:(PSFilmViewState)state {
+  NSString *gesture = (state == PSFilmViewStateIdle) ? @"Pull Up" : @"Release";
   NSString *action = nil;
   if (index == [_filmData count] - 1) {
     action = @"Load More";
