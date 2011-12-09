@@ -61,6 +61,24 @@
   
   self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
+  NSMutableArray *toolbarItems = [NSMutableArray array];
+  [toolbarItems addObject:[UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone]];
+  
+  [self.navigationController setToolbarHidden:NO animated:NO];
+  [self setToolbarItems:toolbarItems animated:NO];
+  
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  
+  [self loadDataSource];
+}
+
+#pragma mark - Data Source
+- (void)loadDataSource {
+  [super loadDataSource];
+  
   // TEST
   
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"imgur_gallery" ofType:@"json"];
@@ -68,12 +86,18 @@
   NSDictionary *connections = [fixtureData objectFromJSONData];
   
   [_filmData addObjectsFromArray:[connections objectForKey:@"gallery"]];
+  
+  [self dataSourceDidLoad];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-  [super viewDidAppear:animated];
+- (void)dataSourceDidLoad {
+  [super dataSourceDidLoad];
   
   [_filmView reloadSlides];
+}
+
+- (BOOL)dataIsAvailable {
+  return ([_filmData count] > 0);
 }
 
 #pragma mark - PSFilmViewDataSource

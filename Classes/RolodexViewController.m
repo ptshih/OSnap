@@ -80,12 +80,13 @@
   
   [_cardData addObjectsFromArray:[connections objectForKey:@"values"]];
   
-  [_collectionView reloadCards];
   [self dataSourceDidLoad];
 }
 
 - (void)dataSourceDidLoad {
   [super dataSourceDidLoad];
+  
+  [_collectionView reloadCards];
 }
 
 - (BOOL)dataIsAvailable {

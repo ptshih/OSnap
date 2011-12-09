@@ -11,9 +11,23 @@
 		2810F5681491F66E0028BCFE /* ButtonNavList@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5661491F66E0028BCFE /* ButtonNavList@2x.png */; };
 		2810F5701491FA930028BCFE /* ButtonNavListHighlighted.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F56E1491FA930028BCFE /* ButtonNavListHighlighted.png */; };
 		2810F5711491FA930028BCFE /* ButtonNavListHighlighted@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F56F1491FA930028BCFE /* ButtonNavListHighlighted@2x.png */; };
-		2810F5751491FC2F0028BCFE /* OSnap-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5731491FC2F0028BCFE /* OSnap-Info.plist */; };
 		2810F578149202DF0028BCFE /* HorizontalLine.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F576149202DE0028BCFE /* HorizontalLine.png */; };
 		2810F579149202DF0028BCFE /* HorizontalLine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F577149202DE0028BCFE /* HorizontalLine@2x.png */; };
+		2810F58A1492169A0028BCFE /* ToolbarCenter.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F57E1492169A0028BCFE /* ToolbarCenter.png */; };
+		2810F58B1492169A0028BCFE /* ToolbarCenter@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F57F1492169A0028BCFE /* ToolbarCenter@2x.png */; };
+		2810F58C1492169A0028BCFE /* ToolbarCenterSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5801492169A0028BCFE /* ToolbarCenterSelected.png */; };
+		2810F58D1492169A0028BCFE /* ToolbarCenterSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5811492169A0028BCFE /* ToolbarCenterSelected@2x.png */; };
+		2810F58E1492169A0028BCFE /* ToolbarLeft.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5821492169A0028BCFE /* ToolbarLeft.png */; };
+		2810F58F1492169A0028BCFE /* ToolbarLeft@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5831492169A0028BCFE /* ToolbarLeft@2x.png */; };
+		2810F5901492169A0028BCFE /* ToolbarRight.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5841492169A0028BCFE /* ToolbarRight.png */; };
+		2810F5911492169A0028BCFE /* ToolbarRight@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5851492169A0028BCFE /* ToolbarRight@2x.png */; };
+		2810F5921492169A0028BCFE /* ToolbarSingle.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5861492169A0028BCFE /* ToolbarSingle.png */; };
+		2810F5931492169A0028BCFE /* ToolbarSingle@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5871492169A0028BCFE /* ToolbarSingle@2x.png */; };
+		2810F5941492169A0028BCFE /* ToolbarSingleSelected.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5881492169A0028BCFE /* ToolbarSingleSelected.png */; };
+		2810F5951492169A0028BCFE /* ToolbarSingleSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F5891492169A0028BCFE /* ToolbarSingleSelected@2x.png */; };
+		2810F59814921A2C0028BCFE /* PSToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = 2810F59714921A2B0028BCFE /* PSToolbar.m */; };
+		2810F59B14921C340028BCFE /* BackgroundToolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F59914921C330028BCFE /* BackgroundToolbar.png */; };
+		2810F59C14921C340028BCFE /* BackgroundToolbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F59A14921C330028BCFE /* BackgroundToolbar@2x.png */; };
 		281A487A148614B400F5E19E /* PSFilmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A4879148614B400F5E19E /* PSFilmView.m */; };
 		281A487D148626A400F5E19E /* FilmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A487C148626A400F5E19E /* FilmViewController.m */; };
 		281A48881486291400F5E19E /* BackgroundWeave.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281A48861486291400F5E19E /* BackgroundWeave.jpg */; };
@@ -190,6 +204,22 @@
 		2810F5741491FC2F0028BCFE /* OSnap-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSnap-Prefix.pch"; sourceTree = SOURCE_ROOT; };
 		2810F576149202DE0028BCFE /* HorizontalLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HorizontalLine.png; sourceTree = "<group>"; };
 		2810F577149202DE0028BCFE /* HorizontalLine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HorizontalLine@2x.png"; sourceTree = "<group>"; };
+		2810F57E1492169A0028BCFE /* ToolbarCenter.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarCenter.png; sourceTree = "<group>"; };
+		2810F57F1492169A0028BCFE /* ToolbarCenter@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarCenter@2x.png"; sourceTree = "<group>"; };
+		2810F5801492169A0028BCFE /* ToolbarCenterSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarCenterSelected.png; sourceTree = "<group>"; };
+		2810F5811492169A0028BCFE /* ToolbarCenterSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarCenterSelected@2x.png"; sourceTree = "<group>"; };
+		2810F5821492169A0028BCFE /* ToolbarLeft.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarLeft.png; sourceTree = "<group>"; };
+		2810F5831492169A0028BCFE /* ToolbarLeft@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarLeft@2x.png"; sourceTree = "<group>"; };
+		2810F5841492169A0028BCFE /* ToolbarRight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarRight.png; sourceTree = "<group>"; };
+		2810F5851492169A0028BCFE /* ToolbarRight@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarRight@2x.png"; sourceTree = "<group>"; };
+		2810F5861492169A0028BCFE /* ToolbarSingle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarSingle.png; sourceTree = "<group>"; };
+		2810F5871492169A0028BCFE /* ToolbarSingle@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarSingle@2x.png"; sourceTree = "<group>"; };
+		2810F5881492169A0028BCFE /* ToolbarSingleSelected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ToolbarSingleSelected.png; sourceTree = "<group>"; };
+		2810F5891492169A0028BCFE /* ToolbarSingleSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolbarSingleSelected@2x.png"; sourceTree = "<group>"; };
+		2810F59614921A2A0028BCFE /* PSToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSToolbar.h; sourceTree = "<group>"; };
+		2810F59714921A2B0028BCFE /* PSToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSToolbar.m; sourceTree = "<group>"; };
+		2810F59914921C330028BCFE /* BackgroundToolbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundToolbar.png; sourceTree = "<group>"; };
+		2810F59A14921C330028BCFE /* BackgroundToolbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundToolbar@2x.png"; sourceTree = "<group>"; };
 		281A4878148614B400F5E19E /* PSFilmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFilmView.h; sourceTree = "<group>"; };
 		281A4879148614B400F5E19E /* PSFilmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFilmView.m; sourceTree = "<group>"; };
 		281A487B148626A400F5E19E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmViewController.h; sourceTree = "<group>"; };
@@ -485,6 +515,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2810F57D149216990028BCFE /* Toolbar */ = {
+			isa = PBXGroup;
+			children = (
+				2810F57E1492169A0028BCFE /* ToolbarCenter.png */,
+				2810F57F1492169A0028BCFE /* ToolbarCenter@2x.png */,
+				2810F5801492169A0028BCFE /* ToolbarCenterSelected.png */,
+				2810F5811492169A0028BCFE /* ToolbarCenterSelected@2x.png */,
+				2810F5821492169A0028BCFE /* ToolbarLeft.png */,
+				2810F5831492169A0028BCFE /* ToolbarLeft@2x.png */,
+				2810F5841492169A0028BCFE /* ToolbarRight.png */,
+				2810F5851492169A0028BCFE /* ToolbarRight@2x.png */,
+				2810F5861492169A0028BCFE /* ToolbarSingle.png */,
+				2810F5871492169A0028BCFE /* ToolbarSingle@2x.png */,
+				2810F5881492169A0028BCFE /* ToolbarSingleSelected.png */,
+				2810F5891492169A0028BCFE /* ToolbarSingleSelected@2x.png */,
+			);
+			path = Toolbar;
+			sourceTree = "<group>";
+		};
 		281A48761486147200F5E19E /* PSFilmView */ = {
 			isa = PBXGroup;
 			children = (
@@ -599,6 +648,7 @@
 		28698713147312EC00B40860 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2810F57D149216990028BCFE /* Toolbar */,
 				2810F576149202DE0028BCFE /* HorizontalLine.png */,
 				2810F577149202DE0028BCFE /* HorizontalLine@2x.png */,
 				2810F5651491F66E0028BCFE /* ButtonNavList.png */,
@@ -623,6 +673,8 @@
 				28C9469B14918257000E4277 /* BackgroundSearchBar@2x.png */,
 				28B855F2147CE5AA004F84EA /* BackgroundNavigationBar.png */,
 				28B855F3147CE5AA004F84EA /* BackgroundNavigationBar@2x.png */,
+				2810F59914921C330028BCFE /* BackgroundToolbar.png */,
+				2810F59A14921C330028BCFE /* BackgroundToolbar@2x.png */,
 				28698732147394F500B40860 /* BackgroundDarkWood.jpg */,
 				28698733147394F500B40860 /* BackgroundDarkWood@2x.jpg */,
 				28698734147394F600B40860 /* BackgroundDarkWood~ipad.jpg */,
@@ -855,6 +907,8 @@
 			isa = PBXGroup;
 			children = (
 				286987AE1475CEEC00B40860 /* PSNavigationBar.bundle */,
+				2810F59614921A2A0028BCFE /* PSToolbar.h */,
+				2810F59714921A2B0028BCFE /* PSToolbar.m */,
 				286987AF1475CEEC00B40860 /* PSNavigationBar.h */,
 				286987B01475CEEC00B40860 /* PSNavigationBar.m */,
 				286987B11475CEEC00B40860 /* PSNavigationController.xib */,
@@ -1254,9 +1308,22 @@
 				2810F5681491F66E0028BCFE /* ButtonNavList@2x.png in Resources */,
 				2810F5701491FA930028BCFE /* ButtonNavListHighlighted.png in Resources */,
 				2810F5711491FA930028BCFE /* ButtonNavListHighlighted@2x.png in Resources */,
-				2810F5751491FC2F0028BCFE /* OSnap-Info.plist in Resources */,
 				2810F578149202DF0028BCFE /* HorizontalLine.png in Resources */,
 				2810F579149202DF0028BCFE /* HorizontalLine@2x.png in Resources */,
+				2810F58A1492169A0028BCFE /* ToolbarCenter.png in Resources */,
+				2810F58B1492169A0028BCFE /* ToolbarCenter@2x.png in Resources */,
+				2810F58C1492169A0028BCFE /* ToolbarCenterSelected.png in Resources */,
+				2810F58D1492169A0028BCFE /* ToolbarCenterSelected@2x.png in Resources */,
+				2810F58E1492169A0028BCFE /* ToolbarLeft.png in Resources */,
+				2810F58F1492169A0028BCFE /* ToolbarLeft@2x.png in Resources */,
+				2810F5901492169A0028BCFE /* ToolbarRight.png in Resources */,
+				2810F5911492169A0028BCFE /* ToolbarRight@2x.png in Resources */,
+				2810F5921492169A0028BCFE /* ToolbarSingle.png in Resources */,
+				2810F5931492169A0028BCFE /* ToolbarSingle@2x.png in Resources */,
+				2810F5941492169A0028BCFE /* ToolbarSingleSelected.png in Resources */,
+				2810F5951492169A0028BCFE /* ToolbarSingleSelected@2x.png in Resources */,
+				2810F59B14921C340028BCFE /* BackgroundToolbar.png in Resources */,
+				2810F59C14921C340028BCFE /* BackgroundToolbar@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1361,6 +1428,7 @@
 				284BB0551487904B0046ABEF /* PSCachedImageView.m in Sources */,
 				284BB0561487904B0046ABEF /* PSImageCache.m in Sources */,
 				28C946981491623B000E4277 /* DashboardViewController.m in Sources */,
+				2810F59814921A2C0028BCFE /* PSToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

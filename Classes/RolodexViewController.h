@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "PSViewController.h"
+#import "PSBaseViewController.h"
 #import "PSCollectionView.h"
 
 @class CardView;
 
-@interface RolodexViewController : PSViewController <PSCollectionViewDelegate, PSCollectionViewDataSource> {
+@interface RolodexViewController : PSBaseViewController <PSCollectionViewDelegate, PSCollectionViewDataSource> {
   NSMutableArray *_cardData;
   
   // Views
