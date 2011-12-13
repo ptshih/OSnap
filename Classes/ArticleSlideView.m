@@ -109,21 +109,33 @@
 }
 
 - (void)fillSlideWithObject:(id)object {
-  _dictionary = (NSDictionary *)[object copy];
+  _dictionary = (PFObject *)[object retain];
   
   // Picture
-  NSString *pictureUrl = [NSString stringWithFormat:@"http://i.imgur.com/%@%@", [_dictionary objectForKey:@"hash"], [_dictionary objectForKey:@"ext"]];
+//  NSString *pictureUrl = [NSString stringWithFormat:@"http://i.imgur.com/%@%@", [_dictionary objectForKey:@"hash"], [_dictionary objectForKey:@"ext"]];
+  NSString *pictureUrl = [_dictionary objectForKey:@"source"];
   [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:nil];
   
   // Caption
-  NSString *caption = [_dictionary objectForKey:@"title"];
-  if (![caption notNil]) caption = @"No Title";
+  // Add caption
+  __block NSMutableString *caption;
+  NSArray *captionsIds = [_dictionary objectForKey:@"captionIds"];
+  if (captionsIds && [captionsIds count] > 0) {
+    caption = [NSMutableString string];
+    [captionsIds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
+      PFObject *captionObject = [[APP_DELEGATE captionsCache] objectForKey:obj];
+      [caption appendString:[captionObject objectForKey:@"message"]];
+    }];
+  } else {
+    caption = [NSMutableString stringWithString:@"No Caption"];
+  }
+  
   UILabel *captionLabel = [_captionView.subviews lastObject];
   captionLabel.text = caption;
 }
 
 + (CGFloat)heightForObject:(id)object {
-  NSDictionary *dictionary = (NSDictionary *)object;
+  PFObject *dictionary = (PFObject *)object;
   
   CGFloat width = 320.0;
   CGFloat textWidth = 320.0 - MARGIN * 2;
@@ -140,8 +152,14 @@
   desiredHeight += floorf(pictureHeight / (pictureWidth / width));
   
   // Add caption
-  NSString *caption = [dictionary objectForKey:@"title"];
-  if (![caption notNil]) caption = @"No Title";
+  NSString *caption = @"No Caption";
+  NSArray *captionsIds = [dictionary objectForKey:@"captionIds"];
+  if (captionsIds && [captionsIds count] > 0) {
+    
+  } else {
+    caption = @"No Title";
+  }
+
   CGSize desiredSize = [UILabel sizeForText:caption width:textWidth font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
   desiredHeight += desiredSize.height + MARGIN * 2;
   

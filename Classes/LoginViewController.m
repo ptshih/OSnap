@@ -57,7 +57,7 @@
 #pragma mark - Login
 - (void)login {
 // Log In
-//  [PFUser logInWithUsernameInBackground:@"ptshih" password:@"bubbles1" block:^(PFUser *user, NSError *error) {
+//  [PFUser logInWithUsernameInBackground:@"ptshih" password:@"bubbles" block:^(PFUser *user, NSError *error) {
 //    if (user) {
 //      // do stuff after successful login.
 //    } else {

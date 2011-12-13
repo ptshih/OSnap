@@ -11,7 +11,7 @@
 #import "PSFilmView.h"
 
 @interface FilmViewController : PSBaseViewController <PSFilmViewDelegate, PSFilmViewDataSource> {
-  NSMutableArray *_filmData;
+  NSMutableArray *_filmItems;
   
   // Views
   PSFilmView *_filmView;

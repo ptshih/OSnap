@@ -9,12 +9,12 @@
 #import "PSSlideView.h"
 
 @interface ArticleSlideView : PSSlideView {
-  NSDictionary *_dictionary;
+  PFObject *_dictionary;
   
-  UIImageView *_backgroundView;
   UIImageView *_pictureView;
+  UIImageView *_caretView;
+  UIView *_statsView;
   UIView *_captionView;
-  UIView *_actionView;
   UIImageView *_dividerView;
 }
 

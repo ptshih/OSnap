@@ -22,7 +22,7 @@
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
   self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
   if (self) {
-    _filmData = [[NSMutableArray alloc] initWithCapacity:1];
+    _filmItems = [[NSMutableArray alloc] initWithCapacity:1];
     self.title = @"Trending";
   }
   return self;
@@ -33,7 +33,7 @@
 }
 
 - (void)dealloc {
-  RELEASE_SAFELY(_filmData);
+  RELEASE_SAFELY(_filmItems);
   
   [super dealloc];
 }
@@ -80,14 +80,49 @@
   [super loadDataSource];
   
   // TEST
+//  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"short_gallery" ofType:@"json"];
+//  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
+//  NSDictionary *connections = [fixtureData objectFromJSONData];
+//  [_filmItems addObjectsFromArray:[connections objectForKey:@"gallery"]];
   
-  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"short_gallery" ofType:@"json"];
-  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
-  NSDictionary *connections = [fixtureData objectFromJSONData];
+  PFQuery *snapsQuery = [PFQuery queryWithClassName:@"Snap"];
+  [snapsQuery includeKey:@"caption"];
+  [snapsQuery orderByDescending:@"score"];
   
-  [_filmData addObjectsFromArray:[connections objectForKey:@"gallery"]];
-  
-  [self dataSourceDidLoad];
+  [snapsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+    if (!error) {
+      // The find succeeded.
+      NSLog(@"Successfully retrieved %d snaps.", objects.count);
+      [_filmItems addObjectsFromArray:objects];
+      
+      // Get Captions
+      NSMutableSet *captionIds = [NSMutableSet set];
+      for (PFObject *item in _filmItems) {
+        if ([item objectForKey:@"captionIds"]) {
+          [captionIds addObjectsFromArray:[item objectForKey:@"captionIds"]];
+        }
+      }
+      // Embedded query for captions
+      PFQuery *captionsQuery = [PFQuery queryWithClassName:@"Caption"];
+      [captionsQuery whereKey:@"objectId" containedIn:[captionIds allObjects]];
+      [captionsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+          NSLog(@"Successfully retrieved %d captions.", objects.count);
+          for (PFObject *caption in objects) {
+            [[APP_DELEGATE captionsCache] setObject:caption forKey:[caption objectId]];
+          }
+          
+          [self dataSourceDidLoad];
+        } else {
+          NSLog(@"Error retrieving captions: %@ %@", error, [error userInfo]);
+          [self dataSourceDidError];
+        }
+      }];
+    } else {
+      NSLog(@"Error: %@ %@", error, [error userInfo]);
+      [self dataSourceDidError];
+    }
+  }];
 }
 
 - (void)dataSourceDidLoad {
@@ -97,7 +132,7 @@
 }
 
 - (BOOL)dataIsAvailable {
-  return ([_filmData count] > 0);
+  return ([_filmItems count] > 0);
 }
 
 #pragma mark - PSFilmViewDelegate
@@ -113,11 +148,11 @@
 
 #pragma mark - PSFilmViewDataSource
 - (NSInteger)numberOfSlidesInFilmView:(PSFilmView *)filmView {
-  return [_filmData count];
+  return [_filmItems count];
 }
 
 - (CGFloat)filmView:(PSFilmView *)filmView heightForSlideAtIndex:(NSInteger)index {
-  NSDictionary *filmDict = [_filmData objectAtIndex:index];
+  NSDictionary *filmDict = [_filmItems objectAtIndex:index];
   return [ArticleSlideView heightForObject:filmDict];
 }
 
@@ -140,7 +175,7 @@
 //    slideView.slideContentView.backgroundColor = [UIColor greenColor];
 //  }
   
-  NSDictionary *filmDict = [_filmData objectAtIndex:index];
+  NSDictionary *filmDict = [_filmItems objectAtIndex:index];
   
 //  NSDictionary *filmDict = [NSDictionary dictionaryWithObject:@"http://bit.ly/vA2sIL" forKey:@"pictureUrl"];
   
@@ -156,7 +191,7 @@
     action = @"Refresh";
   } else {
     NSInteger prevIndex = index - 1;
-    NSString *prevTitle = [[_filmData objectAtIndex:prevIndex] objectForKey:@"title"];
+    NSString *prevTitle = [[_filmItems objectAtIndex:prevIndex] objectForKey:@"title"];
     if ([prevTitle notNil]) {
       action = [NSString stringWithFormat:@"View...\r%@", prevTitle];
     } else {
@@ -169,11 +204,11 @@
 - (NSString *)filmView:(PSFilmView *)filmView titleForFooterAtIndex:(NSInteger)index forState:(PSFilmViewState)state {
   NSString *gesture = (state == PSFilmViewStateIdle) ? @"Pull Up" : @"Release";
   NSString *action = nil;
-  if (index == [_filmData count] - 1) {
+  if (index == [_filmItems count] - 1) {
     action = @"Load More";
   } else {
     NSInteger nextIndex = index + 1;
-    NSString *nextTitle = [[_filmData objectAtIndex:nextIndex] objectForKey:@"title"];
+    NSString *nextTitle = [[_filmItems objectAtIndex:nextIndex] objectForKey:@"title"];
     if ([nextTitle notNil]) {
       action = [NSString stringWithFormat:@"View...\r%@", nextTitle];
     } else {

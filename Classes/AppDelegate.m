@@ -13,6 +13,8 @@
 #import "DashboardViewController.h"
 #import "LoginViewController.h"
 
+static NSMutableDictionary *_captionsCache;
+
 @interface AppDelegate (Private)
 
 + (void)setupDefaults;
@@ -26,6 +28,7 @@
 
 + (void)initialize {
   [self setupDefaults];
+  _captionsCache = [[NSMutableDictionary alloc] init];
 }
 
 #pragma mark - Initial Defaults
@@ -44,6 +47,11 @@
     // Perform any version migrations here
     //
   }
+}
+
+#pragma mark - Global Statics
+- (NSMutableDictionary *)captionsCache {
+  return _captionsCache;
 }
 
 #pragma mark - Application Lifecycle
@@ -80,17 +88,33 @@
 //  [_drawerController presentModalViewController:lvc animated:NO];
 //  [lvc release];
   
+  // Log In
+//  [PFUser logInWithUsernameInBackground:@"ptshih" password:@"bubbles" block:^(PFUser *user, NSError *error) {
+//    if (user) {
+//      // do stuff after successful login.
+//    } else {
+//      NSString *errorString = [[error userInfo] objectForKey:@"error"];
+//      [[[[UIAlertView alloc] initWithTitle:@"Log In Error" message:errorString delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil] autorelease] show];
+//    }
+//  }];
+  
   // TEST SNAP/CAPTION CREATION
 //  PFObject *newSnap = [PFObject objectWithClassName:@"Snap"];
 //  [newSnap setObject:[PFUser currentUser] forKey:@"user"]; // Relationship
 //  [newSnap setObject:@"http://i.imgur.com/5sSRi.jpg" forKey:@"source"];
+//  [newSnap setObject:@"landscape" forKey:@"orientation"];
 //  [newSnap setObject:[NSNumber numberWithInt:728] forKey:@"width"];
 //  [newSnap setObject:[NSNumber numberWithInt:641] forKey:@"height"];
 //  [newSnap setObject:[NSNumber numberWithInt:12315] forKey:@"views"];
 //  [newSnap setObject:[NSNumber numberWithInt:396] forKey:@"ups"];
 //  [newSnap setObject:[NSNumber numberWithInt:46] forKey:@"downs"];
 //  [newSnap setObject:[NSNumber numberWithInt:350] forKey:@"score"]; // Some hash value of {views, ups, downs}
-////  [newSnap saveInBackground];
+//  [newSnap setObject:[NSArray arrayWithObjects:@"uzr50GnV93", @"IUAXvVH53x", @"bSNr8sKS2u", nil] forKey:@"captionIds"];
+//  [newSnap saveInBackground];
+  
+//  uzr50GnV93
+//  IUAXvVH53x
+//  bSNr8sKS2u
 //  
 //  PFObject *newCaption = [PFObject objectWithClassName:@"Caption"];
 //  [newCaption setObject:[PFUser currentUser] forKey:@"user"]; // Relationship
