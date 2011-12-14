@@ -16,6 +16,9 @@
 #import "RolodexViewController.h"
 #import "FilmViewController.h"
 
+#define MARGIN_X 10.0
+#define MARGIN_Y 5.0
+
 @implementation MenuViewController
 
 #pragma mark - Init

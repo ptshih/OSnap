@@ -151,10 +151,10 @@
   return [_filmItems count];
 }
 
-- (CGFloat)filmView:(PSFilmView *)filmView heightForSlideAtIndex:(NSInteger)index {
-  NSDictionary *filmDict = [_filmItems objectAtIndex:index];
-  return [ArticleSlideView heightForObject:filmDict];
-}
+//- (CGFloat)filmView:(PSFilmView *)filmView heightForSlideAtIndex:(NSInteger)index {
+//  NSDictionary *filmDict = [_filmItems objectAtIndex:index];
+//  return [ArticleSlideView heightForObject:filmDict];
+//}
 
 - (PSSlideView *)filmView:(PSFilmView *)filmView slideAtIndex:(NSInteger)index {
   ArticleSlideView *slideView = nil;

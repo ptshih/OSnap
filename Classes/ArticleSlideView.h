@@ -8,14 +8,14 @@
 
 #import "PSSlideView.h"
 
+@class StatView;
+
 @interface ArticleSlideView : PSSlideView {
   PFObject *_dictionary;
-  
   UIImageView *_pictureView;
-  UIImageView *_caretView;
-  UIView *_statsView;
-  UIView *_captionView;
-  UIImageView *_dividerView;
+  StatView *_statView;
+  UIView *_captionContainerView;
+  NSMutableArray *_captionViews;
 }
 
 - (void)fillSlideWithObject:(id)object;

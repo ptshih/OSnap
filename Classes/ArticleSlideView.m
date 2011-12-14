@@ -7,6 +7,8 @@
 //
 
 #import "ArticleSlideView.h"
+#import "CaptionView.h"
+#import "StatView.h"
 
 #define MARGIN 10.0
 
@@ -22,93 +24,47 @@
     _dictionary = nil;
     
     // Configure subviews
-    _backgroundView = [[UIImageView alloc] initWithImage:nil];
-    _backgroundView.backgroundColor = [UIColor whiteColor];
-    
-    _dividerView = [[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"HorizontalLine.png" withLeftCapWidth:5 topCapWidth:0]];
-    
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
-//    _pictureView.layer.borderWidth = 1.0;
-//    _pictureView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    
-    _captionView = [[UIView alloc] initWithFrame:CGRectZero];
-    UILabel *cl = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
-    [PSStyleSheet applyStyle:@"articleCaption" forLabel:cl];
-    [_captionView addSubview:cl];
-    
-    _actionView = [[UIView alloc] initWithFrame:CGRectZero];
-    UIImageView *abg = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundCellLeather.png"]] autorelease];
-    [_actionView addSubview:abg];
+    _statView = [[StatView alloc] initWithFrame:CGRectZero];
+    _captionContainerView = [[UIView alloc] initWithFrame:CGRectZero];
+    _captionContainerView.backgroundColor = [UIColor whiteColor];
+
+    // Array of caption subviews
+    _captionViews = [[NSMutableArray alloc] initWithCapacity:1];
     
     // Add subviews to hierarchy
-    [self.slideContentView addSubview:_backgroundView];
-    [_backgroundView addSubview:_pictureView];
-    [_backgroundView addSubview:_captionView];
-    [_backgroundView addSubview:_dividerView];
-//    [_backgroundView addSubview:_actionView];
+    [self.slideContentView addSubview:_pictureView];
+    [self.slideContentView addSubview:_statView];
+    [self.slideContentView addSubview:_captionContainerView];
   }
   return self;
 }
 
 - (void)dealloc {
   RELEASE_SAFELY(_dictionary);
-  RELEASE_SAFELY(_dividerView);
-  RELEASE_SAFELY(_backgroundView);
   RELEASE_SAFELY(_pictureView);
-  RELEASE_SAFELY(_captionView);
+  RELEASE_SAFELY(_statView);
+  RELEASE_SAFELY(_captionContainerView);
+  RELEASE_SAFELY(_captionViews);
   [super dealloc];
 }
 
 - (void)layoutSubviews {
   [super layoutSubviews];
-  
-  _backgroundView.frame = CGRectMake(0, 0, self.slideContentView.width, self.slideContentView.height);
-  
-//  _dividerView.frame = CGRectMake(0, self.slideContentView.height - 1, self.slideContentView.width, 1);
-  
-  // Configure Subview Frames
-  CGFloat width = _backgroundView.width; // self.slideContentView.width
-  CGFloat left = MARGIN;
-  CGFloat top = MARGIN;
-  CGSize desiredSize = CGSizeZero;
-  CGFloat textWidth = width - MARGIN * 2;
-  
-  // Picture
-  CGFloat pictureWidth = [[_dictionary objectForKey:@"width"] floatValue];
-  CGFloat pictureHeight = [[_dictionary objectForKey:@"height"] floatValue];
-  _pictureView.frame = CGRectMake(0, 0, width, floorf(pictureHeight / (pictureWidth / width)));
-  
-  top = _pictureView.bottom;
-  
-  // Divider
-  _dividerView.frame = CGRectMake(0, top, width, 1);
-  top += _dividerView.height;
-  
-  // Caption
-  UILabel *captionLabel = [_captionView.subviews lastObject];
-  
-  desiredSize = [UILabel sizeForText:captionLabel.text width:textWidth font:captionLabel.font numberOfLines:captionLabel.numberOfLines lineBreakMode:captionLabel.lineBreakMode];
 
-  _captionView.top = top;
-  _captionView.left = left;
-  _captionView.width = textWidth;
-  _captionView.height = desiredSize.height + MARGIN * 2;
-  
-  captionLabel.frame = _captionView.bounds;
-  
-  top = _captionView.bottom;
-
-  _actionView.frame = CGRectMake(0, _backgroundView.height - 44, width, 44);
-  UIImageView *actionBackgroundView = [_actionView.subviews firstObject];
-  actionBackgroundView.frame = _actionView.bounds;
 }
 
 - (void)prepareForReuse {
   [super prepareForReuse];
   RELEASE_SAFELY(_dictionary);
+  [_captionViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  [_captionViews removeAllObjects];
 }
 
 - (void)fillSlideWithObject:(id)object {
+  CGFloat width = self.slideContentView.width;
+  CGFloat left = 0.0;
+  CGFloat top = 0.0;
   _dictionary = (PFObject *)[object retain];
   
   // Picture
@@ -116,60 +72,54 @@
   NSString *pictureUrl = [_dictionary objectForKey:@"source"];
   [_pictureView setImageWithURL:[NSURL URLWithString:pictureUrl] placeholderImage:nil];
   
-  // Caption
-  // Add caption
-  __block NSMutableString *caption;
+  CGFloat pictureWidth = [[_dictionary objectForKey:@"width"] floatValue];
+  CGFloat pictureHeight = [[_dictionary objectForKey:@"height"] floatValue];
+  _pictureView.frame = CGRectMake(left, top, width, floorf(pictureHeight / (pictureWidth / width)));
+  
+  top = _pictureView.bottom;
+  
+  // Stats
+  _statView.frame = CGRectMake(left, top, width, 44.0);
+
+  top = _statView.bottom;
+  
+  // Captions
+  // We're gonna show the top caption, and all other captions will be in a "show more" button
+  // If no captions, don't show this section
   NSArray *captionsIds = [_dictionary objectForKey:@"captionIds"];
   if (captionsIds && [captionsIds count] > 0) {
-    caption = [NSMutableString string];
+    // First lets read out all the actual captions from the global cache
+    NSArray *captionsIds = [_dictionary objectForKey:@"captionIds"];
     [captionsIds enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop){
       PFObject *captionObject = [[APP_DELEGATE captionsCache] objectForKey:obj];
-      [caption appendString:[captionObject objectForKey:@"message"]];
+      NSDictionary *captionDict = [NSDictionary dictionaryWithObject:[captionObject objectForKey:@"message"] forKey:@"message"];
+      
+      // Lets create CaptionView objects for each caption and put it into the array
+      CaptionView *captionView = [[CaptionView alloc] initWithFrame:CGRectMake(0, 0, self.slideContentView.width, 0.0) andDictionary:captionDict];
+      [_captionViews addObject:captionView];
+      [captionView release];
     }];
-  } else {
-    caption = [NSMutableString stringWithString:@"No Caption"];
-  }
-  
-  UILabel *captionLabel = [_captionView.subviews lastObject];
-  captionLabel.text = caption;
-}
-
-+ (CGFloat)heightForObject:(id)object {
-  PFObject *dictionary = (PFObject *)object;
-  
-  CGFloat width = 320.0;
-  CGFloat textWidth = 320.0 - MARGIN * 2;
-  
-  // Calculate height of dynamic labels;
-  CGFloat desiredHeight = 0.0;
-  
-  // Add top margin
-//  desiredHeight += MARGIN;
-  
-  // Add Picture
-  CGFloat pictureWidth = [[dictionary objectForKey:@"width"] floatValue];
-  CGFloat pictureHeight = [[dictionary objectForKey:@"height"] floatValue];
-  desiredHeight += floorf(pictureHeight / (pictureWidth / width));
-  
-  // Add caption
-  NSString *caption = @"No Caption";
-  NSArray *captionsIds = [dictionary objectForKey:@"captionIds"];
-  if (captionsIds && [captionsIds count] > 0) {
     
-  } else {
-    caption = @"No Title";
-  }
+    CGFloat captionHeight = 0.0;
+    for (CaptionView *captionView in _captionViews) {
+      captionView.top = captionHeight;
+      [_captionContainerView addSubview:captionView];
+      captionHeight += captionView.height;
+    }
+    
+    _captionContainerView.hidden = NO;
+    _captionContainerView.frame = CGRectMake(left, top, width, captionHeight);
+    
 
-  CGSize desiredSize = [UILabel sizeForText:caption width:textWidth font:[PSStyleSheet fontForStyle:@"articleCaption"] numberOfLines:[PSStyleSheet numberOfLinesForStyle:@"articleCaption"] lineBreakMode:UILineBreakModeTailTruncation];
-  desiredHeight += desiredSize.height + MARGIN * 2;
+    top = _captionContainerView.bottom;
+    
+    
+    // If there is more than 1 caption, display the show more button
+  } else {
+    _captionContainerView.hidden = YES;
+  }
   
-  // Add action View
-//  desiredHeight += 44;
-  
-  // Add bottom margin
-//  desiredHeight += MARGIN;
-  
-  return desiredHeight;
+  self.slideHeight = top;
 }
 
 @end
