@@ -197,7 +197,7 @@
   NSInteger row = indexPath.row;
   
   if (_selectedMenuIndexPath.row == row && _selectedMenuIndexPath.section == section) {
-    [APP_DELEGATE.drawerController slideFromLeft];
+    [self.drawerController slideFromLeft];
     return;
   }
   
@@ -245,8 +245,8 @@
     }
   }
   
-  [APP_DELEGATE.drawerController setRootViewController:controller];
-  [APP_DELEGATE.drawerController slideFromLeft];
+  [self.drawerController setRootViewController:controller];
+  [self.drawerController slideFromLeft];
   
   RELEASE_SAFELY(_selectedMenuIndexPath);
   _selectedMenuIndexPath = [[NSIndexPath indexPathForRow:row inSection:section] retain];

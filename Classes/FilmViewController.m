@@ -57,12 +57,12 @@
   _filmView.filmViewDataSource = self;
   [self.view addSubview:_filmView];
   
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
   NSMutableArray *toolbarItems = [NSMutableArray array];
-  [toolbarItems addObject:[UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone]];
+  [toolbarItems addObject:[UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone]];
   
   [self.navigationController setToolbarHidden:NO animated:NO];
   [self setToolbarItems:toolbarItems animated:NO];

@@ -57,7 +57,8 @@
 - (void)prepareForReuse {
   [super prepareForReuse];
   RELEASE_SAFELY(_dictionary);
-  [_captionViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  
+  [_captionContainerView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [_captionViews removeAllObjects];
 }
 
@@ -113,8 +114,17 @@
 
     top = _captionContainerView.bottom;
     
-    
     // If there is more than 1 caption, display the show more button
+    
+    if ([captionsIds count] > 1) {
+      UIButton *moreButton = [UIButton buttonWithFrame:CGRectMake(0.0, _captionContainerView.height, _captionContainerView.width, 44.0) andStyle:nil target:nil action:nil];
+      [moreButton setTitle:@"Show 5 More Captions..." forState:UIControlStateNormal];
+      [PSStyleSheet applyStyle:@"moreCaptionsButton" forButton:moreButton];
+      [_captionContainerView addSubview:moreButton];
+      _captionContainerView.height += 44.0;
+      
+      top = _captionContainerView.bottom;
+    }
   } else {
     _captionContainerView.hidden = YES;
   }

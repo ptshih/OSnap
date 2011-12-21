@@ -63,9 +63,9 @@
   
   [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
   
-   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
   
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:APP_DELEGATE.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
+  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
 
   // Setup Views
   [self setupSubviews];
@@ -113,6 +113,23 @@
   rightImageView.autoresizingMask = _rightView.autoresizingMask;
   rightImageView.contentMode = UIViewContentModeScaleAspectFill;
   [_rightView addSubview:rightImageView];
+  
+  UITapGestureRecognizer *gr = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testPush)] autorelease];
+  [centerImageView addGestureRecognizer:gr];
+  centerImageView.userInteractionEnabled = YES;
+  
+  UITapGestureRecognizer *grpop = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testPop)] autorelease];
+  [rightImageView addGestureRecognizer:grpop];
+  rightImageView.userInteractionEnabled = YES;
+}
+
+- (void)testPush {
+  DashboardViewController *vc = [[DashboardViewController alloc] initWithNibName:nil bundle:nil];
+  [self.navController pushViewController:vc animated:YES];
+}
+
+- (void)testPop {
+  [self.navController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Data Source

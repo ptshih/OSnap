@@ -5,9 +5,10 @@
 #import "JSONKit.h"
 #import "UIImageView+AFNetworking.h"
 
-#import "PSDrawerController.h"
-
 // Facebook APP ID is in PSFacebookCenter.h
+
+// Convenience
+#define APP_DRAWER [APP_DELEGATE drawerController]
 
 // Colors
 #define CELL_WHITE_COLOR [UIColor whiteColor]

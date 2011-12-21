@@ -8,14 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@class PSDrawerController;
+@class RootViewController;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate> {
-  PSDrawerController *_drawerController;
+  RootViewController *_rootViewController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (nonatomic, retain, readonly) PSDrawerController *drawerController;
 
 - (NSMutableDictionary *)captionsCache;
 

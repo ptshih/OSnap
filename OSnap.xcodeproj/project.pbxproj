@@ -169,6 +169,9 @@
 		289C362F148EC53300D02BAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362C148EC53300D02BAB /* AudioToolbox.framework */; };
 		289C3630148EC53300D02BAB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362D148EC53300D02BAB /* CFNetwork.framework */; };
 		289C3631148EC53300D02BAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 289C362E148EC53300D02BAB /* Security.framework */; };
+		28A19CF714A018FD0043F7BB /* PSWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A19CF614A018FD0043F7BB /* PSWindow.m */; };
+		28A19CFB14A01C120043F7BB /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A19CFA14A01C120043F7BB /* RootViewController.m */; };
+		28A19CFF14A023520043F7BB /* PSNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28A19CFE14A023520043F7BB /* PSNavigationController.m */; };
 		28B855D9147C7645004F84EA /* PSDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855D8147C7645004F84EA /* PSDrawerController.m */; };
 		28B855DD147CDCE6004F84EA /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DC147CDCE6004F84EA /* ProfileViewController.m */; };
 		28B855E0147CDDE8004F84EA /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B855DF147CDDE8004F84EA /* MenuViewController.m */; };
@@ -204,6 +207,8 @@
 		28F38D5B14983A40009D58BA /* StatView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28F38D5A14983A40009D58BA /* StatView.m */; };
 		28F38D5E14983E75009D58BA /* IconCaption.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F38D5C14983E75009D58BA /* IconCaption.png */; };
 		28F38D5F14983E75009D58BA /* IconCaption@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F38D5D14983E75009D58BA /* IconCaption@2x.png */; };
+		28F38D621498442E009D58BA /* IconMore.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F38D601498442E009D58BA /* IconMore.png */; };
+		28F38D631498442E009D58BA /* IconMore@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28F38D611498442E009D58BA /* IconMore@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -468,6 +473,12 @@
 		289C362C148EC53300D02BAB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		289C362D148EC53300D02BAB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		289C362E148EC53300D02BAB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		28A19CF514A018FD0043F7BB /* PSWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSWindow.h; sourceTree = "<group>"; };
+		28A19CF614A018FD0043F7BB /* PSWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSWindow.m; sourceTree = "<group>"; };
+		28A19CF914A01C120043F7BB /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		28A19CFA14A01C120043F7BB /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
+		28A19CFD14A023520043F7BB /* PSNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSNavigationController.h; sourceTree = "<group>"; };
+		28A19CFE14A023520043F7BB /* PSNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSNavigationController.m; sourceTree = "<group>"; };
 		28B855D7147C7645004F84EA /* PSDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSDrawerController.h; sourceTree = "<group>"; };
 		28B855D8147C7645004F84EA /* PSDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSDrawerController.m; sourceTree = "<group>"; };
 		28B855DB147CDCE6004F84EA /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
@@ -511,6 +522,8 @@
 		28F38D5A14983A40009D58BA /* StatView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StatView.m; sourceTree = "<group>"; };
 		28F38D5C14983E75009D58BA /* IconCaption.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconCaption.png; sourceTree = "<group>"; };
 		28F38D5D14983E75009D58BA /* IconCaption@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconCaption@2x.png"; sourceTree = "<group>"; };
+		28F38D601498442E009D58BA /* IconMore.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconMore.png; sourceTree = "<group>"; };
+		28F38D611498442E009D58BA /* IconMore@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconMore@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -702,6 +715,7 @@
 		2869873D1475CECD00B40860 /* PSKit */ = {
 			isa = PBXGroup;
 			children = (
+				28A19CFC14A023450043F7BB /* PSNavigationController */,
 				281A48761486147200F5E19E /* PSFilmView */,
 				288F5719147F0F91000EEC90 /* PSCollectionView */,
 				28B855D6147C7638004F84EA /* PSDrawerController */,
@@ -905,6 +919,8 @@
 				286987A91475CEEC00B40860 /* PSView.m */,
 				286987AA1475CEEC00B40860 /* PSViewController.h */,
 				286987AB1475CEEC00B40860 /* PSViewController.m */,
+				28A19CF514A018FD0043F7BB /* PSWindow.h */,
+				28A19CF614A018FD0043F7BB /* PSWindow.m */,
 			);
 			path = PSKit;
 			sourceTree = "<group>";
@@ -1142,6 +1158,15 @@
 			path = PSCollectionView;
 			sourceTree = "<group>";
 		};
+		28A19CFC14A023450043F7BB /* PSNavigationController */ = {
+			isa = PBXGroup;
+			children = (
+				28A19CFD14A023520043F7BB /* PSNavigationController.h */,
+				28A19CFE14A023520043F7BB /* PSNavigationController.m */,
+			);
+			path = PSNavigationController;
+			sourceTree = "<group>";
+		};
 		28B855D6147C7638004F84EA /* PSDrawerController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1166,6 +1191,8 @@
 				28B855EC147CE1A3004F84EA /* LoginViewController.m */,
 				28C946961491623B000E4277 /* DashboardViewController.h */,
 				28C946971491623B000E4277 /* DashboardViewController.m */,
+				28A19CF914A01C120043F7BB /* RootViewController.h */,
+				28A19CFA14A01C120043F7BB /* RootViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1211,6 +1238,8 @@
 		28F38D4A149839B9009D58BA /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				28F38D601498442E009D58BA /* IconMore.png */,
+				28F38D611498442E009D58BA /* IconMore@2x.png */,
 				28F38D5C14983E75009D58BA /* IconCaption.png */,
 				28F38D5D14983E75009D58BA /* IconCaption@2x.png */,
 				28F38D4D149839E0009D58BA /* IconEye.png */,
@@ -1386,6 +1415,8 @@
 				28F38D58149839E0009D58BA /* IconSadFace@2x.png in Resources */,
 				28F38D5E14983E75009D58BA /* IconCaption.png in Resources */,
 				28F38D5F14983E75009D58BA /* IconCaption@2x.png in Resources */,
+				28F38D621498442E009D58BA /* IconMore.png in Resources */,
+				28F38D631498442E009D58BA /* IconMore@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1493,6 +1524,9 @@
 				2810F59814921A2C0028BCFE /* PSToolbar.m in Sources */,
 				280E6F2A149829D200C74B80 /* CaptionView.m in Sources */,
 				28F38D5B14983A40009D58BA /* StatView.m in Sources */,
+				28A19CF714A018FD0043F7BB /* PSWindow.m in Sources */,
+				28A19CFB14A01C120043F7BB /* RootViewController.m in Sources */,
+				28A19CFF14A023520043F7BB /* PSNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

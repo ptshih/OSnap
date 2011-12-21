@@ -8,10 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PSReachabilityCenter.h"
-
-#import "MenuViewController.h"
-#import "DashboardViewController.h"
-#import "LoginViewController.h"
+#import "RootViewController.h"
 
 static NSMutableDictionary *_captionsCache;
 
@@ -24,7 +21,6 @@ static NSMutableDictionary *_captionsCache;
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize drawerController = _drawerController;
 
 + (void)initialize {
   [self setupDefaults];
@@ -65,23 +61,14 @@ static NSMutableDictionary *_captionsCache;
   // Start Reachability
   [PSReachabilityCenter defaultCenter];
   
-  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  self.window = [[[UIWindow alloc] initWithFrame:APP_FRAME] autorelease];
   [self.window makeKeyAndVisible];
   
   self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   
-  // View Controllers
-  MenuViewController *lvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-  MenuViewController *rvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
-  DashboardViewController *dvc = [[[DashboardViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+  _rootViewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
   
-  // PS Navigation Controller
-  UINavigationController *nc = [[[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain] autorelease];
-  nc.viewControllers = [NSArray arrayWithObject:dvc];
-  
-  _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:lvc rightViewController:rvc];
-  
-  [self.window addSubview:_drawerController.view];
+  [self.window addSubview:_rootViewController.view];
   
   // Login
 //  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];
@@ -168,7 +155,8 @@ static NSMutableDictionary *_captionsCache;
 
 - (void)dealloc
 {
-  [_drawerController release];
+  [[NSNotificationCenter defaultCenter] removeObserver:self];
+  [_rootViewController release];
   [_window release];
   [super dealloc];
 }
