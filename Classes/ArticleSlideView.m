@@ -33,6 +33,7 @@
     _cardView.layer.shadowOpacity = 0.5;
     _cardView.layer.shadowRadius = 2.0;
     _cardView.layer.shadowOffset = CGSizeMake(0, 1);
+//    _cardView.layer.shouldRasterize = YES;
     
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
 //    _pictureView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
@@ -41,6 +42,7 @@
     _pictureView.layer.shadowOpacity = 0.75;
     _pictureView.layer.shadowRadius = 2.0;
     _pictureView.layer.shadowOffset = CGSizeMake(0, 2);
+    _pictureView.layer.shouldRasterize = YES;
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [PSStyleSheet applyStyle:@"slideTitle" forLabel:_titleLabel];
@@ -55,6 +57,10 @@
     // Array of caption subviews
     _captionViews = [[NSMutableArray alloc] initWithCapacity:1];
     
+    // Expand button
+    _expandButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    [PSStyleSheet applyStyle:@"expandButton" forButton:_expandButton];
+    
     // Add subviews to hierarchy
     [self.slideContentView addSubview:_cardView];
     [_cardView addSubview:_titleLabel];
@@ -62,6 +68,7 @@
     [_cardView addSubview:_statView];
     [_cardView addSubview:_separatorView];
     [_cardView addSubview:_captionContainerView];
+    [_cardView addSubview:_expandButton];
   }
   return self;
 }
@@ -75,6 +82,7 @@
   RELEASE_SAFELY(_separatorView);
   RELEASE_SAFELY(_captionContainerView);
   RELEASE_SAFELY(_captionViews);
+  RELEASE_SAFELY(_expandButton);
   [super dealloc];
 }
 
@@ -146,7 +154,8 @@
       NSDictionary *captionDict = [NSDictionary dictionaryWithObject:[captionObject objectForKey:@"message"] forKey:@"message"];
       
       // Lets create CaptionView objects for each caption and put it into the array
-      CaptionView *captionView = [[CaptionView alloc] initWithFrame:CGRectMake(0, 0, self.slideContentView.width, 0.0) andDictionary:captionDict];
+      CaptionView *captionView = [[CaptionView alloc] initWithFrame:CGRectMake(0, 0, width, 0.0) andDictionary:captionDict];
+      captionView.backgroundColor = (idx % 2 == 0) ? [UIColor whiteColor] : [UIColor lightGrayColor];
       [_captionViews addObject:captionView];
       [captionView release];
     }];
@@ -163,21 +172,19 @@
     
 
     top = _captionContainerView.bottom;
-    
-    // If there is more than 1 caption, display the show more button
-    
-    if ([captionsIds count] > 1) {
-      UIButton *moreButton = [UIButton buttonWithFrame:CGRectMake(0.0, _captionContainerView.height, _captionContainerView.width, 44.0) andStyle:nil target:nil action:nil];
-      [moreButton setTitle:@"Show 5 More Captions..." forState:UIControlStateNormal];
-      [PSStyleSheet applyStyle:@"moreCaptionsButton" forButton:moreButton];
-      [_captionContainerView addSubview:moreButton];
-      _captionContainerView.height += 44.0;
-      
-      top = _captionContainerView.bottom;
-    }
   } else {
     _captionContainerView.hidden = YES;
   }
+  
+  // Expand Button
+  _expandButton.frame = CGRectMake(left, top, width, 32.0);
+  if (captionsIds && [captionsIds count] > 1) {
+    [_expandButton setTitle:[NSString stringWithFormat:@"Show %d More Captions...", [captionsIds count]] forState:UIControlStateNormal];
+  } else {
+    [_expandButton setTitle:@"No Captions Yet... Add One Now!" forState:UIControlStateNormal];
+  }
+  
+  top = _expandButton.bottom;
   
   top += MARGIN;
   

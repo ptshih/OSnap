@@ -18,6 +18,8 @@
   StatView *_statView;
   UIImageView *_separatorView;
   UIView *_captionContainerView;
+  UIButton *_expandButton;
+  
   NSMutableArray *_captionViews;
 }
 

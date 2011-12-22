@@ -164,7 +164,7 @@
 		<key>numberOfLines</key>
 		<integer>5</integer>
 	</dict>
-	<key>moreCaptionsButton</key>
+	<key>expandButton</key>
 	<dict>
 		<key>fontName</key>
 		<string>HelveticaNeueLT-MediumCond</string>

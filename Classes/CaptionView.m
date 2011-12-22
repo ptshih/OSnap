@@ -8,8 +8,7 @@
 
 #import "CaptionView.h"
 
-#define MARGIN_X 10.0
-#define MARGIN_Y 5.0
+#define MARGIN 5.0
 
 @implementation CaptionView
 
@@ -18,9 +17,9 @@
   if (self) {
     _dictionary = [dictionary copy];
     
-    CGFloat width = self.width - MARGIN_X * 2;
+    CGFloat width = self.width - MARGIN * 2;
     
-    _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN_X, MARGIN_Y, width, 0.0)];
+    _messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, width, 0.0)];
    [self addSubview:_messageLabel];
     
     [PSStyleSheet applyStyle:@"articleCaption" forLabel:_messageLabel];
@@ -30,7 +29,7 @@
     
     _messageLabel.height = messageSize.height;
     
-    self.height = messageSize.height + MARGIN_Y * 2;
+    self.height = messageSize.height + MARGIN * 2;
   }
   return self;
 }

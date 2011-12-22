@@ -136,9 +136,13 @@
   UITapGestureRecognizer *gr = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
   [centerImageView addGestureRecognizer:gr];
   centerImageView.userInteractionEnabled = YES;
+
+  UITapGestureRecognizer *gr2 = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
+  [leftImageView addGestureRecognizer:gr2];
+  leftImageView.userInteractionEnabled = YES;
   
-  UITapGestureRecognizer *grpop = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testPop)] autorelease];
-  [rightImageView addGestureRecognizer:grpop];
+  UITapGestureRecognizer *gr3 = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
+  [rightImageView addGestureRecognizer:gr3];
   rightImageView.userInteractionEnabled = YES;
 }
 
