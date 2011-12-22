@@ -37,8 +37,42 @@
   
   _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:lvc rightViewController:rvc];
   
+  [nc release];
+  
   _drawerController.view.frame = APP_BOUNDS;
   self.view = _drawerController.view;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+  [super viewWillAppear:animated];
+  if (!self.childViewControllers) {
+    [_drawerController viewWillAppear:animated];
+  }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+  [super viewDidAppear:animated];
+  if (!self.childViewControllers) {
+    [_drawerController viewDidAppear:animated];
+  }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+  [super viewWillDisappear:animated];
+  if (!self.childViewControllers) {
+    [_drawerController viewWillDisappear:animated];
+  }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+  [super viewDidDisappear:animated];
+  if (!self.childViewControllers) {
+    [_drawerController viewDidDisappear:animated];
+  }
 }
 
 @end

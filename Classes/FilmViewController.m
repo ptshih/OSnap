@@ -29,12 +29,14 @@
 }
 
 - (void)viewDidUnload {
+  RELEASE_SAFELY(_filmView);
   [super viewDidUnload];
 }
 
 - (void)dealloc {
   RELEASE_SAFELY(_filmItems);
   
+  RELEASE_SAFELY(_filmView);
   [super dealloc];
 }
 
@@ -47,32 +49,40 @@
 #pragma mark - View
 - (void)viewDidLoad {
   [super viewDidLoad];
-
-  [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
   
-  // Film View
-  _filmView = [[PSFilmView alloc] initWithFrame:self.view.bounds];
-  _filmView.autoresizingMask = ~UIViewAutoresizingNone;
-  _filmView.filmViewDelegate = self;
-  _filmView.filmViewDataSource = self;
-  [self.view addSubview:_filmView];
-  
-  self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
-  
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
-  
-  NSMutableArray *toolbarItems = [NSMutableArray array];
-  [toolbarItems addObject:[UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone]];
-  
-  [self.navigationController setToolbarHidden:NO animated:NO];
-  [self setToolbarItems:toolbarItems animated:NO];
-  
+  // Setup Views
+  [self setupHeader];
+  [self setupSubviews];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
   [super viewWillAppear:animated];
   
   [self loadDataSource];
+}
+
+#pragma mark - Config Subviews
+- (void)setupHeader {
+  UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44.0)];
+  headerView.userInteractionEnabled = YES;
+  [headerView setImage:[UIImage stretchableImageNamed:@"BackgroundNavigationBar" withLeftCapWidth:0.0 topCapWidth:1.0]];
+  
+  UIButton *leftButton = [UIButton buttonWithFrame:CGRectMake(10.0, 6.0, 30.0, 30.0) andStyle:nil target:self action:@selector(animatedBack)];
+  [leftButton setImage:[UIImage imageNamed:@"IconBackBlack"] forState:UIControlStateNormal];
+  [leftButton setImage:[UIImage imageNamed:@"IconBackGray"] forState:UIControlStateHighlighted];
+  [headerView addSubview:leftButton];
+  
+  [self setHeaderView:headerView];
+  [headerView release];
+}
+
+- (void)setupSubviews {
+  // Film View
+  _filmView = [[PSFilmView alloc] initWithFrame:self.contentView.bounds];
+  _filmView.autoresizingMask = ~UIViewAutoresizingNone;
+  _filmView.filmViewDelegate = self;
+  _filmView.filmViewDataSource = self;
+  [self.contentView addSubview:_filmView];
 }
 
 #pragma mark - Data Source

@@ -55,6 +55,10 @@
 		284BB0551487904B0046ABEF /* PSCachedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB0521487904B0046ABEF /* PSCachedImageView.m */; };
 		284BB0561487904B0046ABEF /* PSImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 284BB0541487904B0046ABEF /* PSImageCache.m */; };
 		284EA207147CF5B600C4F3CE /* me.json in Resources */ = {isa = PBXBuildFile; fileRef = 284EA206147CF5B600C4F3CE /* me.json */; };
+		285420BB14A30FCF0091F331 /* IconBackGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 285420B714A30FCF0091F331 /* IconBackGray@2x.png */; };
+		285420BC14A30FCF0091F331 /* IconBackGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 285420B814A30FCF0091F331 /* IconBackGray.png */; };
+		28633AAB14A30E910074A674 /* IconBackBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AA914A30E910074A674 /* IconBackBlack@2x.png */; };
+		28633AAC14A30E910074A674 /* IconBackBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AAA14A30E910074A674 /* IconBackBlack.png */; };
 		286987251473139E00B40860 /* BackgroundBlueprint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */; };
 		286987261473139E00B40860 /* BackgroundBlueprint@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871D1473139E00B40860 /* BackgroundBlueprint@2x.jpg */; };
 		286987271473139E00B40860 /* BackgroundBlueprint~ipad.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871E1473139E00B40860 /* BackgroundBlueprint~ipad.jpg */; };
@@ -274,6 +278,10 @@
 		284BB0531487904B0046ABEF /* PSImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSImageCache.h; sourceTree = "<group>"; };
 		284BB0541487904B0046ABEF /* PSImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSImageCache.m; sourceTree = "<group>"; };
 		284EA206147CF5B600C4F3CE /* me.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = me.json; sourceTree = "<group>"; };
+		285420B714A30FCF0091F331 /* IconBackGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBackGray@2x.png"; sourceTree = "<group>"; };
+		285420B814A30FCF0091F331 /* IconBackGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconBackGray.png; sourceTree = "<group>"; };
+		28633AA914A30E910074A674 /* IconBackBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBackBlack@2x.png"; sourceTree = "<group>"; };
+		28633AAA14A30E910074A674 /* IconBackBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconBackBlack.png; sourceTree = "<group>"; };
 		2869870814730F7200B40860 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BackgroundBlueprint.jpg; sourceTree = "<group>"; };
 		2869871D1473139E00B40860 /* BackgroundBlueprint@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "BackgroundBlueprint@2x.jpg"; sourceTree = "<group>"; };
@@ -1238,6 +1246,10 @@
 		28F38D4A149839B9009D58BA /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				28633AA914A30E910074A674 /* IconBackBlack@2x.png */,
+				28633AAA14A30E910074A674 /* IconBackBlack.png */,
+				285420B714A30FCF0091F331 /* IconBackGray@2x.png */,
+				285420B814A30FCF0091F331 /* IconBackGray.png */,
 				28F38D601498442E009D58BA /* IconMore.png */,
 				28F38D611498442E009D58BA /* IconMore@2x.png */,
 				28F38D5C14983E75009D58BA /* IconCaption.png */,
@@ -1417,6 +1429,10 @@
 				28F38D5F14983E75009D58BA /* IconCaption@2x.png in Resources */,
 				28F38D621498442E009D58BA /* IconMore.png in Resources */,
 				28F38D631498442E009D58BA /* IconMore@2x.png in Resources */,
+				28633AAB14A30E910074A674 /* IconBackBlack@2x.png in Resources */,
+				28633AAC14A30E910074A674 /* IconBackBlack.png in Resources */,
+				285420BB14A30FCF0091F331 /* IconBackGray@2x.png in Resources */,
+				285420BC14A30FCF0091F331 /* IconBackGray.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

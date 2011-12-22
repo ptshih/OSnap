@@ -7,6 +7,7 @@
 //
 
 #import "DashboardViewController.h"
+#import "FilmViewController.h"
 
 #define MARGIN 10.0
 
@@ -53,23 +54,16 @@
 }
 
 #pragma mark - View
-- (void)loadView {
-  UIView *view = [[[UIView alloc] initWithFrame:CGRectMake(0.0, 44.0, 320.0, 416.0)] autorelease];
-  [self setView:view];
-}
-
 - (void)viewDidLoad {
   [super viewDidLoad];
   
-  [(PSNavigationBar *)[self.navigationController navigationBar] setBackgroundImage:[UIImage imageNamed:@"BackgroundNavigationBar.png"]];
-  
-   self.navigationItem.leftBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromLeft) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
-  
-  self.navigationItem.rightBarButtonItem = [UIBarButtonItem barButtonWithImage:[UIImage imageNamed:@"ButtonNavList.png"] highlightedImage:[UIImage imageNamed:@"ButtonNavListHighlighted.png"] withTarget:self.drawerController action:@selector(slideFromRight) width:40.0 height:30.0 buttonType:BarButtonTypeNone];
-
   // Setup Views
+  [self setupHeader];
   [self setupSubviews];
-  
+}
+
+- (void)test {
+  [self.drawerController slideFromLeft];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -78,7 +72,25 @@
   [self loadDataSource];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+  [super viewDidAppear:animated];
+}
+
 #pragma mark - Config Subviews
+- (void)setupHeader {
+  UIImageView *headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44.0)];
+  headerView.userInteractionEnabled = YES;
+  [headerView setImage:[UIImage stretchableImageNamed:@"BackgroundNavigationBar" withLeftCapWidth:0.0 topCapWidth:1.0]];
+  
+  UIButton *leftButton = [UIButton buttonWithFrame:CGRectMake(10.0, 6.0, 30.0, 30.0) andStyle:nil target:self action:@selector(test)];
+  [leftButton setImage:[UIImage imageNamed:@"ButtonNavList"] forState:UIControlStateNormal];
+  [leftButton setImage:[UIImage imageNamed:@"ButtonNavListHighlighted"] forState:UIControlStateHighlighted];
+  [headerView addSubview:leftButton];
+  
+  [self setHeaderView:headerView];
+  [headerView release];
+}
+
 - (void)setupSubviews {
   CGFloat topHeight = 200.0;
   CGFloat bottomHeight = 186.0;
@@ -92,9 +104,9 @@
   _rightView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
   _rightView.layer.borderWidth = 1.0;
   
-  [self.view addSubview:_centerView];
-  [self.view addSubview:_leftView];
-  [self.view addSubview:_rightView];
+  [self.contentView addSubview:_centerView];
+  [self.contentView addSubview:_leftView];
+  [self.contentView addSubview:_rightView];
   
   // Center View
   UIImageView *centerImageView = [[[UIImageView alloc] initWithFrame:_centerView.bounds] autorelease];
@@ -114,7 +126,7 @@
   rightImageView.contentMode = UIViewContentModeScaleAspectFill;
   [_rightView addSubview:rightImageView];
   
-  UITapGestureRecognizer *gr = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(testPush)] autorelease];
+  UITapGestureRecognizer *gr = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
   [centerImageView addGestureRecognizer:gr];
   centerImageView.userInteractionEnabled = YES;
   
@@ -123,13 +135,14 @@
   rightImageView.userInteractionEnabled = YES;
 }
 
-- (void)testPush {
-  DashboardViewController *vc = [[DashboardViewController alloc] initWithNibName:nil bundle:nil];
-  [self.navController pushViewController:vc animated:YES];
+- (void)showFilm {
+  FilmViewController *vc = [[FilmViewController alloc] initWithNibName:nil bundle:nil];
+  [self.psNavigationController pushViewController:vc animated:YES];
+  [vc release];
 }
 
 - (void)testPop {
-  [self.navController popViewControllerAnimated:YES];
+  [self.psNavigationController popViewControllerAnimated:YES];
 }
 
 #pragma mark - Data Source
