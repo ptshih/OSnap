@@ -53,6 +53,11 @@
   return [UIColor whiteColor];
 }
 
+//- (UIView *)baseBackgroundView {
+//  UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundCloth.jpg"]] autorelease];
+//  return bgView;
+//}
+
 #pragma mark - View
 - (void)viewDidLoad {
   [super viewDidLoad];
@@ -94,15 +99,17 @@
 - (void)setupSubviews {
   CGFloat topHeight = 200.0;
   CGFloat bottomHeight = 186.0;
-  _centerView = [[[UIScrollView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, 300.0, topHeight)] autorelease];
+  _centerView = [[UIScrollView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, 300.0, topHeight)];
   _centerView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
   _centerView.layer.borderWidth = 1.0;
-  _leftView = [[[UIScrollView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)] autorelease];
+  _leftView = [[UIView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)];
   _leftView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
   _leftView.layer.borderWidth = 1.0;
-  _rightView = [[[UIScrollView alloc] initWithFrame:CGRectMake(MARGIN + 145.0 + MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)] autorelease];
+  _leftView.clipsToBounds = YES;
+  _rightView = [[UIView alloc] initWithFrame:CGRectMake(MARGIN + 145.0 + MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)];
   _rightView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
   _rightView.layer.borderWidth = 1.0;
+  _rightView.clipsToBounds = YES;
   
   [self.contentView addSubview:_centerView];
   [self.contentView addSubview:_leftView];

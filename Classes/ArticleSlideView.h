@@ -12,8 +12,11 @@
 
 @interface ArticleSlideView : PSSlideView {
   PFObject *_dictionary;
+  UIView *_cardView;
   UIImageView *_pictureView;
+  UILabel *_titleLabel;
   StatView *_statView;
+  UIImageView *_separatorView;
   UIView *_captionContainerView;
   NSMutableArray *_captionViews;
 }

@@ -41,10 +41,14 @@
 }
 
 #pragma mark - View Config
-- (UIView *)baseBackgroundView {
-  UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundWeave.jpg"]] autorelease];
-  return bgView;
+- (UIColor *)baseBackgroundColor {
+  return [UIColor whiteColor];
 }
+
+//- (UIView *)baseBackgroundView {
+//  UIImageView *bgView = [[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"BackgroundWeave.jpg"]] autorelease];
+//  return bgView;
+//}
 
 #pragma mark - View
 - (void)viewDidLoad {
@@ -52,6 +56,7 @@
   
   // Setup Views
   [self setupHeader];
+  [self setupFooter];
   [self setupSubviews];
 }
 
@@ -74,6 +79,39 @@
   
   [self setHeaderView:headerView];
   [headerView release];
+}
+
+- (void)setupFooter {
+  UIImageView *footerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.width, 44.0)];
+  footerView.userInteractionEnabled = YES;
+  [footerView setImage:[UIImage stretchableImageNamed:@"BackgroundToolbar" withLeftCapWidth:0.0 topCapWidth:1.0]];
+  
+  NSMutableArray *buttons = [NSMutableArray array];
+  
+  UIButton *captionButton = [UIButton buttonWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0) andStyle:nil target:self action:@selector(animatedBack)];
+  [captionButton setImage:[UIImage imageNamed:@"IconCaptionBlack"] forState:UIControlStateNormal];
+  [captionButton setImage:[UIImage imageNamed:@"IconCaptionGray"] forState:UIControlStateHighlighted];
+  [buttons addObject:captionButton];
+  
+  UIButton *upButton = [UIButton buttonWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0) andStyle:nil target:self action:@selector(animatedBack)];
+  [upButton setImage:[UIImage imageNamed:@"IconCaptionBlack"] forState:UIControlStateNormal];
+  [upButton setImage:[UIImage imageNamed:@"IconCaptionGray"] forState:UIControlStateHighlighted];
+  [buttons addObject:upButton];
+  
+  UIButton *downButton = [UIButton buttonWithFrame:CGRectMake(0.0, 0.0, 32.0, 32.0) andStyle:nil target:self action:@selector(animatedBack)];
+  [downButton setImage:[UIImage imageNamed:@"IconCaptionBlack"] forState:UIControlStateNormal];
+  [downButton setImage:[UIImage imageNamed:@"IconCaptionGray"] forState:UIControlStateHighlighted];
+  [buttons addObject:downButton];
+  
+  __block CGFloat margin = floorf((footerView.width - (32.0 * [buttons count])) / ([buttons count] + 1));
+  [buttons enumerateObjectsUsingBlock:^(UIButton *button, NSUInteger idx, BOOL *stop) {
+    button.top = 6.0;
+    button.left = margin + (idx * margin) + (idx * 32.0);
+    [footerView addSubview:button];
+  }];
+  
+  [self setFooterView:footerView];
+  [footerView release];
 }
 
 - (void)setupSubviews {
