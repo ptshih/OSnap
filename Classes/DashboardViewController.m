@@ -9,7 +9,15 @@
 #import "DashboardViewController.h"
 #import "FilmViewController.h"
 
+#import "DashView.h"
+
 #define MARGIN 10.0
+
+@interface DashboardViewController (Private)
+
+- (void)setupHiddenHeader;
+
+@end
 
 @implementation DashboardViewController
 
@@ -32,9 +40,7 @@
 
 - (void)viewDidUnload {
   // Views
-  RELEASE_SAFELY(_centerView);
-  RELEASE_SAFELY(_leftView);
-  RELEASE_SAFELY(_rightView);
+  RELEASE_SAFELY(_scrollView);
   [super viewDidUnload];
 }
 
@@ -42,9 +48,7 @@
   RELEASE_SAFELY(_featuredItems);
   
   // Views
-  RELEASE_SAFELY(_centerView);
-  RELEASE_SAFELY(_leftView);
-  RELEASE_SAFELY(_rightView);
+  RELEASE_SAFELY(_scrollView);
   [super dealloc];
 }
 
@@ -64,6 +68,7 @@
   
   // Setup Views
   [self setupHeader];
+  [self setupHiddenHeader];
   [self setupSubviews];
 }
 
@@ -87,63 +92,81 @@
   headerView.userInteractionEnabled = YES;
   [headerView setImage:[UIImage stretchableImageNamed:@"BackgroundNavigationBar" withLeftCapWidth:0.0 topCapWidth:1.0]];
   
-  UIButton *leftButton = [UIButton buttonWithFrame:CGRectMake(10.0, 6.0, 30.0, 30.0) andStyle:nil target:self action:@selector(test)];
-  [leftButton setImage:[UIImage imageNamed:@"ButtonNavList"] forState:UIControlStateNormal];
-  [leftButton setImage:[UIImage imageNamed:@"ButtonNavListHighlighted"] forState:UIControlStateHighlighted];
+  UIButton *leftButton = [UIButton buttonWithFrame:CGRectMake(10.0, 6.0, 30.0, 30.0) andStyle:nil target:self action:@selector(animatedBack)];
+  [leftButton setImage:[UIImage imageNamed:@"IconBackBlack"] forState:UIControlStateNormal];
+  [leftButton setImage:[UIImage imageNamed:@"IconBackGray"] forState:UIControlStateHighlighted];
   [headerView addSubview:leftButton];
   
   [self setHeaderView:headerView];
   [headerView release];
 }
 
-- (void)setupSubviews {
-  CGFloat topHeight = 200.0;
-  CGFloat bottomHeight = 186.0;
-  _centerView = [[UIScrollView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, 300.0, topHeight)];
-  _centerView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-  _centerView.layer.borderWidth = 1.0;
-  _leftView = [[UIView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)];
-  _leftView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-  _leftView.layer.borderWidth = 1.0;
-  _leftView.clipsToBounds = YES;
-  _rightView = [[UIView alloc] initWithFrame:CGRectMake(MARGIN + 145.0 + MARGIN, MARGIN + topHeight + MARGIN, 145.0, bottomHeight)];
-  _rightView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-  _rightView.layer.borderWidth = 1.0;
-  _rightView.clipsToBounds = YES;
-  
-  [self.contentView addSubview:_centerView];
-  [self.contentView addSubview:_leftView];
-  [self.contentView addSubview:_rightView];
-  
-  // Center View
-  UIImageView *centerImageView = [[[UIImageView alloc] initWithFrame:_centerView.bounds] autorelease];
-  centerImageView.autoresizingMask = _centerView.autoresizingMask;
-  centerImageView.contentMode = UIViewContentModeScaleAspectFill;
-  [_centerView addSubview:centerImageView];
-  
-  // Left View
-  UIImageView *leftImageView = [[[UIImageView alloc] initWithFrame:_leftView.bounds] autorelease];
-  leftImageView.autoresizingMask = _leftView.autoresizingMask;
-  leftImageView.contentMode = UIViewContentModeScaleAspectFill;
-  [_leftView addSubview:leftImageView];
-  
-  // Right View
-  UIImageView *rightImageView = [[[UIImageView alloc] initWithFrame:_rightView.bounds] autorelease];
-  rightImageView.autoresizingMask = _rightView.autoresizingMask;
-  rightImageView.contentMode = UIViewContentModeScaleAspectFill;
-  [_rightView addSubview:rightImageView];
-  
-  UITapGestureRecognizer *gr = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
-  [centerImageView addGestureRecognizer:gr];
-  centerImageView.userInteractionEnabled = YES;
+- (void)setupHiddenHeader {
 
-  UITapGestureRecognizer *gr2 = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
-  [leftImageView addGestureRecognizer:gr2];
-  leftImageView.userInteractionEnabled = YES;
+}
+
+- (void)setupSubviews {
+  _scrollView = [[UIScrollView alloc] initWithFrame:_contentView.bounds];
   
-  UITapGestureRecognizer *gr3 = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease];
-  [rightImageView addGestureRecognizer:gr3];
-  rightImageView.userInteractionEnabled = YES;
+  /**
+   Categories / Sections
+   1. Featured / Best of OSnap (4 pics, 1 shown at a time)
+   2. Funny (4 pics shown at time)
+   3. Cute (4 pics shown at time)
+   4. Cool (4 pics shown at time)
+   */
+  
+  CGFloat top = 0.0;
+  UIImageView *separatorView = nil;
+  
+  _featuredView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 260.0)] autorelease];
+  _featuredView.top = top;
+  [_scrollView addSubview:_featuredView];
+  
+  [_featuredView addGestureRecognizer:[[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showFilm)] autorelease]];
+  
+  top = _featuredView.bottom;
+  
+  separatorView = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"HorizontalLine" withLeftCapWidth:2 topCapWidth:0]] autorelease];
+  separatorView.frame = CGRectMake(10.0, top, _scrollView.width - 20.0, 1.0);
+  [_scrollView addSubview:separatorView];
+  
+  top = separatorView.bottom;
+  
+  _funnyView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _funnyView.top = top;
+  [_scrollView addSubview:_funnyView];
+  
+  top = _funnyView.bottom;
+  
+  separatorView = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"HorizontalLine" withLeftCapWidth:2 topCapWidth:0]] autorelease];
+  separatorView.frame = CGRectMake(10.0, top, _scrollView.width - 20.0, 1.0);
+  [_scrollView addSubview:separatorView];
+  
+  top = separatorView.bottom;
+  
+  _cuteView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _cuteView.top = top;
+  [_scrollView addSubview:_cuteView];
+  
+  top = _cuteView.bottom;
+  
+  separatorView = [[[UIImageView alloc] initWithImage:[UIImage stretchableImageNamed:@"HorizontalLine" withLeftCapWidth:2 topCapWidth:0]] autorelease];
+  separatorView.frame = CGRectMake(10.0, top, _scrollView.width - 20.0, 1.0);
+  [_scrollView addSubview:separatorView];
+  
+  top = separatorView.bottom;
+  
+  _coolView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _coolView.top = top;
+  [_scrollView addSubview:_coolView];
+  
+  top = _coolView.bottom;
+  
+  _scrollView.contentSize = CGSizeMake(_contentView.width, top);
+  
+  // Add all subviews to content view
+  [_contentView addSubview:_scrollView];
 }
 
 - (void)showFilm {
@@ -161,7 +184,7 @@
   [super loadDataSource];
   
   PFQuery *snapsQuery = [PFQuery queryWithClassName:@"Snap"];
-  snapsQuery.limit = [NSNumber numberWithInteger:3];
+  snapsQuery.limit = [NSNumber numberWithInteger:4];
   [snapsQuery orderByDescending:@"score"];
 
   [snapsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
@@ -183,6 +206,12 @@
   
   // Update the view
   if ([self dataIsAvailable]) {
+    
+    [_featuredView fillDashSectionWithObject:[_featuredItems lastObject]];
+    [_funnyView fillDashSectionWithObject:[_featuredItems objectAtIndex:1]];
+    [_cuteView fillDashSectionWithObject:[_featuredItems objectAtIndex:2]];
+    [_coolView fillDashSectionWithObject:[_featuredItems objectAtIndex:0]];
+    
     // Make sure we have at least 3 snaps
     if ([_featuredItems count] == 3) {
        [_featuredItems enumerateObjectsUsingBlock:^(PFObject *obj, NSUInteger idx, BOOL *stop) {
@@ -191,8 +220,6 @@
            {
              NSString *centerSource = [obj objectForKey:@"source"];
              if (centerSource) {
-               UIImageView *centerImageView = [_centerView.subviews firstObject];
-               [centerImageView setImageWithURL:[NSURL URLWithString:centerSource] placeholderImage:nil];
              }
              break;
            }
@@ -200,8 +227,6 @@
            {
              NSString *leftSource = [obj objectForKey:@"source"];
              if (leftSource) {
-               UIImageView *leftImageView = [_leftView.subviews firstObject];
-               [leftImageView setImageWithURL:[NSURL URLWithString:leftSource] placeholderImage:nil];
              }
              break;
            }
@@ -209,8 +234,6 @@
            {
              NSString *rightSource = [obj objectForKey:@"source"];
              if (rightSource) {
-               UIImageView *rightImageView = [_rightView.subviews firstObject];
-               [rightImageView setImageWithURL:[NSURL URLWithString:rightSource] placeholderImage:nil];
              }
              break;
            }
