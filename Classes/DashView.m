@@ -8,56 +8,39 @@
 
 #import "DashView.h"
 
-#define MARGIN 10.0
-#define CAPTION_HEIGHT 32.0
-
 @implementation DashView
 
 - (id)initWithFrame:(CGRect)frame {
   self = [super initWithFrame:frame];
   if (self) {
-    CGFloat top = 0.0;
+    _contentView = [[UIView alloc] initWithFrame:CGRectMake(DASH_MARGIN, DASH_MARGIN, frame.size.width - DASH_MARGIN * 2, frame.size.height - DASH_MARGIN * 2)];
+    [self addSubview:_contentView];
     
-    _imageView = [[UIImageView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, self.width - MARGIN * 2, self.height - MARGIN)];
-    _imageView.height -= CAPTION_HEIGHT;
-    _imageView.contentMode = UIViewContentModeScaleAspectFill;
-    _imageView.clipsToBounds = YES;
-//    _imageView.layer.shadowColor = [UIColor blackColor].CGColor;
-//    _imageView.layer.shadowOpacity = 0.75;
-//    _imageView.layer.shadowRadius = 2.0;
-//    _imageView.layer.shadowOffset = CGSizeMake(0, 2);
-//    _imageView.layer.shouldRasterize = YES;
+    CGFloat width = _contentView.width;
+    CGFloat height = _contentView.height - DASH_CAPTION_HEIGHT - DASH_MARGIN;
     
-    top = _imageView.bottom;
-    
-    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(MARGIN, top, self.width, CAPTION_HEIGHT)];
+    _nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, height + DASH_MARGIN, width, DASH_CAPTION_HEIGHT)];
     [PSStyleSheet applyStyle:@"dashSectionName" forLabel:_nameLabel];
     
-    _disclosureView = [[UIImageView alloc] initWithFrame:CGRectMake(self.width - 20 - MARGIN, top + 6, 20, 20)];
+    _disclosureView = [[UIImageView alloc] initWithFrame:CGRectMake(width - 20, height + DASH_MARGIN, 20, DASH_CAPTION_HEIGHT)];
     [_disclosureView setImage:[UIImage imageNamed:@"IconNextBlack"]];
     _disclosureView.hidden = YES;
     
-    [self addSubview:_imageView];
-    [self addSubview:_nameLabel];
-    [self addSubview:_disclosureView];
+    [_contentView addSubview:_nameLabel];
+    [_contentView addSubview:_disclosureView];
   }
   return self;
 }
 
 - (void)dealloc {
-  RELEASE_SAFELY(_imageView);
   RELEASE_SAFELY(_nameLabel);
   RELEASE_SAFELY(_disclosureView);
+  RELEASE_SAFELY(_contentView);
   [super dealloc];
 }
 
-- (void)fillDashSectionWithObject:(id)object {
-  NSString *source = [object objectForKey:@"source"];
-  
-  [_imageView setImageWithURL:[NSURL URLWithString:source]];
-  _nameLabel.text = @"Featured / Best of OSnap";
-  
-  _disclosureView.hidden = NO;
+- (void)fillDashSectionWithObject:(id)object {  
+
 }
 
 @end

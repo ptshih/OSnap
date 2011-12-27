@@ -8,14 +8,15 @@
 
 #import "PSBaseViewController.h"
 
-@class DashView;
+@class DashSingleView;
+@class DashMultiView;
 
 @interface DashboardViewController : PSBaseViewController {
   UIScrollView *_scrollView;
-  DashView *_featuredView;
-  DashView *_funnyView;
-  DashView *_cuteView;
-  DashView *_coolView;
+  DashSingleView *_featuredView;
+  DashMultiView *_funnyView;
+  DashMultiView *_cuteView;
+  DashMultiView *_coolView;
   
   NSMutableArray *_featuredItems;
 }

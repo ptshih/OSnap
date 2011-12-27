@@ -8,6 +8,8 @@
 
 #import "DashView.h"
 
-@interface DashSingleView : DashView
+@interface DashSingleView : DashView {
+  UIImageView *_imageView;
+}
 
 @end

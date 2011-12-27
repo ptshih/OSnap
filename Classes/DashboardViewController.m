@@ -9,7 +9,8 @@
 #import "DashboardViewController.h"
 #import "FilmViewController.h"
 
-#import "DashView.h"
+#import "DashSingleView.h"
+#import "DashMultiView.h"
 
 #define MARGIN 10.0
 
@@ -119,7 +120,7 @@
   CGFloat top = 0.0;
   UIImageView *separatorView = nil;
   
-  _featuredView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 260.0)] autorelease];
+  _featuredView = [[[DashSingleView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 260.0)] autorelease];
   _featuredView.top = top;
   [_scrollView addSubview:_featuredView];
   
@@ -133,7 +134,7 @@
   
   top = separatorView.bottom;
   
-  _funnyView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _funnyView = [[[DashMultiView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
   _funnyView.top = top;
   [_scrollView addSubview:_funnyView];
   
@@ -145,7 +146,7 @@
   
   top = separatorView.bottom;
   
-  _cuteView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _cuteView = [[[DashMultiView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
   _cuteView.top = top;
   [_scrollView addSubview:_cuteView];
   
@@ -157,7 +158,7 @@
   
   top = separatorView.bottom;
   
-  _coolView = [[[DashView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
+  _coolView = [[[DashMultiView alloc] initWithFrame:CGRectMake(0, 0, _scrollView.width, 120.0)] autorelease];
   _coolView.top = top;
   [_scrollView addSubview:_coolView];
   

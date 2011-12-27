@@ -62,8 +62,8 @@
 		28603B3214A7B20B00541BB1 /* IconNextBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28603B2E14A7B20A00541BB1 /* IconNextBlack@2x.png */; };
 		28603B3314A7B20B00541BB1 /* IconNextGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 28603B2F14A7B20A00541BB1 /* IconNextGray.png */; };
 		28603B3414A7B20B00541BB1 /* IconNextGray@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28603B3014A7B20B00541BB1 /* IconNextGray@2x.png */; };
-		28603B3714A7C94600541BB1 /* DashQuadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B3614A7C94600541BB1 /* DashQuadView.m */; };
 		28603B3A14A7C95800541BB1 /* DashSingleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B3914A7C95800541BB1 /* DashSingleView.m */; };
+		28603B3D14AA55E500541BB1 /* DashMultiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B3C14AA55E500541BB1 /* DashMultiView.m */; };
 		28633AAB14A30E910074A674 /* IconBackBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AA914A30E910074A674 /* IconBackBlack@2x.png */; };
 		28633AAC14A30E910074A674 /* IconBackBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AAA14A30E910074A674 /* IconBackBlack.png */; };
 		286987251473139E00B40860 /* BackgroundBlueprint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */; };
@@ -302,10 +302,10 @@
 		28603B2E14A7B20A00541BB1 /* IconNextBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNextBlack@2x.png"; sourceTree = "<group>"; };
 		28603B2F14A7B20A00541BB1 /* IconNextGray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconNextGray.png; sourceTree = "<group>"; };
 		28603B3014A7B20B00541BB1 /* IconNextGray@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconNextGray@2x.png"; sourceTree = "<group>"; };
-		28603B3514A7C94600541BB1 /* DashQuadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashQuadView.h; sourceTree = "<group>"; };
-		28603B3614A7C94600541BB1 /* DashQuadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashQuadView.m; sourceTree = "<group>"; };
 		28603B3814A7C95800541BB1 /* DashSingleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashSingleView.h; sourceTree = "<group>"; };
 		28603B3914A7C95800541BB1 /* DashSingleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashSingleView.m; sourceTree = "<group>"; };
+		28603B3B14AA55E500541BB1 /* DashMultiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DashMultiView.h; sourceTree = "<group>"; };
+		28603B3C14AA55E500541BB1 /* DashMultiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashMultiView.m; sourceTree = "<group>"; };
 		28633AA914A30E910074A674 /* IconBackBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBackBlack@2x.png"; sourceTree = "<group>"; };
 		28633AAA14A30E910074A674 /* IconBackBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconBackBlack.png; sourceTree = "<group>"; };
 		2869870814730F7200B40860 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -731,10 +731,10 @@
 			children = (
 				28603B2A14A7ADD700541BB1 /* DashView.h */,
 				28603B2B14A7ADD700541BB1 /* DashView.m */,
-				28603B3514A7C94600541BB1 /* DashQuadView.h */,
-				28603B3614A7C94600541BB1 /* DashQuadView.m */,
 				28603B3814A7C95800541BB1 /* DashSingleView.h */,
 				28603B3914A7C95800541BB1 /* DashSingleView.m */,
+				28603B3B14AA55E500541BB1 /* DashMultiView.h */,
+				28603B3C14AA55E500541BB1 /* DashMultiView.m */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -1619,8 +1619,8 @@
 				28A19CFB14A01C120043F7BB /* RootViewController.m in Sources */,
 				28A19CFF14A023520043F7BB /* PSNavigationController.m in Sources */,
 				28603B2C14A7ADD700541BB1 /* DashView.m in Sources */,
-				28603B3714A7C94600541BB1 /* DashQuadView.m in Sources */,
 				28603B3A14A7C95800541BB1 /* DashSingleView.m in Sources */,
+				28603B3D14AA55E500541BB1 /* DashMultiView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
