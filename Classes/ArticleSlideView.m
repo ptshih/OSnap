@@ -24,15 +24,15 @@
     _dictionary = nil;
     
     // Configure subviews
-    _cardView = [[UIView alloc] initWithFrame:CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.height - MARGIN * 2)];
+    _cardView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, self.slideContentView.width, self.slideContentView.height)];
     _cardView.layer.backgroundColor = [[UIColor whiteColor] CGColor];
-    _cardView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
-    _cardView.layer.borderWidth = 1.0;
-    _cardView.layer.cornerRadius = 5.0;
-    _cardView.layer.shadowColor = [UIColor blackColor].CGColor;
-    _cardView.layer.shadowOpacity = 0.5;
-    _cardView.layer.shadowRadius = 2.0;
-    _cardView.layer.shadowOffset = CGSizeMake(0, 1);
+//    _cardView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
+//    _cardView.layer.borderWidth = 1.0;
+//    _cardView.layer.cornerRadius = 5.0;
+//    _cardView.layer.shadowColor = [UIColor blackColor].CGColor;
+//    _cardView.layer.shadowOpacity = 0.75;
+//    _cardView.layer.shadowRadius = 6.0;
+//    _cardView.layer.shadowOffset = CGSizeMake(0, 0);
 //    _cardView.layer.shouldRasterize = YES;
     
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -99,7 +99,7 @@
   [_captionViews removeAllObjects];
   
   self.slideContentView.frame = self.bounds;
-  _cardView.frame = CGRectMake(MARGIN, MARGIN, self.slideContentView.width - MARGIN * 2, self.slideContentView.height - MARGIN * 2);
+  _cardView.frame = CGRectMake(0.0, 0.0, self.slideContentView.width, self.slideContentView.height);
 }
 
 - (void)fillSlideWithObject:(id)object {
@@ -189,7 +189,7 @@
   top += MARGIN;
   
   _cardView.height = fmaxf(top, _cardView.height);
-  self.slideHeight = _cardView.height + MARGIN * 2;
+  self.slideHeight = _cardView.height;
 }
 
 @end
