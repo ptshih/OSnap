@@ -10,6 +10,8 @@
 #import "CaptionView.h"
 #import "StatView.h"
 
+#import "PSZoomView.h"
+
 #define MARGIN 10.0
 
 @implementation ArticleSlideView
@@ -36,6 +38,7 @@
 //    _cardView.layer.shouldRasterize = YES;
     
     _pictureView = [[UIImageView alloc] initWithFrame:CGRectZero];
+    _pictureView.userInteractionEnabled = YES;
 //    _pictureView.layer.borderColor = [[UIColor lightGrayColor] CGColor];
 //    _pictureView.layer.borderWidth = 1.0;
     _pictureView.layer.shadowColor = [UIColor blackColor].CGColor;
@@ -43,6 +46,9 @@
     _pictureView.layer.shadowRadius = 2.0;
     _pictureView.layer.shadowOffset = CGSizeMake(0, 2);
     _pictureView.layer.shouldRasterize = YES;
+    
+    UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
+    [_pictureView addGestureRecognizer:zoomGesture];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [PSStyleSheet applyStyle:@"slideTitle" forLabel:_titleLabel];
@@ -190,6 +196,14 @@
   
   _cardView.height = fmaxf(top, _cardView.height);
   self.slideHeight = _cardView.height;
+}
+
+#pragma mark - Zoom
+- (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
+  UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
+  
+  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image frame:[_cardView convertRect:imageView.frame toView:nil]] autorelease];
+  [zoomView show];
 }
 
 @end
