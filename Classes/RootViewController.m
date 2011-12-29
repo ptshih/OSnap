@@ -11,6 +11,8 @@
 #import "DashboardViewController.h"
 #import "LoginViewController.h"
 
+#import "TimelineViewController.h"
+
 @implementation RootViewController
 
 - (void)viewDidUnload {
@@ -28,19 +30,20 @@
   MenuViewController *lvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
   MenuViewController *rvc = [[[MenuViewController alloc] initWithNibName:nil bundle:nil] autorelease];
   DashboardViewController *dvc = [[[DashboardViewController alloc] initWithNibName:nil bundle:nil] autorelease];
+  TimelineViewController *tvc = [[[TimelineViewController alloc] initWithNibName:nil bundle:nil] autorelease];
   
   // PS Navigation Controller
 //  UINavigationController *nc = [[[[[NSBundle mainBundle] loadNibNamed:@"PSNavigationController" owner:self options:nil] lastObject] retain] autorelease];
 //  nc.viewControllers = [NSArray arrayWithObject:dvc];
   
-  PSNavigationController *nc = [[PSNavigationController alloc] initWithRootViewController:dvc];
+  PSNavigationController *nc = [[PSNavigationController alloc] initWithRootViewController:tvc];
   
   _drawerController = [[PSDrawerController alloc] initWithRootViewController:nc leftViewController:lvc rightViewController:rvc];
   
-  [nc release];
-  
   _drawerController.view.frame = APP_BOUNDS;
   self.view = _drawerController.view;
+  
+  [nc release];
 }
 
 - (void)viewWillAppear:(BOOL)animated

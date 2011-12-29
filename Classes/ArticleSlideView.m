@@ -202,7 +202,7 @@
 - (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
   UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
   
-  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image frame:[_cardView convertRect:imageView.frame toView:nil]] autorelease];
+  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image frame:[_cardView convertRect:imageView.frame toView:nil] contentMode:imageView.contentMode] autorelease];
   [zoomView show];
 }
 

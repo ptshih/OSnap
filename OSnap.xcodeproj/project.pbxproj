@@ -65,6 +65,8 @@
 		28603B3A14A7C95800541BB1 /* DashSingleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B3914A7C95800541BB1 /* DashSingleView.m */; };
 		28603B3D14AA55E500541BB1 /* DashMultiView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B3C14AA55E500541BB1 /* DashMultiView.m */; };
 		28603B4414AA860700541BB1 /* PSZoomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B4314AA860700541BB1 /* PSZoomView.m */; };
+		28603B5B14AC4A1D00541BB1 /* TimelineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B5A14AC4A1D00541BB1 /* TimelineViewController.m */; };
+		28603B5F14AC4D9300541BB1 /* TimelineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28603B5E14AC4D9300541BB1 /* TimelineCell.m */; };
 		28633AAB14A30E910074A674 /* IconBackBlack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AA914A30E910074A674 /* IconBackBlack@2x.png */; };
 		28633AAC14A30E910074A674 /* IconBackBlack.png in Resources */ = {isa = PBXBuildFile; fileRef = 28633AAA14A30E910074A674 /* IconBackBlack.png */; };
 		286987251473139E00B40860 /* BackgroundBlueprint.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2869871C1473139E00B40860 /* BackgroundBlueprint.jpg */; };
@@ -309,6 +311,10 @@
 		28603B3C14AA55E500541BB1 /* DashMultiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DashMultiView.m; sourceTree = "<group>"; };
 		28603B4214AA860700541BB1 /* PSZoomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSZoomView.h; sourceTree = "<group>"; };
 		28603B4314AA860700541BB1 /* PSZoomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSZoomView.m; sourceTree = "<group>"; };
+		28603B5914AC4A1D00541BB1 /* TimelineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineViewController.h; sourceTree = "<group>"; };
+		28603B5A14AC4A1D00541BB1 /* TimelineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineViewController.m; sourceTree = "<group>"; };
+		28603B5D14AC4D9300541BB1 /* TimelineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimelineCell.h; sourceTree = "<group>"; };
+		28603B5E14AC4D9300541BB1 /* TimelineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimelineCell.m; sourceTree = "<group>"; };
 		28633AA914A30E910074A674 /* IconBackBlack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconBackBlack@2x.png"; sourceTree = "<group>"; };
 		28633AAA14A30E910074A674 /* IconBackBlack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconBackBlack.png; sourceTree = "<group>"; };
 		2869870814730F7200B40860 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
@@ -738,6 +744,8 @@
 				28603B3914A7C95800541BB1 /* DashSingleView.m */,
 				28603B3B14AA55E500541BB1 /* DashMultiView.h */,
 				28603B3C14AA55E500541BB1 /* DashMultiView.m */,
+				28603B5D14AC4D9300541BB1 /* TimelineCell.h */,
+				28603B5E14AC4D9300541BB1 /* TimelineCell.m */,
 			);
 			name = Dashboard;
 			sourceTree = "<group>";
@@ -1254,6 +1262,8 @@
 				28C946971491623B000E4277 /* DashboardViewController.m */,
 				28A19CF914A01C120043F7BB /* RootViewController.h */,
 				28A19CFA14A01C120043F7BB /* RootViewController.m */,
+				28603B5914AC4A1D00541BB1 /* TimelineViewController.h */,
+				28603B5A14AC4A1D00541BB1 /* TimelineViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1627,6 +1637,8 @@
 				28603B3A14A7C95800541BB1 /* DashSingleView.m in Sources */,
 				28603B3D14AA55E500541BB1 /* DashMultiView.m in Sources */,
 				28603B4414AA860700541BB1 /* PSZoomView.m in Sources */,
+				28603B5B14AC4A1D00541BB1 /* TimelineViewController.m in Sources */,
+				28603B5F14AC4D9300541BB1 /* TimelineCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
