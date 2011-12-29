@@ -85,53 +85,13 @@
 - (void)loadDataSource {
   [super loadDataSource];
   
-  NSString *testSource = @"http://cdn.sinodefenceforum.com/avatars/mr-t.gif?dateline=1207083401";
-  NSMutableDictionary *dict = nil;
-  NSMutableArray *images = nil;
+  NSString *filePath = [[NSBundle mainBundle] pathForResource:@"albums" ofType:@"json"];
+  NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];
+  NSDictionary *response = [fixtureData objectFromJSONData];
+
+  NSArray *items = [response objectForKey:@"data"];
   
-  NSMutableArray *items = [NSMutableArray array];
-  
-  NSMutableArray *section = [NSMutableArray array];
-  
-  dict = [NSMutableDictionary dictionary];
-  images = [NSMutableArray array];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [dict setObject:images forKey:@"images"];
-  [section addObject:dict];
-  
-  dict = [NSMutableDictionary dictionary];
-  images = [NSMutableArray array];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [dict setObject:images forKey:@"images"];
-  [section addObject:dict];
-  
-  dict = [NSMutableDictionary dictionary];
-  images = [NSMutableArray array];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [dict setObject:images forKey:@"images"];
-  [section addObject:dict];
-  
-  dict = [NSMutableDictionary dictionary];
-  images = [NSMutableArray array];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [images addObject:[NSDictionary dictionaryWithObjectsAndKeys:testSource, @"source", nil]];
-  [dict setObject:images forKey:@"images"];
-  [section addObject:dict];
-  
-  [items addObject:section];
-  
-  [self dataSourceShouldLoadObjects:items shouldAnimate:NO];
+  [self dataSourceShouldLoadObjects:[NSMutableArray arrayWithObject:items] shouldAnimate:NO];
 }
 
 - (void)dataSourceDidLoad {

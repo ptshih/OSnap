@@ -103,7 +103,7 @@
 
 
 + (CGFloat)rowHeightForObject:(id)object forInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
-  NSArray *images = [object objectForKey:@"images"];
+  NSArray *images = [object objectForKey:@"photos"];
   NSInteger numImages = [images count];
   NSInteger numRows = ((numImages - 1) / IMAGES_PER_ROW) + 1;
   if (numImages == 1) return 200.0 + 20.0;
@@ -111,7 +111,7 @@
 }
 
 - (void)fillCellWithObject:(id)object {
-  [_images addObjectsFromArray:[object objectForKey:@"images"]];
+  [_images addObjectsFromArray:[object objectForKey:@"photos"]];
   
   // Labels
   _titleLabel.text = @"Disneyland - Anaheim, CA";
