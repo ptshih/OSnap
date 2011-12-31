@@ -9,6 +9,8 @@
 #import "TimelineViewController.h"
 #import "TimelineCell.h"
 
+#import <ImageIO/ImageIO.h>
+
 @implementation TimelineViewController
 
 #pragma mark - Init
@@ -84,6 +86,19 @@
 #pragma mark - State Machine
 - (void)loadDataSource {
   [super loadDataSource];
+  
+  NSString *jpegPath = [[NSBundle mainBundle] pathForResource:@"bubbles" ofType:@"jpg"];
+  NSData *jpegData = [NSData dataWithContentsOfFile:jpegPath];
+  
+//  UIImage *jpeg = [UIImage imageWithData:jpegData];
+  
+  CGImageSourceRef ref = CGImageSourceCreateWithData((CFDataRef)jpegData, NULL);
+  NSDictionary *dict = (NSDictionary *)CGImageSourceCopyPropertiesAtIndex(ref
+                                                                          , 0, NULL);
+  
+  NSDictionary *exif = [dict objectForKey:(NSString *)kCGImagePropertyExifDictionary];
+  NSDictionary *gps = [dict objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
+  
   
   NSString *filePath = [[NSBundle mainBundle] pathForResource:@"albums" ofType:@"json"];
   NSData *fixtureData = [NSData dataWithContentsOfFile:filePath];

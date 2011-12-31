@@ -75,6 +75,9 @@
   NSInteger numRows = (([_images count] - 1) / IMAGES_PER_ROW) + 1;
   iHeight = floorf(height / numRows);
   iHeight -= IMAGE_SPACING;
+  
+  // TODO: If not an even multiple of 4, one image will stretch to fill
+//  CGFloat remainder = numRows * IMAGES_PER_ROW - numImages;
 
   [_images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     NSInteger col = idx % IMAGES_PER_ROW;
