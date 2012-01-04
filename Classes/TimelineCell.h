@@ -13,6 +13,7 @@
 
 @interface TimelineCell : PSCell {
   NSMutableArray *_images;
+  NSMutableArray *_imageViews;
   UILabel *_titleLabel;
   UILabel *_subtitleLabel;
 }

@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "PSReachabilityCenter.h"
+#import "PSLocationCenter.h"
 #import "RootViewController.h"
 
 static NSMutableDictionary *_captionsCache;
@@ -61,14 +62,20 @@ static NSMutableDictionary *_captionsCache;
   // Start Reachability
   [PSReachabilityCenter defaultCenter];
   
-  self.window = [[[UIWindow alloc] initWithFrame:APP_FRAME] autorelease];
-  [self.window makeKeyAndVisible];
+  // PSLocationCenter set default behavior
+  [[PSLocationCenter defaultCenter] setShouldMonitorSignificantChange:YES];
+  [[PSLocationCenter defaultCenter] setShouldDisableAfterLocationFix:NO];
+  [[PSLocationCenter defaultCenter] getMyLocation]; // start it
   
+  self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+  [self.window makeKeyAndVisible];
   self.window.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"BackgroundLeather.jpg"]];
   
   _rootViewController = [[RootViewController alloc] initWithNibName:nil bundle:nil];
+  self.window.rootViewController = _rootViewController;
   
-  [self.window addSubview:_rootViewController.view];
+//  [self.window addSubview:_rootViewController.view];
+  
   
   // Login
 //  LoginViewController *lvc = [[LoginViewController alloc] initWithNibName:nil bundle:nil];

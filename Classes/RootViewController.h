@@ -6,9 +6,12 @@
 //  Copyright (c) 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "PSViewController.h"
+#import <UIKit/UIKit.h>
 
-@interface RootViewController : PSViewController {
+@class PSNavigationController;
+
+@interface RootViewController : UIViewController {
+  PSNavigationController *_psNavigationController;
 }
 
 @end

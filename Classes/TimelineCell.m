@@ -7,11 +7,10 @@
 //
 
 #import "TimelineCell.h"
-
+#import "PSCachedImageView.h"
 #import "PSZoomView.h"
 
 #define IMAGES_PER_ROW 4
-#define IMAGE_SPACING 2.0
 
 @implementation TimelineCell
 
@@ -21,6 +20,7 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
     
     _images = [[NSMutableArray arrayWithCapacity:1] retain];
+    _imageViews = [[NSMutableArray arrayWithCapacity:1] retain];
     
     _titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
     [PSStyleSheet applyStyle:@"timelineTitle" forLabel:_titleLabel];
@@ -36,6 +36,7 @@
 
 - (void)dealloc {
   RELEASE_SAFELY(_images);
+  RELEASE_SAFELY(_imageViews);
   
   RELEASE_SAFELY(_titleLabel);
   RELEASE_SAFELY(_subtitleLabel);
@@ -44,6 +45,8 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
+  [_imageViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  [_imageViews removeAllObjects];
   [_images removeAllObjects];
   _titleLabel.text = nil;
   _subtitleLabel.text = nil;
@@ -59,22 +62,31 @@
   
   // Images
   CGFloat iWidth = 0.0;
+  CGFloat iSpacing = 0.0;
   NSInteger numImages = [_images count];
-  if (numImages == 1) {
-    iWidth = width;
-  } else if (numImages == 2) {
-    iWidth = floorf(width / 2.0);
-  } else if (numImages == 3) {
-    iWidth = floorf(width / 3);
-  } else {
-    iWidth = floorf(width / 4.0);
-  }
-  iWidth -= IMAGE_SPACING;
   
   CGFloat iHeight = 0.0;
   NSInteger numRows = (([_images count] - 1) / IMAGES_PER_ROW) + 1;
   iHeight = floorf(height / numRows);
-  iHeight -= IMAGE_SPACING;
+  
+  if (numImages == 1) {
+    iWidth = width;
+  } else if (numImages == 2) {
+    iWidth = floorf(width / 2.0);
+    iSpacing = 2.0;
+    iWidth -= 1.0;
+    iHeight -= 1.0;
+  } else if (numImages == 3) {
+    iWidth = floorf(width / 3);
+    iSpacing = 3.0;
+    iWidth -= 2.0;
+    iHeight -= 2.0;
+  } else {
+    iWidth = floorf(width / 4.0);
+    iSpacing = 4.0;
+    iWidth -= 3.0;
+    iHeight -= 3.0;
+  }
   
   // TODO: If not an even multiple of 4, one image will stretch to fill
 //  CGFloat remainder = numRows * IMAGES_PER_ROW - numImages;
@@ -82,20 +94,22 @@
   [_images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     NSInteger col = idx % IMAGES_PER_ROW;
     NSInteger row = idx / IMAGES_PER_ROW;
-    CGFloat colSpacing = col * IMAGE_SPACING;
-    CGFloat rowSpacing = row * IMAGE_SPACING;
-    CGFloat left = col * iWidth + colSpacing;
-    CGFloat top = row * iHeight + rowSpacing;
+    CGFloat left = col * (iWidth + iSpacing);
+    CGFloat top = row * (iHeight + iSpacing);
     
     NSString *source = [obj objectForKey:@"source"];
-    UIImageView *iv = [[UIImageView alloc] initWithFrame:CGRectMake(left, top, iWidth, iHeight)];
+    PSCachedImageView *iv = [[PSCachedImageView alloc] initWithFrame:CGRectMake(left, top, iWidth, iHeight)];
     iv.contentMode = UIViewContentModeScaleAspectFill;
     iv.clipsToBounds = YES;
     iv.userInteractionEnabled = YES;
     UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
     [iv addGestureRecognizer:zoomGesture];
-    [iv setImageWithURL:[NSURL URLWithString:source]];
+    [iv setUrlPath:source];
+    [iv loadImageAndDownload:YES];
+//    [iv setImageWithURL:[NSURL URLWithString:source]];
     [self.contentView addSubview:iv];
+    [_imageViews addObject:iv];
+    [iv release];
   }];
   
   // Labels
@@ -109,8 +123,8 @@
   NSArray *images = [object objectForKey:@"photos"];
   NSInteger numImages = [images count];
   NSInteger numRows = ((numImages - 1) / IMAGES_PER_ROW) + 1;
-  if (numImages == 1) return 200.0 + 20.0;
-  else return 100.0 * numRows + 20.0;
+  if (numImages == 1) return 200.0 + TL_CAPTION_HEIGHT;
+  else return 100.0 * numRows + TL_CAPTION_HEIGHT;
 }
 
 - (void)fillCellWithObject:(id)object {
@@ -118,16 +132,16 @@
   
   // Labels
   _titleLabel.text = @"Disneyland - Anaheim, CA";
-  _subtitleLabel.text = @"Dec. 25, 2011";
+  _subtitleLabel.text = [object objectForKey:@"started_at"];
   
 }
 
 #pragma mark - Zoom
 - (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
   UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
-  
-  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image frame:[self.contentView convertRect:imageView.frame toView:nil] contentMode:imageView.contentMode] autorelease];
-  [zoomView show];
+  UIViewContentMode contentMode = imageView.contentMode;
+  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image contentMode:contentMode] autorelease];
+  [zoomView showInRect:[self.contentView convertRect:imageView.frame toView:nil]];
 }
 
 @end
