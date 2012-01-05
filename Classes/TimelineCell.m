@@ -12,7 +12,13 @@
 
 #define IMAGES_PER_ROW 4
 
+static NSMutableSet *__reusableImageViews = nil;
+
 @implementation TimelineCell
+
++ (void)initialize {
+  __reusableImageViews = [[NSMutableSet alloc] init];
+}
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
   self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
@@ -45,6 +51,7 @@
 
 - (void)prepareForReuse {
   [super prepareForReuse];
+  [__reusableImageViews addObjectsFromArray:_imageViews];
   [_imageViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
   [_imageViews removeAllObjects];
   [_images removeAllObjects];
@@ -91,25 +98,14 @@
   // TODO: If not an even multiple of 4, one image will stretch to fill
 //  CGFloat remainder = numRows * IMAGES_PER_ROW - numImages;
 
-  [_images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+  [_imageViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
     NSInteger col = idx % IMAGES_PER_ROW;
     NSInteger row = idx / IMAGES_PER_ROW;
     CGFloat left = col * (iWidth + iSpacing);
     CGFloat top = row * (iHeight + iSpacing);
     
-    NSString *source = [obj objectForKey:@"source"];
-    PSCachedImageView *iv = [[PSCachedImageView alloc] initWithFrame:CGRectMake(left, top, iWidth, iHeight)];
-    iv.contentMode = UIViewContentModeScaleAspectFill;
-    iv.clipsToBounds = YES;
-    iv.userInteractionEnabled = YES;
-    UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
-    [iv addGestureRecognizer:zoomGesture];
-    [iv setUrlPath:source];
-    [iv loadImageAndDownload:YES];
-//    [iv setImageWithURL:[NSURL URLWithString:source]];
-    [self.contentView addSubview:iv];
-    [_imageViews addObject:iv];
-    [iv release];
+    PSCachedImageView *iv = (PSCachedImageView *)obj;
+    iv.frame = CGRectMake(left, top, iWidth, iHeight);
   }];
   
   // Labels
@@ -117,18 +113,38 @@
   _subtitleLabel.frame = CGRectMake(floorf(width * (3.0 / 4.0)), height + TL_MARGIN, floorf(width * (1.0 / 4.0)), TL_CAPTION_HEIGHT);
 }
 
-
-
 + (CGFloat)rowHeightForObject:(id)object forInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   NSArray *images = [object objectForKey:@"photos"];
   NSInteger numImages = [images count];
   NSInteger numRows = ((numImages - 1) / IMAGES_PER_ROW) + 1;
+  
+  NSLog(@"numImages: %d, numRows: %d", numImages, numRows);
+  
   if (numImages == 1) return 200.0 + TL_CAPTION_HEIGHT;
   else return 100.0 * numRows + TL_CAPTION_HEIGHT;
 }
 
 - (void)fillCellWithObject:(id)object {
   [_images addObjectsFromArray:[object objectForKey:@"photos"]];
+  
+  [_images enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {    
+    NSString *source = [obj objectForKey:@"source"];
+    PSCachedImageView *iv = [[[__reusableImageViews anyObject] retain] autorelease];
+    if (!iv) {
+      iv = [[[PSCachedImageView alloc] initWithFrame:CGRectZero] autorelease];
+      iv.contentMode = UIViewContentModeScaleAspectFill;
+      iv.clipsToBounds = YES;
+      iv.userInteractionEnabled = YES;
+      UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
+      [iv addGestureRecognizer:zoomGesture];
+    } else {
+      [__reusableImageViews removeObject:iv];
+    }
+    [_imageViews addObject:iv];
+    [self.contentView addSubview:iv];
+    [iv unloadImage];
+    [iv loadImageWithURL:[NSURL URLWithString:source]];
+  }];
   
   // Labels
   _titleLabel.text = @"Disneyland - Anaheim, CA";
