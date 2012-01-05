@@ -30,6 +30,7 @@
 		2810F59B14921C340028BCFE /* BackgroundToolbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F59914921C330028BCFE /* BackgroundToolbar.png */; };
 		2810F59C14921C340028BCFE /* BackgroundToolbar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2810F59A14921C330028BCFE /* BackgroundToolbar@2x.png */; };
 		2810F59E1492555D0028BCFE /* short_gallery.json in Resources */ = {isa = PBXBuildFile; fileRef = 2810F59D1492555D0028BCFE /* short_gallery.json */; };
+		2812CFEC14B5C53D00F3B8CA /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2812CFEB14B5C53D00F3B8CA /* PreviewViewController.m */; };
 		281A487A148614B400F5E19E /* PSFilmView.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A4879148614B400F5E19E /* PSFilmView.m */; };
 		281A487D148626A400F5E19E /* FilmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 281A487C148626A400F5E19E /* FilmViewController.m */; };
 		281A48881486291400F5E19E /* BackgroundWeave.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 281A48861486291400F5E19E /* BackgroundWeave.jpg */; };
@@ -278,6 +279,8 @@
 		2810F59914921C330028BCFE /* BackgroundToolbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BackgroundToolbar.png; sourceTree = "<group>"; };
 		2810F59A14921C330028BCFE /* BackgroundToolbar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BackgroundToolbar@2x.png"; sourceTree = "<group>"; };
 		2810F59D1492555D0028BCFE /* short_gallery.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = short_gallery.json; sourceTree = "<group>"; };
+		2812CFEA14B5C53D00F3B8CA /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		2812CFEB14B5C53D00F3B8CA /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		281A4878148614B400F5E19E /* PSFilmView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PSFilmView.h; sourceTree = "<group>"; };
 		281A4879148614B400F5E19E /* PSFilmView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSFilmView.m; sourceTree = "<group>"; };
 		281A487B148626A400F5E19E /* FilmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilmViewController.h; sourceTree = "<group>"; };
@@ -1317,6 +1320,8 @@
 				28603B7E14AFB3AB00541BB1 /* CameraViewController.m */,
 				28FD7A9814B120F300E9ADDE /* TestViewController.h */,
 				28FD7A9914B120F300E9ADDE /* TestViewController.m */,
+				2812CFEA14B5C53D00F3B8CA /* PreviewViewController.h */,
+				2812CFEB14B5C53D00F3B8CA /* PreviewViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1709,6 +1714,7 @@
 				28603B7F14AFB3AC00541BB1 /* CameraViewController.m in Sources */,
 				28FD7A9A14B120F300E9ADDE /* TestViewController.m in Sources */,
 				288CB07114B2D72800233B45 /* CoreGraphics-PSKit.m in Sources */,
+				2812CFEC14B5C53D00F3B8CA /* PreviewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

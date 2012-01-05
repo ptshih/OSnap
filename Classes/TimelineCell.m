@@ -52,7 +52,14 @@ static NSMutableSet *__reusableImageViews = nil;
 - (void)prepareForReuse {
   [super prepareForReuse];
   [__reusableImageViews addObjectsFromArray:_imageViews];
-  [_imageViews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+  [_imageViews enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+    UIImageView *iv = (UIImageView *)obj;
+    [iv.gestureRecognizers enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+      UIGestureRecognizer *gr = (UIGestureRecognizer *)obj;
+      [iv removeGestureRecognizer:gr];
+    }];
+    [iv removeFromSuperview];
+  }];
   [_imageViews removeAllObjects];
   [_images removeAllObjects];
   _titleLabel.text = nil;
@@ -80,9 +87,9 @@ static NSMutableSet *__reusableImageViews = nil;
     iWidth = width;
   } else if (numImages == 2) {
     iWidth = floorf(width / 2.0);
-    iSpacing = 2.0;
-    iWidth -= 1.0;
-    iHeight -= 1.0;
+    iSpacing = 4.0;
+    iWidth -= 2.0;
+    iHeight -= 2.0;
   } else if (numImages == 3) {
     iWidth = floorf(width / 3);
     iSpacing = 3.0;
@@ -120,8 +127,8 @@ static NSMutableSet *__reusableImageViews = nil;
   
   NSLog(@"numImages: %d, numRows: %d", numImages, numRows);
   
-  if (numImages == 1) return 200.0 + TL_CAPTION_HEIGHT;
-  else return 100.0 * numRows + TL_CAPTION_HEIGHT;
+  if (numImages == 1) return 160.0 + TL_CAPTION_HEIGHT + TL_MARGIN * 2;
+  else return 80.0 * numRows + TL_CAPTION_HEIGHT + TL_MARGIN * 2;
 }
 
 - (void)fillCellWithObject:(id)object {
@@ -135,8 +142,6 @@ static NSMutableSet *__reusableImageViews = nil;
       iv.contentMode = UIViewContentModeScaleAspectFill;
       iv.clipsToBounds = YES;
       iv.userInteractionEnabled = YES;
-      UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
-      [iv addGestureRecognizer:zoomGesture];
     } else {
       [__reusableImageViews removeObject:iv];
     }
@@ -144,6 +149,9 @@ static NSMutableSet *__reusableImageViews = nil;
     [self.contentView addSubview:iv];
     [iv unloadImage];
     [iv loadImageWithURL:[NSURL URLWithString:source]];
+    
+    UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
+    [iv addGestureRecognizer:zoomGesture];
   }];
   
   // Labels
@@ -155,9 +163,10 @@ static NSMutableSet *__reusableImageViews = nil;
 #pragma mark - Zoom
 - (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
   UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
-  UIViewContentMode contentMode = imageView.contentMode;
+  UIViewContentMode contentMode = imageView.contentMode;;
   PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image contentMode:contentMode] autorelease];
-  [zoomView showInRect:[self.contentView convertRect:imageView.frame toView:nil]];
+  CGRect imageRect = [self.contentView convertRect:imageView.frame toView:self];
+  [zoomView showInRect:[self convertRect:imageRect toView:nil]];
 }
 
 @end

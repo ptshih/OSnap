@@ -10,9 +10,5 @@
 
 @interface TimelineViewController : PSTableViewController <UIActionSheetDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-- (void)getExifFromData:(NSData *)data;
-//- (void)uploadPhotoWithData:(NSData *)data;
-- (void)uploadPhotoWithData:(NSData *)data width:(CGFloat)width height:(CGFloat)height metadata:(NSDictionary *)metadata;
-- (void)uploadPhotoWithAssetURL:(NSURL *)assetURL;
 
 @end
