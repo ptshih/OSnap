@@ -12,6 +12,8 @@
 #import "PreviewViewController.h"
 #import "AFNetworking.h"
 
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 
 @implementation TimelineViewController (CameraDelegateMethods)
@@ -60,6 +62,9 @@
 @interface TimelineViewController (Private)
 
 - (void)snap;
+
+- (void)loadFromRemote;
+- (void)loadFromSavedPhotos;
 
 @end
 
@@ -185,6 +190,9 @@
 - (void)loadDataSource {
   [super loadDataSource];
   
+//  [self loadFromRemote];
+  [self loadFromSavedPhotos];
+  
 //  NSString *jpegPath = [[NSBundle mainBundle] pathForResource:@"bubbles" ofType:@"jpg"];
 //  NSData *jpegData = [NSData dataWithContentsOfFile:jpegPath];
   
@@ -203,6 +211,14 @@
 //
 //  NSArray *items = [response objectForKey:@"data"];
   
+
+}
+
+- (void)dataSourceDidLoad {
+  [super dataSourceDidLoad];
+}
+
+- (void)loadFromRemote {
   NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@/timeline", API_BASE_URL]]];
   AFJSONRequestOperation *op = [AFJSONRequestOperation JSONRequestOperationWithRequest:request success:^(NSURLRequest *request, NSHTTPURLResponse *response, id JSON){
     
@@ -220,8 +236,42 @@
   [queue addOperation:op];
 }
 
-- (void)dataSourceDidLoad {
-  [super dataSourceDidLoad];
+- (void)loadFromSavedPhotos {
+  ALAssetsLibrary *library = [[ALAssetsLibrary alloc] init];
+  
+  // Enumerate just the photos and videos group by using ALAssetsGroupSavedPhotos.
+  [library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+    
+    if (group) {
+      // Within the group enumeration block, filter to enumerate just photos.
+      [group setAssetsFilter:[ALAssetsFilter allPhotos]];
+      
+      NSMutableArray *items = [NSMutableArray array];
+      
+      NSMutableArray *photos = [NSMutableArray array];
+      [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
+        if (result) {
+          ALAssetRepresentation *rep = [result defaultRepresentation];
+          
+          // Read out asset URL
+          NSURL *assetURL = [rep url];
+          
+          // Build array of PTPhoto based on Assets
+          // Pass into dataSourcedidLoadObjects:
+          NSDictionary *photo = [NSDictionary dictionaryWithObjectsAndKeys:assetURL.absoluteString, @"source", [NSNumber numberWithInteger:2592], @"width", [NSNumber numberWithInteger:3872], @"height", nil];
+          [photos addObject:photo];
+        }        
+      }];
+      
+      NSDictionary *album = [NSDictionary dictionaryWithObjectsAndKeys:photos, @"photos", nil];
+      [items addObject:album];
+      
+      [self dataSourceShouldLoadObjects:[NSMutableArray arrayWithObject:items] shouldAnimate:NO];
+    }
+
+  } failureBlock: ^(NSError *error) {
+    NSLog(@"No groups");
+  }];
 }
 
 #pragma mark - TableView

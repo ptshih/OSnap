@@ -28,8 +28,8 @@
 #endif
 
 #define API_LOCALHOST @"http://localhost:5000"
-#define API_REMOTE @"http://10.0.1.191:5000"
-//#define API_REMOTE @"http://whiskey.herokuapp.com"
+//#define API_REMOTE @"http://10.0.1.191:5000"
+#define API_REMOTE @"http://whiskey.herokuapp.com"
 
 #ifdef USE_LOCALHOST
   #define API_BASE_URL [NSString stringWithFormat:API_LOCALHOST]

@@ -116,8 +116,8 @@ static NSMutableSet *__reusableImageViews = nil;
   }];
   
   // Labels
-  _titleLabel.frame = CGRectMake(0, height + TL_MARGIN, floorf(width * (3.0 / 4.0)), TL_CAPTION_HEIGHT);
-  _subtitleLabel.frame = CGRectMake(floorf(width * (3.0 / 4.0)), height + TL_MARGIN, floorf(width * (1.0 / 4.0)), TL_CAPTION_HEIGHT);
+  _titleLabel.frame = CGRectMake(0, height + TL_MARGIN, floorf(width * (2.0 / 4.0)), TL_CAPTION_HEIGHT);
+  _subtitleLabel.frame = CGRectMake(floorf(width * (2.0 / 4.0)), height + TL_MARGIN, floorf(width * (2.0 / 4.0)), TL_CAPTION_HEIGHT);
 }
 
 + (CGFloat)rowHeightForObject:(id)object forInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -149,22 +149,22 @@ static NSMutableSet *__reusableImageViews = nil;
     [self.contentView addSubview:iv];
     [iv unloadImage];
     [iv loadImageWithURL:[NSURL URLWithString:source]];
-    
     UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
     [iv addGestureRecognizer:zoomGesture];
   }];
   
   // Labels
-  _titleLabel.text = @"Disneyland - Anaheim, CA";
-  _subtitleLabel.text = [object objectForKey:@"started_at"];
+  NSDictionary *from = [object objectForKey:@"fb_from"];
+  _titleLabel.text = @"asdfasdfs";
+  _subtitleLabel.text = [object objectForKey:@"pt_datetime"];
   
 }
 
 #pragma mark - Zoom
 - (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
-  UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
-  UIViewContentMode contentMode = imageView.contentMode;;
-  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image contentMode:contentMode] autorelease];
+  PSCachedImageView *imageView = (PSCachedImageView *)gestureRecognizer.view;
+  UIViewContentMode contentMode = imageView.contentMode;
+  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:[imageView originalImage] contentMode:contentMode] autorelease];
   CGRect imageRect = [self.contentView convertRect:imageView.frame toView:self];
   [zoomView showInRect:[self convertRect:imageRect toView:nil]];
 }
