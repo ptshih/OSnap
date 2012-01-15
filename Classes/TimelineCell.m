@@ -154,9 +154,9 @@ static NSMutableSet *__reusableImageViews = nil;
   }];
   
   // Labels
-  NSDictionary *from = [object objectForKey:@"fb_from"];
-  _titleLabel.text = @"asdfasdfs";
-  _subtitleLabel.text = [object objectForKey:@"pt_datetime"];
+//  NSDictionary *from = [object objectForKey:@"fb_from"];
+  _titleLabel.text = [[object objectForKey:@"timestamp"] description];
+  _subtitleLabel.text = [[object objectForKey:@"location"] description];
   
 }
 

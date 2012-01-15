@@ -15,6 +15,7 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <ImageIO/ImageIO.h>
 #import <MobileCoreServices/UTCoreTypes.h>
+#import <CoreLocation/CoreLocation.h>
 
 @implementation TimelineViewController (CameraDelegateMethods)
 
@@ -249,22 +250,99 @@
       NSMutableArray *items = [NSMutableArray array];
       
       NSMutableArray *photos = [NSMutableArray array];
+      
       [group enumerateAssetsUsingBlock:^(ALAsset *result, NSUInteger index, BOOL *stop){
         if (result) {
           ALAssetRepresentation *rep = [result defaultRepresentation];
           
-          // Read out asset URL
           NSURL *assetURL = [rep url];
+          // NOTE: it is expensive to read out the metadata!!!
+//          NSDictionary *metadata = [rep metadata];
+          
+#warning debug
+//          if ([assetURL.absoluteString isEqualToString:@"assets-library://asset/asset.JPG?id=E6292758-C2C3-4077-A7AD-ED11C4BACF7A&ext=JPG"]) {
+//            NSLog(@"debug");
+//          }
+          
+          // Read out asset properties
+//          NSNumber *assetWidth = [metadata objectForKey:(NSString *)kCGImagePropertyPixelWidth];
+//          NSNumber *assetHeight = [metadata objectForKey:(NSString *)kCGImagePropertyPixelHeight];
+          NSDate *assetDate = [result valueForProperty:ALAssetPropertyDate];
+          CLLocation *assetLocation = [result valueForProperty:ALAssetPropertyLocation];
+          
+          // EXIF Optional
+//          NSDictionary *exif = [metadata objectForKey:(NSString *)kCGImagePropertyExifDictionary];
+//          NSNumber *exifWidth = nil;
+//          NSNumber *exifHeight = nil;
+//          NSMutableString *exifDatetime = nil;
+//          if (exif) {
+//            // Width
+//            exifWidth = [exif objectForKey:(NSString *)kCGImagePropertyExifPixelXDimension];
+//            exifHeight = [exif objectForKey:(NSString *)kCGImagePropertyExifPixelYDimension];
+//            
+//            // Datetime
+//            NSString *unformattedDateAsString = [exif objectForKey:(NSString *)kCGImagePropertyExifDateTimeOriginal];
+//            if (unformattedDateAsString) {
+//              exifDatetime = [[unformattedDateAsString mutableCopy] autorelease];
+//              //make sure the date stored in the metadata is not nil, and contains a meaningful date
+//              if(exifDatetime && ![exifDatetime isEqualToString:@""] && ![exifDatetime isEqualToString:@"0000:00:00 00:00:00"]) {
+//                // the date (not the time) part of the string needs to contain dashes, not colons, for NSDate to read it correctly
+//                [exifDatetime replaceOccurrencesOfString:@":" withString:@"-" options:0 range:NSMakeRange(0, 10)]; //the first 10 characters are the date part
+//                //the EXIF spec does not allow the time zone to be saved with the date,
+//                // so we must assume the camera’s clock is set to the same time zone as the computer’s.
+//                [exifDatetime appendString:@" +0000"];
+//              }
+//            }
+//          }
+          
+          // GPS
+//          NSDictionary *gps = [metadata objectForKey:(NSString *)kCGImagePropertyGPSDictionary];
+//          
+//          NSString *exifLatitude = nil;
+//          NSString *exifLongitude = nil;
+//          if (gps) {
+//            exifLatitude = [gps objectForKey:(NSString *)kCGImagePropertyGPSLatitude];
+//            exifLongitude = [gps objectForKey:(NSString *)kCGImagePropertyGPSLongitude];
+//          }
           
           // Build array of PTPhoto based on Assets
           // Pass into dataSourcedidLoadObjects:
-          NSDictionary *photo = [NSDictionary dictionaryWithObjectsAndKeys:assetURL.absoluteString, @"source", [NSNumber numberWithInteger:2592], @"width", [NSNumber numberWithInteger:3872], @"height", nil];
+          NSMutableDictionary *photo = [[NSMutableDictionary alloc] init];
+          [photo setObject:assetURL.absoluteString forKey:@"source"];
+          if (assetDate) [photo setObject:assetDate forKey:@"timestamp"];
+          if (assetLocation) [photo setObject:assetLocation forKey:@"location"];
+//          if (assetWidth) [photo setObject:assetWidth forKey:@"width"];
+//          if (assetHeight) [photo setObject:assetHeight forKey:@"height"];
+          
+//          NSLog(@"Adding photo: %@", photo);
           [photos addObject:photo];
+          [photo release];
         }        
       }];
       
-      NSDictionary *album = [NSDictionary dictionaryWithObjectsAndKeys:photos, @"photos", nil];
-      [items addObject:album];
+      NSArray *sortedPhotos = [photos sortedArrayUsingDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:NO]]];
+      
+      unsigned unitFlags = NSYearCalendarUnit | NSMonthCalendarUnit | NSDayCalendarUnit;
+      
+      NSDate *currentDate = nil;
+      CLLocation *currentLocation = nil;
+      for (NSDictionary *photo in sortedPhotos) {
+        NSDateComponents *components = [[NSCalendar currentCalendar] components:unitFlags fromDate:[photo objectForKey:@"timestamp"]];
+        NSDate *photoDate = [[NSCalendar currentCalendar] dateFromComponents:components];
+        
+        CLLocation *photoLocation = [photo objectForKey:@"location"];
+        currentLocation = photoLocation;
+        
+        // Begin a new day if no currentDate set or if photo date doesn't match
+        if (!currentDate || (![currentDate isEqualToDate:photoDate])) {
+          currentDate = photoDate;
+          [items addObject:[NSMutableDictionary dictionaryWithObjectsAndKeys:currentDate, @"timestamp", currentLocation, @"location", nil]];
+          [[items lastObject] setObject:[NSMutableArray arrayWithObject:photo] forKey:@"photos"];
+        } else {
+          // If photo is still part of current day, add to array
+          [[[items lastObject] objectForKey:@"photos"] addObject:photo];
+        }
+      }
       
       [self dataSourceShouldLoadObjects:[NSMutableArray arrayWithObject:items] shouldAnimate:NO];
     }
