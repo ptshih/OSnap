@@ -148,7 +148,8 @@ static NSMutableSet *__reusableImageViews = nil;
     [_imageViews addObject:iv];
     [self.contentView addSubview:iv];
     [iv unloadImage];
-    [iv loadImageWithURL:[NSURL URLWithString:source]];
+    [iv loadThumbnailWithURL:[NSURL URLWithString:source]];
+//    [iv loadImageWithURL:[NSURL URLWithString:source]];
     UITapGestureRecognizer *zoomGesture = [[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(zoom:)] autorelease];
     [iv addGestureRecognizer:zoomGesture];
   }];
@@ -164,7 +165,8 @@ static NSMutableSet *__reusableImageViews = nil;
 - (void)zoom:(UITapGestureRecognizer *)gestureRecognizer {
   PSCachedImageView *imageView = (PSCachedImageView *)gestureRecognizer.view;
   UIViewContentMode contentMode = imageView.contentMode;
-  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:[imageView originalImage] contentMode:contentMode] autorelease];
+  PSZoomView *zoomView = [[[PSZoomView alloc] initWithImage:imageView.image contentMode:contentMode] autorelease];
+  [zoomView loadFullResolutionWithURL:[imageView url]];
   CGRect imageRect = [self.contentView convertRect:imageView.frame toView:self];
   [zoomView showInRect:[self convertRect:imageRect toView:nil]];
 }
